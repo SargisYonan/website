@@ -58,24 +58,6 @@ h1 {
   margin-bottom:70px;
  }
 
-
- .about-us .content .column-four{
-  width:300px;
-  margin-bottom:70px;
- }
-
- .about-us .content .column-five{
-  width:300px;
-  margin-bottom:70px;
- }
-
-
- .about-us .content .column-five{
-  width:300px;
-  margin-bottom:70px;
- }
-
-
 .portfolio .portfolio-margin{
   width:300px;
 }
@@ -129,7 +111,7 @@ textarea{
   margin:0 0 15px 0;
 }
 
-.contact{
+.contact{ 
   margin:0 auto;
 }
 
@@ -240,7 +222,7 @@ h1 {
   padding-left:0;
 }
 
-.contact{
+.contact{ 
   margin:0 auto;
 }
 
@@ -306,10 +288,6 @@ textarea{
   width:233px;
 }
 
-.about-us .column-four{
-  width:233px;
-}
-
 .portfolio .portfolio-margin {
   width:600px;
 }
@@ -322,7 +300,7 @@ textarea{
   width:700px;
 }
 
-.contact{
+.contact{ 
   margin:0 auto;
 }
 

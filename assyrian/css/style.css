@@ -1,22 +1,5 @@
-/* Thomsoon.com - OnePage CSS Responsive theme
--- version 1.0
--- Copyright (c) 2014 Thomsoon.com
--- licensed under the MIT
---
--- http://www.thomsoon.com/
---
-*/
-
 /* Font Google - strong reaload time */
 @import url(http://fonts.googleapis.com/css?family=Lato:400,300,100,700,900&subset=latin,latin-ext);
-
-
-/*
- * Theme Name: Onepage
- * Author: Thomsoon
- * Created: 14/11/2014
- */
-
 
 .preloader{
   position:fixed;
@@ -103,12 +86,12 @@ h1 span{
   position:relative;
   width:100%;
   height:100%;
+  z-index:10;
   background:url('../img/background/start-page.jpg') #c0c0c0 bottom center fixed no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  z-index:10;
 }
 
 .start-page hr{
@@ -146,10 +129,6 @@ h1 span{
   right:0;
   width:700px;
   height:520px;
-}
-
-.start-page .content .text img{
-  width:123px
 }
 
 .start-page .content .text .logo{
@@ -243,7 +222,7 @@ h1 span{
    font-size:24px;
    width:200px;
    line-height:90px;
-   float:left;
+   float:center;
    list-style: none;
 }
 
@@ -510,66 +489,6 @@ h1 span{
 }
 
 
-.about-us .column-four{
-  margin-top:40px;
-  width:300px;
-  float:left;
-  margin-bottom:70px;
-  height:350px;
-}
-
-.about-us .column-four .circle-four{
-  height: 100px;
-  position:relative;
-  margin:0 auto;
-  border:2px solid #f0f0f0;
-  background: url(../img/icons/free.png) white no-repeat center center;
-  -moz-border-radius:100px;
-  -webkit-border-radius:100px;
-  border-radius: 100px;
-  width: 100px;
-  cursor:pointer;
-  -webkit-transition: all 0.2s ease-in;
-	-moz-transition: all 0.2s ease-in;
-	-ms-transition: all 0.2s ease-in;
-	-o-transition: all 0.2s ease-in;
-	transition: all 0.2s ease-in;
-}
-
-.about-us .column-four .circle-four:hover{
-  border:2px solid #ada074;
-}
-
-
-.about-us .column-five{
-  margin-top:40px;
-  width:300px;
-  float:left;
-  margin-bottom:70px;
-  height:350px;
-}
-
-.about-us .column-five .circle-five{
-  height: 100px;
-  position:relative;
-  margin:0 auto;
-  border:2px solid #f0f0f0;
-  background: url(../img/icons/alap.png) white no-repeat center center;
-  -moz-border-radius:100px;
-  -webkit-border-radius:100px;
-  border-radius: 100px;
-  width: 100px;
-  cursor:pointer;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  -ms-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-}
-
-.about-us .column-five .circle-five:hover{
-  border:2px solid #ada074;
-}
 
 /* Portfolio */
 
@@ -651,7 +570,6 @@ h1 span{
 
 .grid li{
   width:285px;
-  height:224px;
   margin:0 15px 15px 0;
   float: left;
   position: relative;
@@ -659,8 +577,7 @@ h1 span{
 }
 
 .grid img{
-  width: 100%;
-  height:224px;
+  width:285px;
   float: left;
   position: relative;
 }
@@ -690,13 +607,21 @@ h1 span{
   background: rgba(173,160,116,0.5);
   z-index: 2;
   opacity:0;
+  -webkit-transition: all 0.6s ease-in;
+	-moz-transition: all 0.6s ease-in;
+	-ms-transition: all 0.6s ease-in;
+	-o-transition: all 0.6s ease-in;
+	transition: all 0.6s ease-in;
+}
+
+.grid .no-text:hover {
+  opacity:1;
 }
 
 .grid p {
   font-size: 18px;
   text-align:center;
   line-height:26px;
-  padding:0 20px;
   margin-top:40px;
   font-weight: bold;
   letter-spacing:1px;
@@ -705,6 +630,7 @@ h1 span{
 
 .grid p.description {
   font-size: 12px;
+  width:300px;
   margin-top:20px;
   text-align:center;
   line-height:20px;
@@ -722,13 +648,13 @@ h1 span{
 .partners{
   position:relative;
   width:100%;
+  z-index:10;
   height:400px;
   background:url('../img/background/partners.jpg') 0px 0px fixed;
     -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  z-index:10;
 }
 
 .partners .opacity{
@@ -741,7 +667,7 @@ h1 span{
 .partners .content{
   position:absolute;
   width:900px;
-  height:950px;
+  height:190px;
   margin:auto;
   top:0;
   bottom:0;
@@ -792,11 +718,10 @@ h1 span{
 
 .contact .content{
   position:relative;
-  width:900px;
+  width:800px;
   overflow:hidden;
-  margin: 60px auto 65px auto;
+  margin: 60px auto 20px auto;
 }
-
 
 .contact h1{
   font-size:34px;
@@ -807,7 +732,6 @@ h1 span{
   font-weight:bold;
   text-transform:uppercase;
   line-height:1.2;
-
 }
 
 .contact hr{
@@ -892,7 +816,7 @@ input:focus{background:#f4f4f4;}
 
 textarea{
 
-  width:420px;
+  width:4200px;
   height:150px;
   border-top:1px solid #333;
   border-bottom:0;
@@ -985,7 +909,3 @@ input.submit{
   color:#a4a4a4;
 }
 
-.footer .copyright a{
-  color:#a4a4a4;
-  text-decoration:none;
-}

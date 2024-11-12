@@ -25,7 +25,7 @@
   background:white;
   z-index:99999;
 }
-
+ 
 .preloader .item{
   position:absolute;
   width:100px;
@@ -34,7 +34,7 @@
   top:50%;
   margin-left:-50px;
   margin-top:-50px;
-}
+} 
 
 
 html, body{
@@ -140,9 +140,9 @@ h1 span{
   position:absolute;
   text-align:center;
   margin:auto;
-  top:0;
-  left:0;
-  bottom:0;
+  top:0; 
+  left:0; 
+  bottom:0; 
   right:0;
   width:700px;
   height:520px;
@@ -156,7 +156,7 @@ h1 span{
   width:123px;
   height:123px;
   margin:0 auto 50px;
-
+  
 }
 
 
@@ -479,7 +479,7 @@ h1 span{
 }
 
 
-.about-us .column-three{
+.about-us .column-three{ 
   margin-top:40px;
   width:300px;
   float:left;
@@ -487,7 +487,7 @@ h1 span{
   height:350px;
 }
 
-.about-us .column-three .circle-three{
+.about-us .column-three .circle-three{ 
   height: 100px;
   position:relative;
   margin:0 auto;
@@ -505,71 +505,11 @@ h1 span{
 	transition: all 0.2s ease-in;
 }
 
-.about-us .column-three .circle-three:hover{
+.about-us .column-three .circle-three:hover{ 
   border:2px solid #ada074;
 }
 
 
-.about-us .column-four{
-  margin-top:40px;
-  width:300px;
-  float:left;
-  margin-bottom:70px;
-  height:350px;
-}
-
-.about-us .column-four .circle-four{
-  height: 100px;
-  position:relative;
-  margin:0 auto;
-  border:2px solid #f0f0f0;
-  background: url(../img/icons/free.png) white no-repeat center center;
-  -moz-border-radius:100px;
-  -webkit-border-radius:100px;
-  border-radius: 100px;
-  width: 100px;
-  cursor:pointer;
-  -webkit-transition: all 0.2s ease-in;
-	-moz-transition: all 0.2s ease-in;
-	-ms-transition: all 0.2s ease-in;
-	-o-transition: all 0.2s ease-in;
-	transition: all 0.2s ease-in;
-}
-
-.about-us .column-four .circle-four:hover{
-  border:2px solid #ada074;
-}
-
-
-.about-us .column-five{
-  margin-top:40px;
-  width:300px;
-  float:left;
-  margin-bottom:70px;
-  height:350px;
-}
-
-.about-us .column-five .circle-five{
-  height: 100px;
-  position:relative;
-  margin:0 auto;
-  border:2px solid #f0f0f0;
-  background: url(../img/icons/alap.png) white no-repeat center center;
-  -moz-border-radius:100px;
-  -webkit-border-radius:100px;
-  border-radius: 100px;
-  width: 100px;
-  cursor:pointer;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  -ms-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-}
-
-.about-us .column-five .circle-five:hover{
-  border:2px solid #ada074;
-}
 
 /* Portfolio */
 
@@ -713,8 +653,8 @@ h1 span{
   position:relative;
 }
 
-.clear {
-    clear:both;
+.clear { 
+    clear:both; 
 }
 
 /* Partners */
@@ -741,7 +681,7 @@ h1 span{
 .partners .content{
   position:absolute;
   width:900px;
-  height:950px;
+  height:190px;
   margin:auto;
   top:0;
   bottom:0;
@@ -786,7 +726,7 @@ h1 span{
   background:white;
   z-index:10;
   overflow:hidden;
-  margin-bottom: 300px;
+  margin-bottom: 300px;  
 }
 
 
@@ -842,7 +782,7 @@ h1 span{
   height:auto;
   float:left;
   letter-spacing:1px;
-  margin-bottom:30px;
+  margin-bottom:30px;  
 }
 
 .contact .content .form .column-3{
@@ -953,7 +893,7 @@ input.submit{
   margin:0 auto;
   padding-top:30px;
   overflow: hidden;
-  position:relative;
+  position:relative;  
 }
 
 

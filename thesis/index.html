@@ -132,16 +132,29 @@
     </section>
 
 
+    <!-- Footer Section -->
     <section class="footer">
-
-        <div class="logo"><img src="img/logo-footer.png"></div>
-        <div class="menu-footer">
-        </div>
-
-        <div class="copyright">© 2021. All Rights Reserved sargis.yonan.org</div>
-
-
+        <div class="logo"><img src="img/logo-footer.png" alt="Footer Logo"></div>
+        <div class="copyright">© <span id="copyright-year"></span> All Rights Reserved sargis.yonan.org</div>
     </section>
+
+    <!-- Scripts -->
+    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="js/jquery-ui-1.10.4.min.js" type="text/javascript"></script>
+    <script src="js/jquery.nicescroll.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/jquery.parallax.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Dynamic Year Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const year = new Date().getFullYear();
+            document.getElementById("copyright-year").textContent = year;
+        });
+    </script>
 
 
 </div>
