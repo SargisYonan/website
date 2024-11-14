@@ -460,3 +460,81 @@ h1 {
     padding: 10px 0;
 }
 
+
+/* Responsive adjustments for mobile screens */
+
+@media (max-width: 600px) {
+    /* Reduce header and subheading font sizes */
+    h1, h2, h3 {
+        font-size: 1.5rem; /* Adjust as necessary */
+    }
+    
+    /* Reduce padding and margin */
+    .content, .resume-link, .circular-buttons {
+        padding: 10px;
+        margin: 10px 0;
+    }
+    
+    /* Make section titles smaller */
+    .resume-link h2, .circular-buttons h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Stacking circular buttons */
+    .circular-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .circular-button {
+        width: 100%; /* Full width on small screens */
+        margin-bottom: 15px; /* Add some spacing */
+    }
+
+    /* Padding for resume link and sections */
+    .resume-link {
+        padding-top: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* Contact section adjustments */
+    .contact h1 {
+        font-size: 1.5rem;
+        padding: 10px 0;
+    }
+
+    /* Adjusting spacing between sections */
+    section {
+        padding: 20px 10px;
+    }
+
+    /* Icon and image responsiveness */
+    .circular-button .icon, .resume-link img {
+        width: 50px; /* Resize icons */
+        height: auto;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Footer and Contact section font size and alignment */
+    .footer, .contact-text {
+        font-size: 0.9rem;
+        text-align: center; /* Center align for better readability */
+        padding: 10px;
+    }
+
+    /* Social media icons spacing */
+    .social-buttons a {
+        margin: 0 5px; /* Reduce space between social icons */
+    }
+}
+
+/* General container width adjustment */
+.container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
