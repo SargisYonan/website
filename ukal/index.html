@@ -1,158 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136338622-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-136338622-1');
+  </script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136338622-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>μKal — Sargis Yonan</title>
+  <meta name="description" content="μKal — a micro Kalman filtering library.">
 
-      gtag('config', 'UA-136338622-1');
-    </script>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>uKal - A Micro Kalman Filtering Library</title>
-
-		<meta name="Sargis S Yonan" content="uKal - A Micro Kalman Filtering Library"/>
-		<meta name="sargis s yonan " content=""/>
-		<meta name="Sargis S Yonan" content="sargis.yonan.org"/>
-
-		<link rel="favicon" href="../img/favicon.png" />
-
-		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="../css/style.css" />
-		<link rel="stylesheet" type="text/css" href="../css/style-responsive.css" />
-
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="../img/favicon.ico">
+  <link rel="stylesheet" href="../css/main.css">
 </head>
-
 <body>
 
+  <header class="topbar">
+    <a class="back-link" href="../">← Sargis Yonan</a>
+  </header>
 
-<div class="container">
-
-
-<!-- section start-page -->
-
-
-  <section class="menu-media">
-
-    <div class="menu-content">
-
-      <div class="logo">A Sargis Yonan Project</div>
-
-    </div>
-
-  </section>
-
-    <ul class="menu-click">
-        <a href="#home"><li href=..>HOME</li></a>
-    </ul>
-
-
-  <!-- section menu -->
-
-  <section class="menu">
-
-    <div class="menu-content">
-
-    <div class="logo">A Sargis Yonan Project</div>
-
-      <ul id="menu">
-        <li><a href="../">HOME</a></li>
+  <main>
+    <div class="wrap">
+      <div class="eyebrow" style="text-transform: none;">μKal</div>
+      <ul class="entry-list">
+        <li class="entry">
+          <h2><a href="examples/ekf_example.html">EKF Tutorial</a></h2>
+          <p>An introduction to modeling and estimating a nonlinear system with an Extended Kalman Filter (EKF) using μKal.</p>
+        </li>
+        <li class="entry">
+          <h2><a href="https://github.com/SargisYonan/uKal" target="_blank" rel="noopener">μKal Source Code</a></h2>
+          <p>The entirety of the μKal library, including source, the μLAPack submodule, and tests.</p>
+        </li>
+        <li class="entry">
+          <h2><a href="https://goo.gl/forms/8QpSDgC3JthAGoTG2" target="_blank" rel="noopener">Licensing μKal</a></h2>
+          <p>Licensing form for developer and redistribution rights.</p>
+        </li>
+        <li class="entry">
+          <h2><a href="https://raw.githubusercontent.com/SargisYonan/uKal/master/LICENSE" target="_blank" rel="noopener">Open Source License</a></h2>
+          <p>The full license specification for the open source project.</p>
+        </li>
       </ul>
     </div>
+  </main>
 
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="copyright-year"></span> Sargis Yonan</span>
+    </div>
+  </footer>
 
-  </section>
-
-    <!-- Projects-->
-
-    <section class="contact" id="contact">
-        <h1>uKal</h1>
-        <h2><center>A Micro Kalman Filtering Library</center></h2>
-        <hr/>
-
-        <div class="content">
-
-          <div class="contact-text">
-
-          <strong>EKF Tutorial</strong><br/><br/>
-
-          <a style="color:black">An introduction to modeling and estimating a nonlinear system with an Extended Kalman Filter (EKF) using μKal.</a><br/>
-          <strong><a href="examples/ekf_example.html" style="color:black"><b>Tutorial Link</b></a><br/></strong>
-
-          <br/><br/><br/>
-
-          <strong>μKal Source Code</strong><br/><br/>
-
-          <a style="color:black">The entirety of the μKal library, including source, μLAPack submodule, and tests.</a><br/>
-          <strong><a href="https://github.com/SargisYonan/uKal" style="color:black"><b>Git Repository</b></a><br/></strong>
-
-          <br/><br/><br/>
-
-          <strong>Licensing μKal</strong><br/><br/>
-
-          <a style="color:black">Licensing form for developer and redistribution rights.</a><br/>
-          <strong><a href="https://goo.gl/forms/8QpSDgC3JthAGoTG2" style="color:black"><b>License Inquiry Form</b></a><br/></strong>
-
-          <br/><br/><br/>
-
-          <strong>Open Source License</strong><br/><br/>
-
-          <a style="color:black">The full license specification for the open source project.</a><br/>
-          <strong><a href="https://raw.githubusercontent.com/SargisYonan/uKal/master/LICENSE" style="color:black"><b>License</b></a><br/></strong>
-
-          <br/><br/><br/>
-
-          </div>
-
-        </div>
-
-    </section>
-
-    <!-- opaque thing-->
-
-    <section class="partners parallax-background-partners" id="partners">
-
-    <div class="opacity"></div>
-
-    </section>
-
-    <!-- Footer Section -->
-    <section class="footer">
-        <div class="logo"><img src="img/logo-footer.png" alt="Footer Logo"></div>
-        <div class="copyright">© <span id="copyright-year"></span> All Rights Reserved sargis.yonan.org</div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-    <script src="js/jquery-ui-1.10.4.min.js" type="text/javascript"></script>
-    <script src="js/jquery.nicescroll.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/jquery.parallax.js"></script>
-    <script src="js/script.js"></script>
-
-    <!-- Dynamic Year Script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const year = new Date().getFullYear();
-            document.getElementById("copyright-year").textContent = year;
-        });
-    </script>
-</div>
-
-
+  <script src="../js/main.js"></script>
 </body>
-
 </html>

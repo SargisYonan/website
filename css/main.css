@@ -1,0 +1,435 @@
+/* ==========================================================================
+   Sargis Yonan — shared design system
+   Plain CSS, no build step. White, system sans, light-only.
+   ========================================================================== */
+
+:root {
+  --bg: #ffffff;
+  --bg-elevated: #f5f5f5;
+  --text: #000000;
+  --text-muted: #666666;
+  --border: rgba(0, 0, 0, 0.14);
+  --accent: var(--text);
+  --accent-text: var(--bg);
+  --focus-ring: var(--text);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+
+  --max-w: 915px;
+  --pad: clamp(20px, 6vw, 48px);
+  --radius: 14px;
+
+  color-scheme: light;
+}
+
+@font-face {
+  font-family: "NohadraSyriac-Sapna";
+  src: url("../fonts/nohadrasyriac/NohadraSyriac-Sapna.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "NohadraSyriac-Amedia";
+  src: url("../fonts/nohadrasyriac/NohadraSyriac-Amedia.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SyrCOMNisibin";
+  src: url("../fonts/syrcom/SyrCOMNisibin.otf") format("opentype");
+  font-display: swap;
+}
+
+/* ---- Reset ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+:root[dir="rtl"] .plain-text,
+:root[dir="rtl"] footer.site-footer {
+  font-family: "Idiqlat", var(--font-sans);
+  font-weight: 400;
+  -webkit-text-stroke: 0.4px currentColor;
+}
+:root[dir="rtl"] .lede,
+:root[dir="rtl"] .entry p[data-i18n] {
+  font-family: "Noto Sans Syriac Eastern", var(--font-sans);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+:root[dir="rtl"] .entry h2 a[data-i18n] {
+  font-family: "SyrCOMNisibin", var(--font-sans);
+  font-size: 36px;
+}
+h1, h2, h3, p, ul, figure { margin: 0; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+::selection { background: var(--accent); color: var(--accent-text); }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+/* ---- Top bar ------------------------------------------------------------ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px var(--pad);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border-bottom: 1px solid transparent;
+}
+.topbar.is-scrolled { border-bottom-color: var(--border); }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.back-link:hover { color: var(--text); }
+
+/* ---- Language toggle: sliding switch ------------------------------------ */
+.lang-toggle-row {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 16px;
+}
+.lang-toggle {
+  position: relative;
+  appearance: none;
+  display: flex;
+  direction: ltr;
+  width: 68px;
+  height: 36px;
+  background: var(--bg);
+  border: 1.5px solid var(--text);
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.lang-toggle-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--text);
+  transition: transform 0.18s ease;
+  transform: translateX(0);
+}
+.lang-toggle[data-active="syr"] .lang-toggle-thumb {
+  transform: translateX(100%);
+}
+
+.lang-toggle-opt {
+  position: relative;
+  z-index: 1;
+  flex: 1 0 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  transition: color 0.18s ease;
+}
+.lang-toggle-opt--syr {
+  font-family: "SyrCOMNisibin", var(--font-sans);
+  font-size: 20px;
+  transform: translateX(-2px);
+}
+.lang-toggle-opt--en {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 800;
+}
+.lang-toggle[data-active="en"] .lang-toggle-opt--en { color: var(--bg); }
+.lang-toggle[data-active="syr"] .lang-toggle-opt--syr { color: var(--bg); }
+
+/* ---- Hero ------------------------------------------------------------ */
+.hero {
+  padding: 32px var(--pad) 20px;
+}
+.hero .wrap { padding: 0 var(--pad); max-width: var(--max-w); margin: 0 auto; }
+
+.hero-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+.hero-photo {
+  width: clamp(80px, 18vw, 200px);
+  height: auto;
+  flex: 0 1 auto;
+  min-width: 60px;
+}
+
+.hero-name {
+  font-family: "NohadraSyriac-Amedia", var(--font-sans);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--text);
+}
+:root[dir="rtl"] .hero-name {
+  font-family: "NohadraSyriac-Sapna", var(--font-sans);
+  text-transform: none;
+  font-size: clamp(63px, 23.35vw, 260px);
+  position: relative;
+  top: -0.317em;
+  margin-bottom: -0.317em;
+}
+.hero-name span {
+  display: block;
+  font-size: clamp(40px, 14.7vw, 163px);
+}
+:root[dir="rtl"] .hero-name span {
+  font-size: clamp(63px, 23.35vw, 260px);
+}
+:root[dir="rtl"] .hero-name span + span {
+  margin-top: -0.5em;
+  position: relative;
+  top: 0.07em;
+}
+/* ---- Sections ---------------------------------------------------------- */
+section.block {
+  padding: 16px 0;
+}
+
+/* resume-style black tag labels, content stacked below — full width,
+   no rule lines between sections, the label does the work */
+.eyebrow + * { margin-top: 10px; }
+.section-content > * + * { margin-top: 10px; }
+
+.eyebrow,
+.group-heading {
+  display: inline-block;
+  background: var(--text);
+  color: var(--bg);
+  border: 1.5px solid var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 0;
+}
+:root[dir="rtl"] .eyebrow,
+:root[dir="rtl"] .group-heading {
+  font-family: "SyrCOMNisibin", var(--font-sans);
+  text-transform: none;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1;
+  padding: 3px 12px;
+}
+
+.lede {
+  font-size: 19px;
+  max-width: 68ch;
+  min-height: 92px;
+}
+.lede + .lede { margin-top: 14px; }
+.lede-full { max-width: none; }
+
+/* ---- Contact ------------------------------------------------------------ */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--font-mono);
+}
+.contact-list a {
+  text-decoration: none;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+}
+.contact-list a:hover { text-decoration: underline; }
+.contact-list svg { width: 18px; height: 18px; flex: none; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-text);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+.btn:hover { opacity: .88; }
+
+/* ---- Footer -------------------------------------------------------------- */
+footer.site-footer {
+  padding: 16px var(--pad) 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+footer.site-footer .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
+
+
+/* ---- Subpages (projects / publications / thesis / music / ukal) -------- */
+.wrap > .eyebrow:first-child { margin-top: 44px; }
+.wrap > .eyebrow:first-child + * { margin-top: 16px; }
+.lang-toggle-row + .block .wrap > .eyebrow:first-child { margin-top: 20px; }
+
+.entry-list { list-style: none; margin: 0; padding: 0; }
+.entry {
+  padding: 10px 0;
+}
+.entry:first-child { padding-top: 0; }
+.entry h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.entry h2 a { color: inherit; text-decoration: none; }
+.entry h2 a:hover { text-decoration: underline; }
+.entry p { margin-top: 4px; color: var(--text-muted); font-size: 15px; }
+:root[dir="rtl"] .entry p:not([data-i18n]) {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: right;
+}
+.entry .entry-links {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.entry .entry-links a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.entry .entry-links a:hover { opacity: 0.6; }
+.entry .entry-meta { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+.plain-text {
+  padding: 2px 0 8px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+.plain-text a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
+.plain-text a:hover { opacity: 0.6; }
+
+.group-heading { margin-top: 48px; }
+
+/* ---- Font specimens (Nohadra Syriac) ------------------------------------ */
+.font-sample {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+}
+.font-sample-row {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 16px;
+  border: 1.5px solid var(--text);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+.font-sample-row .sample-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+:root[dir="rtl"] .font-sample-row .sample-label {
+  font-family: "SyrCOMNisibin", var(--font-sans);
+  text-transform: none;
+  font-size: 22px;
+}
+.font-sample-row .sample-text {
+  font-size: clamp(28px, 5vw, 48px);
+  color: var(--text);
+  direction: rtl;
+  line-height: 1.2;
+  text-align: center;
+}
+.font-sample-row.sapna .sample-text { font-family: "NohadraSyriac-Sapna", serif; }
+.font-sample-row.amedia .sample-text { font-family: "NohadraSyriac-Amedia", serif; }
+@media (max-width: 480px) {
+  .font-sample { flex-direction: column; }
+}
+
+/* ---- 404 ------------------------------------------------------------ */
+.state-404 {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: var(--pad);
+}
+.state-404 .code {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.state-404 h1 { font-size: clamp(24px, 5vw, 32px); }
+
+/* ---- Utility ------------------------------------------------------------ */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+

@@ -1,176 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136338622-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-136338622-1');
-    </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136338622-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-136338622-1');
+  </script>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sargis S Yonan</title>
-    <meta name="Sargis S Yonan" content="My personal projects"/>
-    <meta name="sargis s yonan engineering projects" content=""/>
-    <meta name="Sargis S Yonan" content="sargis.yonan.org"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sargis Yonan</title>
+  <meta name="description" content="Sargis Yonan — Prototyping Engineer, Interaction Design at Apple.">
 
-    <link rel="favicon" href="img/favicon.ico" />
-    <link rel="shortcut icon" href="img/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/style-responsive.css" />
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="img/favicon.ico">
+  <link rel="shortcut icon" href="img/favicon.ico">
 
-    <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Idiqlat:wght@200;300;400&family=Noto+Sans+Syriac+Eastern:wght@100..900&family=Ramsina&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
 </head>
-
 <body>
-<div class="preloader" id="preloader">
-    <div class="item">
-      <img src="img/loading.gif" alt="Loading">
-    </div>
-</div>
 
-<div class="container">
-  <!-- Start Page Section -->
-  <section class="start-page parallax-background" id="home">
-    <!-- <div class="opacity"></div> -->
-    <div class="content">
-        <div class="text">
-        </br></br></br></br></br></br>
-          <h1>Sargis Yonan<hr/>
-          <p>Engineer</p>
-          <a href="#about-us"><div class="read-more">ABOUT ME</div></a>
+  <main id="home">
+
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1 class="hero-name"><span data-i18n="hero-first">Sargis</span><span data-i18n="hero-last">Yonan</span></h1>
         </div>
-        <div class="arrow-down"></div>
-    </div>
-  </section>
+        <img class="hero-photo" src="img/sargis.jpg" alt="Sargis Yonan" width="700" height="1029">
+      </div>
+    </section>
 
-  <!-- Mobile Menu Section -->
-  <!-- <section class="menu-media">
-    <div class="menu-content">
-      <div class="logo">Sargis Yonan</div>
-      <div class="icon"><a href="#"><img src="img/icons/menu-media.png" alt="Menu"/></a></div>
-    </div>
-  </section> -->
-
-  <ul class="menu-click">
-      <a href="#home"><li href="#home">HOME</li></a>
-      <a href="#about-us"><li href="#about-us">ABOUT</li></a>
-      <a href="#contact"><li href="#contact">CONTACT</li></a>
-  </ul>
-
-  <!-- Main Menu -->
-  <section class="menu">
-    <div class="menu-content">
-      <div class="logo">Sargis Yonan</div>
-      <ul id="menu">
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#about-us">ABOUT</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- About Us Section -->
-  <section class="about-us" id="about-us">
-    <div class="content">
-        <h1>ABOUT</h1>
-        <hr/>
-        <p class="title">
-            Computer, Software and Robotics Engineer
-            <br><br>
-            I’m an engineer who works on a wide breadth of projects. I enjoy building hardware, writing firmware, kernel drivers, system software—and even back-end and front-end web development.
-            <br><br>
-            I also work in the Assyrian language space where I contribute to Unicode CLDR, design OpenType fonts, create Assyrian word games, and various learning tools. More recently, I've been interested in computational linguistics in the field of the Assyrian language.
-            <br><br>
-            I’m a Camera Systems Engineer at Apple Inc.
-            <br><br>
+    <section class="block" id="about">
+      <div class="wrap">
+        <p class="lede lede-full" data-i18n="about-text">
+          I'm an engineer who works on robotics, hardware, firmware, software and Assyrian
+          language typefaces, localization and games. I'm a prototype design engineer on the Apple Design Team, focused
+          on interaction.
         </p>
-        
-        <!-- Resume Link -->
-        <div class="resume-link">
-            <a href="resume/sargis_yonan_resume.pdf">
-                <h2>RESUME</h2>
-                <hr/>
-            </a>
-        </div>
+      </div>
+    </section>
 
-        <!-- Circular Buttons for Projects, Publications, and Assyrian -->
-        <div class="circular-buttons">
-            <div class="circular-button">
-                <a href="projects/">
-                    <div class="icon projects-icon"></div>
-                    <h2>PROJECTS</h2>
-                    <p>Various computer and electronics related projects</p>
-                </a>
-            </div>
-            <div class="circular-button">
-                <a href="publications/">
-                    <div class="icon publications-icon"></div>
-                    <h2>PUBLICATIONS</h2>
-                    <p>Reports and Writings</p>
-                </a>
-            </div>
-            <div class="circular-button">
-                <a href="assyrian/">
-                    <div class="icon assyrian-icon"></div>
-                    <h2>ASSYRIAN</h2>
-                    <p>My Assyrian Language Projects</p>
-                </a>
-            </div>
-        </div>
-
+    <div class="wrap lang-toggle-row">
+      <button class="lang-toggle" data-lang-toggle type="button" aria-label="Toggle language" data-active="en">
+        <span class="lang-toggle-thumb" aria-hidden="true"></span>
+        <span class="lang-toggle-opt lang-toggle-opt--en" aria-hidden="true">A</span>
+        <span class="lang-toggle-opt lang-toggle-opt--syr" aria-hidden="true">ܐ</span>
+      </button>
     </div>
-  </section>
 
-<!-- Contact Section -->
-<section class="contact" id="contact">
-    <h1>CONTACT</h1>
-    <hr/>
-    <div class="content">
-        <div class="contact-text">
-            <strong>Sargis S Yonan</strong><br/>
-            e-mail: <strong><a href="mailto:sargis@yonan.org">sargis@yonan.org</a></strong><br/>
+    <section class="block" id="projects">
+      <div class="wrap">
+        <div class="eyebrow" data-i18n="label-projects">Select Projects</div>
+        <div class="section-content">
+          <ul class="entry-list">
+            <li class="entry">
+              <h2><a href="https://github.com/SargisYonan/NohadraSyriac" target="_blank" rel="noopener" data-i18n="proj-nohadra-title">The Nohadra Syriac Fonts Collection</a></h2>
+              <p data-i18n="proj-nohadra-desc">A bold, geometric, monospaced Syriac typeface family with square, block-like characters and uniform line thickness.</p>
+              <div class="font-sample">
+                <div class="font-sample-row sapna">
+                  <span class="sample-label" data-i18n="font-label-sapna">Sapna</span>
+                  <span class="sample-text">ܢܘܗܕܪܐ - ܨܦܢܐ</span>
+                </div>
+                <div class="font-sample-row amedia">
+                  <span class="sample-label" data-i18n="font-label-amedia">Amedia</span>
+                  <span class="sample-text">ܢܘܗܕܪܐ - ܐܡܕܝܐ</span>
+                </div>
+              </div>
+            </li>
+            <li class="entry">
+              <h2><a href="https://unicode.org/cldr/charts/46/summary/syr.html" target="_blank" rel="noopener">Unicode CLDR</a></h2>
+              <p data-i18n="proj-cldr-desc">Major contributions to the Unicode SYR common language data repository. 2021 - Present.</p>
+            </li>
+            <li class="entry">
+              <h2><a href="https://mamlal.com" target="_blank" rel="noopener" data-i18n="proj-mamlal-title">Mamlal</a></h2>
+              <p data-i18n="proj-mamlal-desc">An Assyrian language Wordle clone.</p>
+            </li>
+            <li class="entry">
+              <h2><a href="https://github.com/SargisYonan/uKal" target="_blank" rel="noopener">μKal</a></h2>
+              <p>A Kalman filtering library written in C for embedded systems. Implements estimators for linear and nonlinear systems (EKF or SOF) using only statically allocated memory, built to run in the most constrained environments.</p>
+            </li>
+            <li class="entry">
+              <h2><a href="https://github.com/SargisYonan/uLAPack" target="_blank" rel="noopener">μLAPack</a></h2>
+              <p>A small linear algebra package for matrix/vector operations, optimized for microcontrollers and embedded environments. Every operation is checked for initialization and dimensional legality before it runs, and it can be configured to work safely wherever dynamic memory allocation is a concern.</p>
+            </li>
+          </ul>
+          <p class="plain-text"><span data-i18n="more-word">More</span> <span dir="ltr"><a href="projects/">/projects</a></span></p>
         </div>
+      </div>
+    </section>
 
-        <!-- Social Media Icon Buttons -->
-        <div class="social-buttons">
-            <a href="https://www.github.com/sargisyonan" class="social-icon github-icon" target="_blank" aria-label="GitHub"></a>
-            <a href="https://www.linkedin.com/in/sargisyonan" class="social-icon linkedin-icon" target="_blank" aria-label="LinkedIn"></a>
+    <section class="block" id="publications">
+      <div class="wrap">
+        <div class="eyebrow" data-i18n="label-publications">Publications</div>
+        <div class="section-content">
+          <ul class="entry-list">
+            <li class="entry">
+              <h2><a href="https://www.ion.org/publications/abstract.cfm?articleID=17052" target="_blank" rel="noopener">Uncertainty Suppression Methods for the Exploration of Sparsely Sampled Fields</a></h2>
+              <p>Proceedings of the 32nd International Technical Meeting of the Satellite Division of The Institute of Navigation (ION GNSS+ 2019).</p>
+            </li>
+            <li class="entry">
+              <h2><a href="thesis/">Master's Thesis</a></h2>
+              <p>Improved Field Exploration with Variance Suppressing Path Planning.</p>
+            </li>
+          </ul>
+          <p class="plain-text"><span data-i18n="more-word">More</span> <span dir="ltr"><a href="publications/">/publications</a></span></p>
         </div>
+      </div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="wrap">
+        <div class="eyebrow" data-i18n="label-contact">Contact</div>
+        <div class="section-content">
+          <ul class="contact-list">
+            <li>
+              <a href="mailto:sargis@yonan.org" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+              </a>
+            </li>
+            <li><a href="https://www.github.com/sargisyonan" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/sargisyonan" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="resume/sargis_yonan_resume.pdf" target="_blank" rel="noopener"><span data-i18n="resume-word">Resume</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="copyright-year"></span> <span data-i18n="footer-name">Sargis Yonan</span></span>
     </div>
-</section>
+  </footer>
 
-
-  <!-- Footer Section -->
-  <section class="footer">
-      <div class="logo"><img src="img/logo-footer.png" alt="Footer Logo"></div>
-      <div class="copyright">© <span id="copyright-year"></span> All Rights Reserved sargis.yonan.org</div>
-  </section>
-</div>
-
-<!-- Scripts -->
-<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
-<script src="js/jquery-ui-1.10.4.min.js" type="text/javascript"></script>
-<script src="js/jquery.nicescroll.js"></script>
-<script src="js/jquery.sticky.js"></script>
-<script src="js/masonry.pkgd.min.js"></script>
-<script src="js/imagesloaded.pkgd.min.js"></script>
-<script src="js/jquery.parallax.js"></script>
-<script src="js/script.js"></script>
-
-<!-- Dynamic Year Script -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const year = new Date().getFullYear();
-        document.getElementById("copyright-year").textContent = year;
-    });
-</script>
+  <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/easter-egg.js"></script>
 </body>
 </html>
