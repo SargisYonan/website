@@ -65,6 +65,9 @@ body {
   font-weight: 600;
   font-style: normal;
 }
+:root[dir="rtl"] .entry p[data-i18n] {
+  margin-top: -2px;
+}
 :root[dir="rtl"] .entry h2 a[data-i18n] {
   font-family: "SyrCOMNisibin", var(--font-sans);
   font-size: 36px;
@@ -344,6 +347,7 @@ footer.site-footer .wrap {
   padding: 10px 0;
 }
 .entry:first-child { padding-top: 0; }
+:root[dir="rtl"] .entry--untranslated { display: none; }
 .entry h2 {
   font-size: 18px;
   font-weight: 600;

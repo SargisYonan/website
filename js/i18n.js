@@ -33,15 +33,18 @@
       en: "A bold, geometric, monospaced Syriac typeface family with square, block-like characters and uniform line thickness.",
       syr: "ܚܕ ܟܢܘܫܝܐ ܕܓܪ̈ܫܐ ܕܟܬܒ݂ܐ ܒܠܫܢܐ ܐܬܘܪܝܐ، ܒܐܬܘܬ̈ܐ ܒܕܡܝܐ ܠܡܪܒܥ̈ܐ، ܘܒܣܪ̈ܛܐ ܕܐܝܬ ܠܗܘܢ ܚܕܐ ܥܒ݂ܝܘܬܐ."
     },
+    "proj-cldr-title": { en: "Unicode CLDR", syr: "ܝܘܢܝܟܘܕ" },
     "proj-cldr-desc": {
       en: "Major contributions to the Unicode SYR common language data repository. 2021 - Present.",
-      syr: "ܬܪ̈ܓܡܝܬܐ ܘܡܬܩܢܬܐ ܕܠܫܢܐ ܣܘܪܝܝܐ ܓܘ ܫܘܬܦܘܬܐ ܕUnicode، ܡ݂ܢ 2021 ܗܠ ܐܕܝܘܡ."
+      syr: "ܬܪ̈ܓܡܝܬܐ ܘܡܬܩܢܬܐ ܕܠܫܢܐ ܣܘܪܝܝܐ ܓܘ ܫܘܬܦܘܬܐ ܕܝܘܢܝܟܘܕ، ܡ݂ܢ 2021 ܗܠ ܐܕܝܘܡ."
     },
     "proj-mamlal-title": { en: "Mamlal", syr: "ܡܡܠܠ" },
     "proj-mamlal-desc": {
       en: "An Assyrian language Wordle clone.",
       syr: "ܛܐܠܬܐ ܕܘܘܪܕܠ ܒܠܫܢܐ ܐܬܘܪܝܐ."
-    }
+    },
+    "contact-github": { en: "GitHub", syr: "ܓܝܬܗܒ" },
+    "contact-linkedin": { en: "LinkedIn", syr: "ܠܝܢܟܕܝܢ" }
   };
 
   var heroFirst = document.querySelector('[data-i18n="hero-first"]');
@@ -52,6 +55,10 @@
 
   function currentLang() {
     return document.documentElement.getAttribute("lang") === "syr" ? "syr" : "en";
+  }
+
+  function updateTitle(isSyr) {
+    document.title = isSyr ? translations["footer-name"].syr : translations["footer-name"].en;
   }
 
   function setNonHeroText(isSyr) {
@@ -65,6 +72,7 @@
   function finishSwitch(isSyr, lang) {
     document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
     document.documentElement.setAttribute("dir", isSyr ? "rtl" : "ltr");
+    updateTitle(isSyr);
     setNonHeroText(isSyr);
     if (heroFirst) heroFirst.textContent = isSyr ? translations["hero-first"].syr : translations["hero-first"].en;
     if (heroLast) heroLast.textContent = isSyr ? translations["hero-last"].syr : translations["hero-last"].en;
@@ -92,6 +100,7 @@
     window.setTimeout(function () {
       document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
       document.documentElement.setAttribute("dir", isSyr ? "rtl" : "ltr");
+      updateTitle(isSyr);
       setNonHeroText(isSyr);
 
       if (heroPhoto && photoBefore) {
