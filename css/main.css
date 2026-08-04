@@ -423,9 +423,12 @@ footer.site-footer .wrap {
   text-transform: uppercase;
 }
 :root[dir="rtl"] .font-sample-row .sample-label {
-  font-family: "SyrCOMNisibin", var(--font-sans);
+  font-family: "Noto Sans Syriac Eastern", var(--font-sans);
+  font-optical-sizing: auto;
   text-transform: none;
-  font-size: 22px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
 }
 .font-sample-row .sample-text {
   font-size: clamp(28px, 5vw, 48px);
