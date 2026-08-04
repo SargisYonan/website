@@ -148,6 +148,26 @@ button:focus-visible {
   transform: translateX(100%);
 }
 
+@keyframes lang-toggle-peek-en {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(35%); }
+}
+@keyframes lang-toggle-peek-syr {
+  0%, 100% { transform: translateX(100%); }
+  50% { transform: translateX(65%); }
+}
+.lang-toggle.is-peeking[data-active="en"] .lang-toggle-thumb {
+  animation: lang-toggle-peek-en 0.9s ease-in-out;
+}
+.lang-toggle.is-peeking[data-active="syr"] .lang-toggle-thumb {
+  animation: lang-toggle-peek-syr 0.9s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lang-toggle.is-peeking .lang-toggle-thumb {
+    animation: none;
+  }
+}
+
 .lang-toggle-opt {
   position: relative;
   z-index: 1;

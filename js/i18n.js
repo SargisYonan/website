@@ -44,29 +44,101 @@
     }
   };
 
+  var heroFirst = document.querySelector('[data-i18n="hero-first"]');
+  var heroLast = document.querySelector('[data-i18n="hero-last"]');
+  var heroPhoto = document.querySelector(".hero-photo");
+  var reduceMotion =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   function currentLang() {
     return document.documentElement.getAttribute("lang") === "syr" ? "syr" : "en";
   }
 
-  function applyLang(lang) {
-    var isSyr = lang === "syr";
-    document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
-    document.documentElement.setAttribute("dir", isSyr ? "rtl" : "ltr");
-
+  function setNonHeroText(isSyr) {
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      if (el === heroFirst || el === heroLast) return;
       var entry = translations[el.getAttribute("data-i18n")];
       if (entry) el.textContent = isSyr ? entry.syr : entry.en;
     });
+  }
 
+  function finishSwitch(isSyr, lang) {
+    document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
+    document.documentElement.setAttribute("dir", isSyr ? "rtl" : "ltr");
+    setNonHeroText(isSyr);
+    if (heroFirst) heroFirst.textContent = isSyr ? translations["hero-first"].syr : translations["hero-first"].en;
+    if (heroLast) heroLast.textContent = isSyr ? translations["hero-last"].syr : translations["hero-last"].en;
     toggle.setAttribute("data-active", isSyr ? "syr" : "en");
-
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch (e) {}
   }
 
+  function applyLang(lang) {
+    finishSwitch(lang === "syr", lang);
+  }
+
+  function applyLangAnimated(lang) {
+    var isSyr = lang === "syr";
+    var photoBefore = heroPhoto ? heroPhoto.getBoundingClientRect() : null;
+
+    [heroFirst, heroLast].forEach(function (el) {
+      if (el) {
+        el.style.transition = "opacity 0.2s ease";
+        el.style.opacity = "0";
+      }
+    });
+
+    window.setTimeout(function () {
+      document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
+      document.documentElement.setAttribute("dir", isSyr ? "rtl" : "ltr");
+      setNonHeroText(isSyr);
+
+      if (heroPhoto && photoBefore) {
+        var photoAfter = heroPhoto.getBoundingClientRect();
+        var deltaX = photoBefore.left - photoAfter.left;
+        if (deltaX) {
+          heroPhoto.style.transition = "none";
+          heroPhoto.style.transform = "translateX(" + deltaX + "px)";
+          // eslint-disable-next-line no-unused-expressions
+          heroPhoto.getBoundingClientRect();
+          requestAnimationFrame(function () {
+            heroPhoto.style.transition = "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
+            heroPhoto.style.transform = "";
+          });
+        }
+      }
+
+      if (heroFirst) heroFirst.textContent = isSyr ? translations["hero-first"].syr : translations["hero-first"].en;
+      if (heroLast) heroLast.textContent = isSyr ? translations["hero-last"].syr : translations["hero-last"].en;
+
+      requestAnimationFrame(function () {
+        if (heroFirst) heroFirst.style.opacity = "1";
+        window.setTimeout(function () {
+          if (heroLast) heroLast.style.opacity = "1";
+        }, 200);
+      });
+
+      toggle.setAttribute("data-active", isSyr ? "syr" : "en");
+      try {
+        localStorage.setItem(STORAGE_KEY, lang);
+      } catch (e) {}
+
+      window.setTimeout(function () {
+        toggle.removeAttribute("data-switching");
+      }, 600);
+    }, 200);
+  }
+
   toggle.addEventListener("click", function () {
-    applyLang(currentLang() === "syr" ? "en" : "syr");
+    if (toggle.hasAttribute("data-switching")) return;
+    var next = currentLang() === "syr" ? "en" : "syr";
+    if (reduceMotion) {
+      applyLang(next);
+    } else {
+      toggle.setAttribute("data-switching", "1");
+      applyLangAnimated(next);
+    }
   });
 
   var saved = null;
@@ -74,4 +146,15 @@
     saved = localStorage.getItem(STORAGE_KEY);
   } catch (e) {}
   if (saved === "syr") applyLang("syr");
+
+  window.setTimeout(function () {
+    toggle.classList.add("is-peeking");
+    toggle.addEventListener(
+      "animationend",
+      function () {
+        toggle.classList.remove("is-peeking");
+      },
+      { once: true }
+    );
+  }, 900);
 })();
