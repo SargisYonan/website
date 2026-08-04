@@ -53,8 +53,16 @@
   var reduceMotion =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  var xwordShortcutRow = document.querySelector("[data-xword-shortcut]");
+
   function currentLang() {
     return document.documentElement.getAttribute("lang") === "syr" ? "syr" : "en";
+  }
+
+  function setToggleActive(isSyr) {
+    var active = isSyr ? "syr" : "en";
+    toggle.setAttribute("data-active", active);
+    if (xwordShortcutRow) xwordShortcutRow.setAttribute("data-active", active);
   }
 
   function updateTitle(isSyr) {
@@ -76,7 +84,7 @@
     setNonHeroText(isSyr);
     if (heroFirst) heroFirst.textContent = isSyr ? translations["hero-first"].syr : translations["hero-first"].en;
     if (heroLast) heroLast.textContent = isSyr ? translations["hero-last"].syr : translations["hero-last"].en;
-    toggle.setAttribute("data-active", isSyr ? "syr" : "en");
+    setToggleActive(isSyr);
     try {
       localStorage.setItem(STORAGE_KEY, lang);
     } catch (e) {}
@@ -128,7 +136,7 @@
         }, 200);
       });
 
-      toggle.setAttribute("data-active", isSyr ? "syr" : "en");
+      setToggleActive(isSyr);
       try {
         localStorage.setItem(STORAGE_KEY, lang);
       } catch (e) {}
@@ -139,7 +147,16 @@
     }, 200);
   }
 
+  var switchCount = 0;
+
   toggle.addEventListener("click", function () {
+    switchCount++;
+    if (switchCount === 3) {
+      window.setTimeout(function () {
+        document.dispatchEvent(new CustomEvent("aii-easter-egg"));
+      }, 700);
+    }
+
     if (toggle.hasAttribute("data-switching")) return;
     var next = currentLang() === "syr" ? "en" : "syr";
     if (reduceMotion) {
