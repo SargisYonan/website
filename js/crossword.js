@@ -47,7 +47,7 @@
       '    <span class="xword-title">ܒܘܚܪܢܐ ܕܡܠ̈ܐ</span>' +
       '    <div class="xword-header-actions">' +
       '      <button type="button" class="xword-btn xword-btn--next" data-xword-new aria-label="New puzzle">&rarr;</button>' +
-      '      <button type="button" class="xword-btn" data-xword-reveal>ܚܙܝ ܐܬܘܬܐ</button>' +
+      '      <button type="button" class="xword-btn" data-xword-reveal>ܓܠܐ</button>' +
       '      <button type="button" class="xword-btn" data-xword-check>ܒܕܘܩ</button>' +
       '      <button type="button" class="xword-close" data-xword-close aria-label="Close">&times;</button>' +
       '    </div>' +

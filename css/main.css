@@ -562,7 +562,11 @@ footer.site-footer .wrap {
   font-weight: 400;
   -webkit-text-stroke: 0.4px currentColor;
   font-size: 13px;
-  padding: 6px 12px;
+  height: 32px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 .xword-btn:hover,
@@ -579,7 +583,7 @@ footer.site-footer .wrap {
   font-weight: 400;
   font-size: 18px;
   line-height: 1;
-  padding: 5px 10px;
+  padding: 0 10px;
 }
 
 .xword-body {
@@ -651,18 +655,13 @@ footer.site-footer .wrap {
 .xword-keyboard {
   display: flex;
   flex-direction: column;
+  align-items: center;
   direction: ltr;
   gap: 6px;
 }
 .xword-keyboard-row {
   display: flex;
   gap: 6px;
-}
-.xword-keyboard-row:nth-child(2) {
-  margin-inline-start: 10px;
-}
-.xword-keyboard-row:nth-child(3) {
-  margin-inline-start: 28px;
 }
 .xword-key {
   appearance: none;
