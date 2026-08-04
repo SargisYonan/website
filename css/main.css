@@ -52,17 +52,23 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-:root[dir="rtl"] .plain-text,
-:root[dir="rtl"] footer.site-footer {
+:root[dir="rtl"] .plain-text {
   font-family: "Idiqlat", var(--font-sans);
   font-weight: 400;
   -webkit-text-stroke: 0.4px currentColor;
 }
 :root[dir="rtl"] .lede,
-:root[dir="rtl"] .entry p[data-i18n] {
+:root[dir="rtl"] .entry p[data-i18n],
+:root[dir="rtl"] .contact-list {
   font-family: "Noto Sans Syriac Eastern", var(--font-sans);
   font-optical-sizing: auto;
   font-weight: 600;
+  font-style: normal;
+}
+:root[dir="rtl"] footer.site-footer {
+  font-family: "Noto Sans Syriac Eastern", var(--font-sans);
+  font-optical-sizing: auto;
+  font-weight: 700;
   font-style: normal;
 }
 :root[dir="rtl"] .entry p[data-i18n] {
