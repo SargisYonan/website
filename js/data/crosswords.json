@@ -1,1 +1,1606 @@
-{"puzzles":[{"size":5,"cells":[[{"answer":"ܦ","number":1},{"answer":"ܘ","number":null},{"answer":"ܡ","number":2},{"answer":"ܐ","number":null},null],[{"answer":"ܫ","number":null},null,{"answer":"ܕ","number":null},null,{"answer":"ܢ","number":3}],[{"answer":"ܩ","number":4},{"answer":"ܠ","number":null},{"answer":"ܝ","number":null},{"answer":"ܡ","number":null},{"answer":"ܐ","number":null}],[null,null,{"answer":"ܩ","number":null},null,{"answer":"ܚ","number":null}],[{"answer":"ܒ","number":5},{"answer":"ܥ","number":null},{"answer":"ܐ","number":null},null,null]],"across":[{"number":1,"word":"ܦܘܡܐ","clue":"mouth","row":0,"col":0,"length":4},{"number":4,"word":"ܩܠܝܡܐ","clue":"region, climate, clime (geographical area of the earth, particularly a zone of latitude)","row":2,"col":0,"length":5},{"number":5,"word":"ܒܥܐ","clue":"to want","row":4,"col":0,"length":3}],"down":[{"number":1,"word":"ܦܫܩ","clue":"to ease; to be/become easy, simple","row":0,"col":0,"length":3},{"number":2,"word":"ܡܕܝܩܐ","clue":"briefcase, suitcase","row":0,"col":2,"length":5},{"number":3,"word":"ܢܐܚ","clue":"to rest, relax, take a break","row":1,"col":4,"length":3}]},{"size":5,"cells":[[{"answer":"ܦ","number":1},null,{"answer":"ܚ","number":2},null,{"answer":"ܩ","number":3}],[{"answer":"ܪ","number":null},null,{"answer":"ܙ","number":null},null,{"answer":"ܪ","number":null}],[{"answer":"ܚ","number":4},{"answer":"ܢ","number":null},{"answer":"ܘ","number":null},{"answer":"ܬ","number":null},{"answer":"ܐ","number":null}],[null,null,{"answer":"ܪ","number":null},null,{"answer":"ܬ","number":null}],[{"answer":"ܗ","number":5},{"answer":"ܢ","number":null},{"answer":"ܐ","number":null},null,{"answer":"ܐ","number":null}]],"across":[{"number":4,"word":"ܚܢܘܬܐ","clue":"tavern, pub, inn","row":2,"col":0,"length":5},{"number":5,"word":"ܗܢܐ","clue":"this, this thing, this one","row":4,"col":0,"length":3}],"down":[{"number":1,"word":"ܦܪܚ","clue":"to fly (by one’s own power, like a bird)","row":0,"col":0,"length":3},{"number":2,"word":"ܚܙܘܪܐ","clue":"pig, swine, hog","row":0,"col":2,"length":5},{"number":3,"word":"ܩܪܐ","clue":"to read","row":0,"col":4,"length":3},{"number":3,"word":"ܩܪܐܬܐ","clue":"zucchini, courgette","row":0,"col":4,"length":5}]},{"size":6,"cells":[[null,{"answer":"ܣ","number":1},{"answer":"ܦ","number":2},{"answer":"ܣ","number":null},null,null],[{"answer":"ܡ","number":3},null,{"answer":"ܪ","number":null},null,null,{"answer":"ܬ","number":4}],[{"answer":"ܓ","number":null},null,{"answer":"ܫ","number":null},null,null,{"answer":"ܢ","number":null}],[{"answer":"ܡ","number":5},{"answer":"ܚ","number":null},{"answer":"ܘ","number":null},{"answer":"ܠ","number":null},{"answer":"ܦ","number":6},{"answer":"ܐ","number":null}],[{"answer":"ܓ","number":null},null,{"answer":"ܢ","number":null},null,{"answer":"ܢ","number":null},null],[{"answer":"ܡ","number":7},{"answer":"ܚ","number":null},{"answer":"ܐ","number":null},null,{"answer":"ܐ","number":null},null]],"across":[{"number":1,"word":"ܣܦܣ","clue":"to mold, rot, decay (of food, carcasses, etc.)","row":0,"col":1,"length":3},{"number":5,"word":"ܡܚܘܠܦܐ","clue":"reciprocal, common, shared","row":3,"col":0,"length":6},{"number":7,"word":"ܡܚܐ","clue":"to strike, beat, hit","row":5,"col":0,"length":3}],"down":[{"number":2,"word":"ܦܪܫܘܢܐ","clue":"distinction, difference","row":0,"col":2,"length":6},{"number":3,"word":"ܡܓܡܓܡ","clue":"to strike hard","row":1,"col":0,"length":5},{"number":4,"word":"ܬܢܐ","clue":"to repeat, do a second time","row":1,"col":5,"length":3},{"number":6,"word":"ܦܢܐ","clue":"to face; to turn to face","row":3,"col":4,"length":3}]},{"size":6,"cells":[[null,null,null,null,null,null],[{"answer":"ܙ","number":1},{"answer":"ܩ","number":null},{"answer":"ܦ","number":2},{"answer":"ܐ","number":null},null,{"answer":"ܚ","number":3}],[null,null,{"answer":"ܪ","number":null},null,null,{"answer":"ܛ","number":null}],[{"answer":"ܓ","number":4},{"answer":"ܢ","number":5},{"answer":"ܕ","number":null},{"answer":"ܘ","number":null},{"answer":"ܪ","number":6},{"answer":"ܐ","number":null}],[null,{"answer":"ܦ","number":null},null,null,{"answer":"ܒ","number":null},null],[{"answer":"ܩ","number":7},{"answer":"ܠ","number":null},{"answer":"ܘ","number":null},{"answer":"ܠ","number":null},{"answer":"ܐ","number":null},null]],"across":[{"number":1,"word":"ܙܩܦܐ","clue":"crucifixion","row":1,"col":0,"length":4},{"number":4,"word":"ܓܢܕܘܪܐ","clue":"rockmelon, cantaloupe, muskmelon (small round melon of a variety with orange flesh and ribbed skin)","row":3,"col":0,"length":6},{"number":7,"word":"ܩܠܘܠܐ","clue":"light, lightweight","row":5,"col":0,"length":5}],"down":[{"number":2,"word":"ܦܪܕ","clue":"to flee (of sleep)","row":1,"col":2,"length":3},{"number":3,"word":"ܚܛܐ","clue":"to sin","row":1,"col":5,"length":3},{"number":5,"word":"ܢܦܠ","clue":"to fall, come down, drop","row":3,"col":1,"length":3},{"number":6,"word":"ܪܒܐ","clue":"great, big, huge, massive","row":3,"col":4,"length":3}]},{"size":6,"cells":[[null,{"answer":"ܟ","number":1},{"answer":"ܕ","number":null},{"answer":"ܘ","number":null},null,{"answer":"ܩ","number":2}],[null,{"answer":"ܝ","number":null},null,null,null,{"answer":"ܡ","number":null}],[null,{"answer":"ܒ","number":null},null,{"answer":"ܫ","number":3},null,{"answer":"ܚ","number":null}],[{"answer":"ܚ","number":4},{"answer":"ܘ","number":null},{"answer":"ܪ","number":null},{"answer":"ܡ","number":null},{"answer":"ܠ","number":null},{"answer":"ܐ","number":null}],[{"answer":"ܣ","number":null},null,null,{"answer":"ܛ","number":null},null,null],[{"answer":"ܪ","number":5},{"answer":"ܢ","number":null},{"answer":"ܕ","number":null},null,null,null]],"across":[{"number":1,"word":"ܟܕܘ","clue":"enough, sufficiently, adequate, no more","row":0,"col":1,"length":3},{"number":4,"word":"ܚܘܪܡܠܐ","clue":"persimmon (orange fruit resembling a tomato; very sweet and quite astringent when immature)","row":3,"col":0,"length":6},{"number":5,"word":"ܪܢܕ","clue":"fast, quick, swift","row":5,"col":0,"length":3}],"down":[{"number":1,"word":"ܟܝܒܘ","clue":"bravo!, good job!, way to go!, well done!","row":0,"col":1,"length":4},{"number":2,"word":"ܩܡܚܐ","clue":"flour (powder obtained by grinding or milling cereal grains, especially wheat, or other foodstuffs such as ...","row":0,"col":5,"length":4},{"number":3,"word":"ܫܡܛ","clue":"to take off, remove","row":2,"col":3,"length":3},{"number":4,"word":"ܚܣܪ","clue":"to lose, cause something to no longer be in one’s position (but not from misplacement) see usage notes below","row":3,"col":0,"length":3}]},{"size":6,"cells":[[null,null,null,null,{"answer":"ܡ","number":1},null],[null,{"answer":"ܛ","number":2},null,{"answer":"ܣ","number":3},{"answer":"ܒ","number":4},{"answer":"ܒ","number":null}],[null,{"answer":"ܠ","number":null},null,null,{"answer":"ܣ","number":null},null],[{"answer":"ܟ","number":5},{"answer":"ܘ","number":null},{"answer":"ܪ","number":null},{"answer":"ܟ","number":null},{"answer":"ܡ","number":null},{"answer":"ܐ","number":6}],[null,{"answer":"ܡ","number":null},null,null,null,{"answer":"ܠ","number":null}],[{"answer":"ܓ","number":7},{"answer":"ܐ","number":null},{"answer":"ܓ","number":null},null,null,{"answer":"ܘ","number":null}]],"across":[{"number":3,"word":"ܣܒܒ","clue":"because","row":1,"col":3,"length":3},{"number":5,"word":"ܟܘܪܟܡܐ","clue":"turmeric","row":3,"col":0,"length":6},{"number":7,"word":"ܓܐܓ","clue":"to be/become dizzy","row":5,"col":0,"length":3}],"down":[{"number":1,"word":"ܡܒܣܡ","clue":"to please, to be liked by (takes an indirect object)","row":0,"col":4,"length":4},{"number":2,"word":"ܛܠܘܡܐ","clue":"violent, oppressive","row":1,"col":1,"length":5},{"number":4,"word":"ܒܣܡ","clue":"to be/become pleasing, sweet","row":1,"col":4,"length":3},{"number":6,"word":"ܐܠܘ","clue":"hello? used to confirm that the person being addressed is listening, or to confirm if anyone is listening","row":3,"col":5,"length":3}]},{"size":7,"cells":[[null,null,null,{"answer":"ܙ","number":1},null,null,null],[null,null,{"answer":"ܪ","number":2},{"answer":"ܟ","number":3},{"answer":"ܟ","number":null},null,null],[null,{"answer":"ܦ","number":4},null,{"answer":"ܘ","number":null},null,{"answer":"ܕ","number":5},null],[{"answer":"ܐ","number":6},{"answer":"ܘ","number":null},{"answer":"ܩ","number":null},{"answer":"ܝ","number":null},{"answer":"ܢ","number":null},{"answer":"ܘ","number":null},{"answer":"ܣ","number":null}],[null,{"answer":"ܠ","number":null},null,{"answer":"ܐ","number":null},null,{"answer":"ܪ","number":null},null],[{"answer":"ܚ","number":7},{"answer":"ܣ","number":null},{"answer":"ܪ","number":null},null,null,{"answer":"ܬ","number":null},null],[null,{"answer":"ܐ","number":null},null,{"answer":"ܣ","number":8},{"answer":"ܒ","number":null},{"answer":"ܐ","number":null},null]],"across":[{"number":2,"word":"ܪܟܟ","clue":"to be/become soft, soften","row":1,"col":2,"length":3},{"number":6,"word":"ܐܘܩܝܢܘܣ","clue":"ocean (a very large body of salt water covering approximately 71% of the surface of Earth and 97% of Earth'...","row":3,"col":0,"length":7},{"number":7,"word":"ܚܣܪ","clue":"to lose, cause something to no longer be in one’s position (but not from misplacement) see usage notes below","row":5,"col":0,"length":3},{"number":8,"word":"ܣܒܐ","clue":"old, elderly, aged (of humans and animals)","row":6,"col":3,"length":3}],"down":[{"number":1,"word":"ܙܟܘܝܐ","clue":"winner, victor","row":0,"col":3,"length":5},{"number":3,"word":"ܟܘܝܐ","clue":"ironing, searing, cauterization","row":1,"col":3,"length":4},{"number":4,"word":"ܦܘܠܣܐ","clue":"large bronze coin minted during the Roman Empire","row":2,"col":1,"length":5},{"number":5,"word":"ܕܘܪܬܐ","clue":"cycle, circuit, period","row":2,"col":5,"length":5}]},{"size":7,"cells":[[{"answer":"ܡ","number":1},null,null,{"answer":"ܥ","number":2},{"answer":"ܙ","number":null},{"answer":"ܠ","number":null},{"answer":"ܐ","number":3}],[{"answer":"ܕ","number":4},{"answer":"ܪ","number":null},{"answer":"ܣ","number":null},null,null,null,{"answer":"ܚ","number":null}],[{"answer":"ܠ","number":null},null,null,null,{"answer":"ܡ","number":5},null,{"answer":"ܪ","number":null}],[{"answer":"ܚ","number":6},{"answer":"ܘ","number":null},{"answer":"ܛ","number":7},{"answer":"ܒ","number":null},{"answer":"ܪ","number":null},{"answer":"ܩ","number":null},{"answer":"ܐ","number":null}],[null,null,{"answer":"ܠ","number":null},null,{"answer":"ܒ","number":null},null,{"answer":"ܝ","number":null}],[{"answer":"ܙ","number":8},{"answer":"ܠ","number":null},{"answer":"ܥ","number":null},null,{"answer":"ܨ","number":null},null,{"answer":"ܬ","number":null}],[null,null,null,null,null,null,null]],"across":[{"number":2,"word":"ܥܙܠܐ","clue":"yarn, spindle","row":0,"col":3,"length":4},{"number":4,"word":"ܕܪܣ","clue":"to vomit","row":1,"col":0,"length":3},{"number":6,"word":"ܚܘܛܒܪܩܐ","clue":"telegram","row":3,"col":0,"length":7},{"number":8,"word":"ܙܠܥ","clue":"to split open, to cut open, to slit open, to crack","row":5,"col":0,"length":3}],"down":[{"number":1,"word":"ܡܕܠܚ","clue":"to worry, concern","row":0,"col":0,"length":4},{"number":3,"word":"ܐܚܪܐܝܬ","clue":"finally, ultimately, at last","row":0,"col":6,"length":6},{"number":5,"word":"ܡܪܒܨ","clue":"to stress, stress out","row":2,"col":4,"length":4},{"number":7,"word":"ܛܠܥ","clue":"to fall asleep, fall into deep sleep","row":3,"col":2,"length":3}]},{"size":7,"cells":[[null,null,{"answer":"ܨ","number":1},null,null,null,{"answer":"ܠ","number":2}],[null,{"answer":"ܡ","number":3},{"answer":"ܦ","number":null},{"answer":"ܘ","number":null},{"answer":"ܩ","number":4},null,{"answer":"ܩ","number":null}],[null,null,{"answer":"ܝ","number":null},null,{"answer":"ܠ","number":null},null,{"answer":"ܚ","number":null}],[{"answer":"ܚ","number":5},{"answer":"ܡ","number":6},{"answer":"ܝ","number":null},{"answer":"ܡ","number":null},{"answer":"ܘ","number":null},{"answer":"ܬ","number":null},{"answer":"ܐ","number":null}],[null,{"answer":"ܬ","number":null},null,null,{"answer":"ܐ","number":null},null,null],[{"answer":"ܫ","number":7},{"answer":"ܒ","number":null},{"answer":"ܒ","number":null},{"answer":"ܐ","number":null},null,null,null],[null,{"answer":"ܥ","number":null},null,null,null,null,null]],"across":[{"number":3,"word":"ܡܦܘܩ","clue":"to hiccup, have hiccups","row":1,"col":1,"length":4},{"number":5,"word":"ܚܡܝܡܘܬܐ","clue":"heat, hotness","row":3,"col":0,"length":7},{"number":7,"word":"ܫܒܒܐ","clue":"neighbor (person living on adjacent or nearby land)","row":5,"col":0,"length":4}],"down":[{"number":1,"word":"ܨܦܝܝ","clue":"all right, okay, O.K., well, fine, fair","row":0,"col":2,"length":4},{"number":2,"word":"ܠܩܚܐ","clue":"suburb","row":0,"col":6,"length":4},{"number":4,"word":"ܩܠܘܐ","clue":"alkali, base","row":1,"col":4,"length":4},{"number":6,"word":"ܡܬܒ","clue":"to put, place, lay (on a horizontal surface)","row":3,"col":1,"length":3},{"number":6,"word":"ܡܬܒܥ","clue":"to follow, pursue","row":3,"col":1,"length":4}]},{"size":7,"cells":[[null,null,null,null,null,null,null],[{"answer":"ܡ","number":1},{"answer":"ܪ","number":2},{"answer":"ܙ","number":null},{"answer":"ܐ","number":null},null,null,{"answer":"ܟ","number":3}],[null,{"answer":"ܥ","number":null},null,null,{"answer":"ܡ","number":4},null,{"answer":"ܟ","number":null}],[{"answer":"ܡ","number":5},{"answer":"ܫ","number":null},{"answer":"ܬ","number":6},{"answer":"ܐ","number":null},{"answer":"ܣ","number":null},{"answer":"ܢ","number":null},{"answer":"ܐ","number":null}],[{"answer":"ܠ","number":null},null,{"answer":"ܥ","number":null},null,{"answer":"ܓ","number":null},null,null],[{"answer":"ܒ","number":null},null,{"answer":"ܣ","number":7},{"answer":"ܠ","number":null},{"answer":"ܐ","number":null},null,null],[{"answer":"ܫ","number":null},null,null,null,null,null,null]],"across":[{"number":1,"word":"ܡܪܙܐ","clue":"riverbank","row":1,"col":0,"length":4},{"number":5,"word":"ܡܫܬܐܣܢܐ","clue":"founder; one who founds, establishes or starts","row":3,"col":0,"length":7},{"number":7,"word":"ܣܠܐ","clue":"basket","row":5,"col":2,"length":3}],"down":[{"number":2,"word":"ܪܥܫ","clue":"to trample, to crush","row":1,"col":1,"length":3},{"number":3,"word":"ܟܟܐ","clue":"tooth","row":1,"col":6,"length":3},{"number":4,"word":"ܡܣܓܐ","clue":"increase, multiply","row":2,"col":4,"length":4},{"number":5,"word":"ܡܠܒܫ","clue":"to clothe, dress someone (to adorn or cover with clothing)","row":3,"col":0,"length":4},{"number":6,"word":"ܬܥܣ","clue":"to happen upon, come across, encounter, meet by chance","row":3,"col":2,"length":3}]}]}
+{
+ "puzzles": [
+  {
+   "size": 5,
+   "cells": [
+    [
+     {
+      "answer": "ܚ",
+      "number": 1
+     },
+     {
+      "answer": "ܠ"
+     },
+     {
+      "answer": "ܦ",
+      "number": 2
+     },
+     null,
+     {
+      "answer": "ܓ",
+      "number": 3
+     }
+    ],
+    [
+     null,
+     null,
+     {
+      "answer": "ܪ",
+      "number": 4
+     },
+     null,
+     {
+      "answer": "ܒ"
+     }
+    ],
+    [
+     {
+      "answer": "ܩ",
+      "number": 5
+     },
+     {
+      "answer": "ܪ"
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܒ"
+     },
+     {
+      "answer": "ܐ"
+     }
+    ],
+    [
+     null,
+     null,
+     {
+      "answer": "ܫ"
+     },
+     null,
+     null
+    ],
+    [
+     {
+      "answer": "ܕ",
+      "number": 6
+     },
+     {
+      "answer": "ܡ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null,
+     null
+    ]
+   ],
+   "across": [
+    {
+     "number": 1,
+     "word": "ܚܠܦ",
+     "clue": "for, instead of, in place of",
+     "row": 0,
+     "col": 0,
+     "length": 3
+    },
+    {
+     "number": 5,
+     "word": "ܩܪܝܒܐ",
+     "clue": "relative (someone in the same family connected by blood, marriage, or adoption)",
+     "row": 2,
+     "col": 0,
+     "length": 5
+    },
+    {
+     "number": 6,
+     "word": "ܕܡܐ",
+     "clue": "blood",
+     "row": 4,
+     "col": 0,
+     "length": 3
+    }
+   ],
+   "down": [
+    {
+     "number": 2,
+     "word": "ܦܪܝܫܐ",
+     "clue": "separated, distinct, clear, different",
+     "row": 0,
+     "col": 2,
+     "length": 5
+    },
+    {
+     "number": 3,
+     "word": "ܓܒܐ",
+     "clue": "side, flank; edge, end",
+     "row": 0,
+     "col": 4,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܪܝܫܐ",
+     "clue": "leader, ruler, prefect, magistrate",
+     "row": 1,
+     "col": 2,
+     "length": 4
+    }
+   ]
+  },
+  {
+   "size": 5,
+   "cells": [
+    [
+     {
+      "answer": "ܩ",
+      "number": 1
+     },
+     {
+      "answer": "ܨ",
+      "number": 2
+     },
+     {
+      "answer": "ܐ"
+     },
+     null,
+     null
+    ],
+    [
+     null,
+     {
+      "answer": "ܦ"
+     },
+     null,
+     {
+      "answer": "ܕ",
+      "number": 3
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܟ",
+      "number": 4
+     },
+     {
+      "answer": "ܪ"
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null
+    ],
+    [
+     null,
+     {
+      "answer": "ܐ"
+     },
+     null,
+     {
+      "answer": "ܟ"
+     },
+     null
+    ],
+    [
+     null,
+     null,
+     {
+      "answer": "ܦ",
+      "number": 5
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܫ"
+     }
+    ]
+   ],
+   "across": [
+    {
+     "number": 1,
+     "word": "ܩܨܐ",
+     "clue": "to break and separate into pieces",
+     "row": 0,
+     "col": 0,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܟܪܝܐ",
+     "clue": "Used in the construct state, with a noun complement",
+     "row": 2,
+     "col": 0,
+     "length": 4
+    },
+    {
+     "number": 5,
+     "word": "ܦܝܫ",
+     "clue": "there is/are remaining",
+     "row": 4,
+     "col": 2,
+     "length": 3
+    }
+   ],
+   "down": [
+    {
+     "number": 2,
+     "word": "ܨܦܪܐ",
+     "clue": "any bird (usually small)",
+     "row": 0,
+     "col": 1,
+     "length": 4
+    },
+    {
+     "number": 3,
+     "word": "ܕܐܟܝ",
+     "clue": "how",
+     "row": 1,
+     "col": 3,
+     "length": 4
+    }
+   ]
+  },
+  {
+   "size": 6,
+   "cells": [
+    [
+     null,
+     null,
+     null,
+     {
+      "answer": "ܩ",
+      "number": 1
+     },
+     {
+      "answer": "ܫ",
+      "number": 2
+     },
+     {
+      "answer": "ܐ"
+     }
+    ],
+    [
+     null,
+     null,
+     {
+      "answer": "ܣ",
+      "number": 3
+     },
+     null,
+     {
+      "answer": "ܪ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܚ",
+      "number": 4
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܘ"
+     },
+     {
+      "answer": "ܬ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܪ"
+     },
+     null,
+     {
+      "answer": "ܕ"
+     },
+     null,
+     null,
+     null
+    ],
+    [
+     {
+      "answer": "ܒ"
+     },
+     null,
+     {
+      "answer": "ܐ",
+      "number": 5
+     },
+     {
+      "answer": "ܕ"
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܐ"
+     }
+    ],
+    [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   ],
+   "across": [
+    {
+     "number": 1,
+     "word": "ܩܫܐ",
+     "clue": "priest, pastor, presbyter",
+     "row": 0,
+     "col": 3,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܚܝܘܬܐ",
+     "clue": "animal, beast (especially wild animal)",
+     "row": 2,
+     "col": 0,
+     "length": 5
+    },
+    {
+     "number": 5,
+     "word": "ܐܕܝܐ",
+     "clue": "already, so soon",
+     "row": 4,
+     "col": 2,
+     "length": 4
+    }
+   ],
+   "down": [
+    {
+     "number": 2,
+     "word": "ܫܪܐ",
+     "clue": "poor guy!, poor him/her! Used to express sorrow, pity, sympathy, compassion or grief for someone else",
+     "row": 0,
+     "col": 4,
+     "length": 3
+    },
+    {
+     "number": 3,
+     "word": "ܣܘܕܐ",
+     "clue": "enthusiasm, passion",
+     "row": 1,
+     "col": 2,
+     "length": 4
+    },
+    {
+     "number": 4,
+     "word": "ܚܪܒ",
+     "clue": "to break, ruin, stop functioning (of cars, toys, phones, electronics, machinery, etc.)",
+     "row": 2,
+     "col": 0,
+     "length": 3
+    }
+   ]
+  },
+  {
+   "size": 5,
+   "cells": [
+    [
+     {
+      "answer": "ܡ",
+      "number": 1
+     },
+     {
+      "answer": "ܚ"
+     },
+     {
+      "answer": "ܐ",
+      "number": 2
+     },
+     null,
+     {
+      "answer": "ܫ",
+      "number": 3
+     }
+    ],
+    [
+     {
+      "answer": "ܐ"
+     },
+     null,
+     {
+      "answer": "ܝ"
+     },
+     null,
+     {
+      "answer": "ܘ"
+     }
+    ],
+    [
+     {
+      "answer": "ܬ",
+      "number": 4
+     },
+     {
+      "answer": "ܚ"
+     },
+     {
+      "answer": "ܬ"
+     },
+     {
+      "answer": "ܝ",
+      "number": 5
+     },
+     {
+      "answer": "ܐ"
+     }
+    ],
+    [
+     null,
+     null,
+     null,
+     {
+      "answer": "ܩ"
+     },
+     null
+    ],
+    [
+     null,
+     {
+      "answer": "ܫ",
+      "number": 6
+     },
+     {
+      "answer": "ܘ"
+     },
+     {
+      "answer": "ܕ"
+     },
+     null
+    ]
+   ],
+   "across": [
+    {
+     "number": 1,
+     "word": "ܡܚܐ",
+     "clue": "used to generally talk about the effects of the weather",
+     "row": 0,
+     "col": 0,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܬܚܬܝܐ",
+     "clue": "lower",
+     "row": 2,
+     "col": 0,
+     "length": 5
+    },
+    {
+     "number": 6,
+     "word": "ܫܘܕ",
+     "clue": "should, ought to, Used to give advice or opinion that an action is, or would have been, beneficial or desirabl...",
+     "row": 4,
+     "col": 1,
+     "length": 3
+    }
+   ],
+   "down": [
+    {
+     "number": 1,
+     "word": "ܡܐܬ",
+     "clue": "very much, completely",
+     "row": 0,
+     "col": 0,
+     "length": 3
+    },
+    {
+     "number": 2,
+     "word": "ܐܝܬ",
+     "clue": "there is/are",
+     "row": 0,
+     "col": 2,
+     "length": 3
+    },
+    {
+     "number": 3,
+     "word": "ܫܘܐ",
+     "clue": "equals, is equal to, has the same value as",
+     "row": 0,
+     "col": 4,
+     "length": 3
+    },
+    {
+     "number": 5,
+     "word": "ܝܩܕ",
+     "clue": "to burn, to be on fire, to be ablaze",
+     "row": 2,
+     "col": 3,
+     "length": 3
+    }
+   ]
+  },
+  {
+   "size": 6,
+   "cells": [
+    [
+     null,
+     null,
+     null,
+     null,
+     {
+      "answer": "ܒ",
+      "number": 1
+     },
+     null
+    ],
+    [
+     null,
+     {
+      "answer": "ܣ",
+      "number": 2
+     },
+     null,
+     {
+      "answer": "ܒ",
+      "number": 3
+     },
+     {
+      "answer": "ܪ"
+     },
+     {
+      "answer": "ܐ"
+     }
+    ],
+    [
+     null,
+     {
+      "answer": "ܐ"
+     },
+     null,
+     null,
+     {
+      "answer": "ܩ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܥ",
+      "number": 4
+     },
+     {
+      "answer": "ܡ"
+     },
+     {
+      "answer": "ܡ",
+      "number": 5
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܢ"
+     },
+     null,
+     {
+      "answer": "ܐ"
+     },
+     null,
+     null,
+     null
+    ],
+    [
+     {
+      "answer": "ܐ"
+     },
+     null,
+     {
+      "answer": "ܬ",
+      "number": 6
+     },
+     {
+      "answer": "ܠ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null
+    ]
+   ],
+   "across": [
+    {
+     "number": 3,
+     "word": "ܒܪܐ",
+     "clue": "to grow healthy or strong size, develop, fatten up (of the body or a person/animal in reference to their body)",
+     "row": 1,
+     "col": 3,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܥܡܡܝܐ",
+     "clue": "riffraff, rabble, commoners",
+     "row": 3,
+     "col": 0,
+     "length": 5
+    },
+    {
+     "number": 6,
+     "word": "ܬܠܐ",
+     "clue": "to rely, depend",
+     "row": 5,
+     "col": 2,
+     "length": 3
+    }
+   ],
+   "down": [
+    {
+     "number": 1,
+     "word": "ܒܪܩܐ",
+     "clue": "lightning (high voltage between a cloud and the ground accompanied by a bright flash)",
+     "row": 0,
+     "col": 4,
+     "length": 4
+    },
+    {
+     "number": 2,
+     "word": "ܣܐܡ",
+     "clue": "to put on, turn on (music, television, radio, etc.)",
+     "row": 1,
+     "col": 1,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܥܢܐ",
+     "clue": "to answer, reply, respond",
+     "row": 3,
+     "col": 0,
+     "length": 3
+    },
+    {
+     "number": 5,
+     "word": "ܡܐܬ",
+     "clue": "very much, completely",
+     "row": 3,
+     "col": 2,
+     "length": 3
+    }
+   ]
+  },
+  {
+   "size": 6,
+   "cells": [
+    [
+     null,
+     null,
+     null,
+     {
+      "answer": "ܝ",
+      "number": 1
+     },
+     {
+      "answer": "ܩ",
+      "number": 2
+     },
+     {
+      "answer": "ܕ"
+     }
+    ],
+    [
+     {
+      "answer": "ܦ",
+      "number": 3
+     },
+     {
+      "answer": "ܐ"
+     },
+     {
+      "answer": "ܫ",
+      "number": 4
+     },
+     null,
+     {
+      "answer": "ܫ"
+     },
+     null
+    ],
+    [
+     null,
+     null,
+     {
+      "answer": "ܥ"
+     },
+     null,
+     {
+      "answer": "ܬ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܙ",
+      "number": 5
+     },
+     {
+      "answer": "ܥ"
+     },
+     {
+      "answer": "ܘ"
+     },
+     {
+      "answer": "ܪ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null
+    ],
+    [
+     null,
+     null,
+     {
+      "answer": "ܬ"
+     },
+     null,
+     null,
+     null
+    ],
+    [
+     null,
+     null,
+     {
+      "answer": "ܐ",
+      "number": 6
+     },
+     {
+      "answer": "ܕ"
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܐ"
+     }
+    ]
+   ],
+   "across": [
+    {
+     "number": 1,
+     "word": "ܝܩܕ",
+     "clue": "to burn, to be on fire, to be ablaze",
+     "row": 0,
+     "col": 3,
+     "length": 3
+    },
+    {
+     "number": 3,
+     "word": "ܦܐܫ",
+     "clue": "to become, to be left over",
+     "row": 1,
+     "col": 0,
+     "length": 3
+    },
+    {
+     "number": 5,
+     "word": "ܙܥܘܪܐ",
+     "clue": "young (for a person)",
+     "row": 3,
+     "col": 0,
+     "length": 5
+    },
+    {
+     "number": 6,
+     "word": "ܐܕܝ",
+     "clue": "this; the current or adjacent; used especially with nouns denoting periods of time",
+     "row": 5,
+     "col": 2,
+     "length": 3
+    },
+    {
+     "number": 6,
+     "word": "ܐܕܝܐ",
+     "clue": "already, so soon",
+     "row": 5,
+     "col": 2,
+     "length": 4
+    }
+   ],
+   "down": [
+    {
+     "number": 2,
+     "word": "ܩܫܬܐ",
+     "clue": "breve diacritic mark placed beneath a consonant to indicate its softened pronunciation",
+     "row": 0,
+     "col": 4,
+     "length": 4
+    },
+    {
+     "number": 4,
+     "word": "ܫܥܘܬܐ",
+     "clue": "yellow (color)",
+     "row": 1,
+     "col": 2,
+     "length": 5
+    }
+   ]
+  },
+  {
+   "size": 7,
+   "cells": [
+    [
+     null,
+     null,
+     {
+      "answer": "ܡ",
+      "number": 1
+     },
+     null,
+     {
+      "answer": "ܥ",
+      "number": 2
+     },
+     {
+      "answer": "ܒ",
+      "number": 3
+     },
+     {
+      "answer": "ܕ"
+     }
+    ],
+    [
+     null,
+     {
+      "answer": "ܛ",
+      "number": 4
+     },
+     {
+      "answer": "ܥ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null,
+     {
+      "answer": "ܝ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܒ",
+      "number": 5
+     },
+     null,
+     {
+      "answer": "ܒ"
+     },
+     null,
+     null,
+     {
+      "answer": "ܬ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܣ",
+      "number": 6
+     },
+     {
+      "answer": "ܘ"
+     },
+     {
+      "answer": "ܪ"
+     },
+     {
+      "answer": "ܓ"
+     },
+     {
+      "answer": "ܕ",
+      "number": 7
+     },
+     {
+      "answer": "ܐ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܝ"
+     },
+     null,
+     {
+      "answer": "ܢ"
+     },
+     null,
+     {
+      "answer": "ܪ"
+     },
+     null,
+     null
+    ],
+    [
+     {
+      "answer": "ܡ"
+     },
+     null,
+     {
+      "answer": "ܐ",
+      "number": 8
+     },
+     {
+      "answer": "ܠ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null,
+     null
+    ],
+    [
+     {
+      "answer": "ܐ"
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   ],
+   "across": [
+    {
+     "number": 2,
+     "word": "ܥܒܕ",
+     "clue": "used to express foreign verbs that don’t fit the structure of the language",
+     "row": 0,
+     "col": 4,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܛܥܐ",
+     "clue": "to miss",
+     "row": 1,
+     "col": 1,
+     "length": 3
+    },
+    {
+     "number": 6,
+     "word": "ܣܘܪܓܕܐ",
+     "clue": "calendar (wall chart showing months day-by-day)",
+     "row": 3,
+     "col": 0,
+     "length": 6
+    },
+    {
+     "number": 8,
+     "word": "ܐܠܐ",
+     "clue": "used to indicate a sole option; necessity; only, must, have to, must be, etc.",
+     "row": 5,
+     "col": 2,
+     "length": 3
+    }
+   ],
+   "down": [
+    {
+     "number": 1,
+     "word": "ܡܥܒܪܢܐ",
+     "clue": "translator",
+     "row": 0,
+     "col": 2,
+     "length": 6
+    },
+    {
+     "number": 3,
+     "word": "ܒܝܬܐ",
+     "clue": "room, chamber, cell, place, location, area",
+     "row": 0,
+     "col": 5,
+     "length": 4
+    },
+    {
+     "number": 5,
+     "word": "ܒܣܝܡܐ",
+     "clue": "pleasant",
+     "row": 2,
+     "col": 0,
+     "length": 5
+    },
+    {
+     "number": 7,
+     "word": "ܕܪܐ",
+     "clue": "to throw, toss, cast, chuck",
+     "row": 3,
+     "col": 4,
+     "length": 3
+    }
+   ]
+  },
+  {
+   "size": 7,
+   "cells": [
+    [
+     {
+      "answer": "ܝ",
+      "number": 1
+     },
+     null,
+     null,
+     null,
+     {
+      "answer": "ܠ",
+      "number": 2
+     },
+     {
+      "answer": "ܒ"
+     },
+     {
+      "answer": "ܫ",
+      "number": 3
+     }
+    ],
+    [
+     {
+      "answer": "ܪ",
+      "number": 4
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܫ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null,
+     null,
+     {
+      "answer": "ܘ"
+     }
+    ],
+    [
+     {
+      "answer": "ܕ"
+     },
+     null,
+     null,
+     null,
+     {
+      "answer": "ܩ",
+      "number": 5
+     },
+     null,
+     {
+      "answer": "ܦ"
+     }
+    ],
+    [
+     {
+      "answer": "ܐ",
+      "number": 6
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܣ",
+      "number": 7
+     },
+     {
+      "answer": "ܪ"
+     },
+     {
+      "answer": "ܠ",
+      "number": 8
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܐ"
+     }
+    ],
+    [
+     null,
+     null,
+     {
+      "answer": "ܕ"
+     },
+     null,
+     {
+      "answer": "ܝ"
+     },
+     null,
+     null
+    ],
+    [
+     null,
+     null,
+     {
+      "answer": "ܪ"
+     },
+     null,
+     {
+      "answer": "ܬ"
+     },
+     null,
+     null
+    ],
+    [
+     {
+      "answer": "ܫ",
+      "number": 9
+     },
+     {
+      "answer": "ܡ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null,
+     {
+      "answer": "ܐ"
+     },
+     null,
+     null
+    ]
+   ],
+   "across": [
+    {
+     "number": 2,
+     "word": "ܠܒܫ",
+     "clue": "to wear, put on, clothe oneself, get dressed (clothings, accessories, and anything worn on the body)",
+     "row": 0,
+     "col": 4,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܪܝܫܐ",
+     "clue": "leader, ruler, prefect, magistrate",
+     "row": 1,
+     "col": 0,
+     "length": 4
+    },
+    {
+     "number": 6,
+     "word": "ܐܝܣܪܠܝܐ",
+     "clue": "Israelite (of or pertaining to being the descendants of Jacob)",
+     "row": 3,
+     "col": 0,
+     "length": 7
+    },
+    {
+     "number": 9,
+     "word": "ܫܡܐ",
+     "clue": "name, first name (word or set of words by which a person or thing is known, addressed, or referred to)",
+     "row": 6,
+     "col": 0,
+     "length": 3
+    }
+   ],
+   "down": [
+    {
+     "number": 1,
+     "word": "ܝܪܕܐ",
+     "clue": "yard, unit of length equal to 3 feet",
+     "row": 0,
+     "col": 0,
+     "length": 4
+    },
+    {
+     "number": 3,
+     "word": "ܫܘܦܐ",
+     "clue": "site, place, spot (the location of an object, person, event, or similar)",
+     "row": 0,
+     "col": 6,
+     "length": 4
+    },
+    {
+     "number": 5,
+     "word": "ܩܠܝܬܐ",
+     "clue": "patriarch’s residence; bishop’s attendants",
+     "row": 2,
+     "col": 4,
+     "length": 5
+    },
+    {
+     "number": 7,
+     "word": "ܣܕܪܐ",
+     "clue": "row, line (sequence, order, array or series of people or objects)",
+     "row": 3,
+     "col": 2,
+     "length": 4
+    },
+    {
+     "number": 8,
+     "word": "ܠܝܬ",
+     "clue": "[with ܒ- (b-)] to not have (a characteristic or internal or inherent feature), to not be able to, to be imposs...",
+     "row": 3,
+     "col": 4,
+     "length": 3
+    }
+   ]
+  },
+  {
+   "size": 6,
+   "cells": [
+    [
+     null,
+     {
+      "answer": "ܣ",
+      "number": 1
+     },
+     {
+      "answer": "ܥ"
+     },
+     {
+      "answer": "ܪ",
+      "number": 2
+     },
+     null,
+     null
+    ],
+    [
+     null,
+     null,
+     null,
+     {
+      "answer": "ܒ"
+     },
+     null,
+     {
+      "answer": "ܟ",
+      "number": 3
+     }
+    ],
+    [
+     {
+      "answer": "ܡ",
+      "number": 4
+     },
+     {
+      "answer": "ܣ"
+     },
+     {
+      "answer": "ܟ",
+      "number": 5
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܢ"
+     },
+     {
+      "answer": "ܐ"
+     }
+    ],
+    [
+     {
+      "answer": "ܩ"
+     },
+     null,
+     {
+      "answer": "ܒ"
+     },
+     null,
+     null,
+     {
+      "answer": "ܦ"
+     }
+    ],
+    [
+     {
+      "answer": "ܪ"
+     },
+     null,
+     {
+      "answer": "ܪ",
+      "number": 6
+     },
+     {
+      "answer": "ܚ"
+     },
+     {
+      "answer": "ܡ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܐ"
+     },
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   ],
+   "across": [
+    {
+     "number": 1,
+     "word": "ܣܥܪ",
+     "clue": "to treat, to act",
+     "row": 0,
+     "col": 1,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܡܣܟܝܢܐ",
+     "clue": "poor, poverty-stricken, needy",
+     "row": 2,
+     "col": 0,
+     "length": 6
+    },
+    {
+     "number": 6,
+     "word": "ܪܚܡ",
+     "clue": "to love, adore, like",
+     "row": 4,
+     "col": 2,
+     "length": 3
+    }
+   ],
+   "down": [
+    {
+     "number": 2,
+     "word": "ܪܒܝ",
+     "clue": "rabbi, spiritual teacher (scholar or teacher, of any religion but especially Christianity)",
+     "row": 0,
+     "col": 3,
+     "length": 3
+    },
+    {
+     "number": 3,
+     "word": "ܟܐܦ",
+     "clue": "to decrease, lower, reduce power by means of a control such as volume, heat, or light",
+     "row": 1,
+     "col": 5,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܡܩܪܐ",
+     "clue": "to scan (to read with an electronic device)",
+     "row": 2,
+     "col": 0,
+     "length": 4
+    },
+    {
+     "number": 5,
+     "word": "ܟܒܪ",
+     "clue": "perhaps, may, maybe, possibly",
+     "row": 2,
+     "col": 2,
+     "length": 3
+    }
+   ]
+  },
+  {
+   "size": 7,
+   "cells": [
+    [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "answer": "ܢ",
+      "number": 1
+     },
+     null
+    ],
+    [
+     null,
+     null,
+     null,
+     {
+      "answer": "ܬ",
+      "number": 2
+     },
+     {
+      "answer": "ܠ"
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܐ"
+     }
+    ],
+    [
+     {
+      "answer": "ܪ",
+      "number": 3
+     },
+     null,
+     {
+      "answer": "ܓ",
+      "number": 4
+     },
+     null,
+     null,
+     {
+      "answer": "ܚ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܡ",
+      "number": 5
+     },
+     {
+      "answer": "ܛ"
+     },
+     {
+      "answer": "ܘ"
+     },
+     {
+      "answer": "ܝ"
+     },
+     {
+      "answer": "ܒ",
+      "number": 6
+     },
+     {
+      "answer": "ܐ"
+     },
+     null
+    ],
+    [
+     {
+      "answer": "ܐ"
+     },
+     null,
+     {
+      "answer": "ܓ"
+     },
+     null,
+     {
+      "answer": "ܝ"
+     },
+     null,
+     {
+      "answer": "ܩ",
+      "number": 7
+     }
+    ],
+    [
+     null,
+     null,
+     null,
+     null,
+     {
+      "answer": "ܬ",
+      "number": 8
+     },
+     {
+      "answer": "ܠ"
+     },
+     {
+      "answer": "ܐ"
+     }
+    ],
+    [
+     null,
+     {
+      "answer": "ܥ",
+      "number": 9
+     },
+     {
+      "answer": "ܣ"
+     },
+     {
+      "answer": "ܩ"
+     },
+     {
+      "answer": "ܐ"
+     },
+     null,
+     {
+      "answer": "ܡ"
+     }
+    ]
+   ],
+   "across": [
+    {
+     "number": 2,
+     "word": "ܬܠܝܐ",
+     "clue": "dependent, contingent, depending on something",
+     "row": 1,
+     "col": 3,
+     "length": 4
+    },
+    {
+     "number": 5,
+     "word": "ܡܛܘܝܒܐ",
+     "clue": "readily available, ready to hand; present, close, nearby",
+     "row": 3,
+     "col": 0,
+     "length": 6
+    },
+    {
+     "number": 8,
+     "word": "ܬܠܐ",
+     "clue": "to rely, depend",
+     "row": 5,
+     "col": 4,
+     "length": 3
+    },
+    {
+     "number": 9,
+     "word": "ܥܣܩܐ",
+     "clue": "difficult, hard, arduous, troublesome",
+     "row": 6,
+     "col": 1,
+     "length": 4
+    }
+   ],
+   "down": [
+    {
+     "number": 1,
+     "word": "ܢܝܚܐ",
+     "clue": "slow",
+     "row": 0,
+     "col": 5,
+     "length": 4
+    },
+    {
+     "number": 3,
+     "word": "ܪܡܐ",
+     "clue": "high, tall",
+     "row": 2,
+     "col": 0,
+     "length": 3
+    },
+    {
+     "number": 4,
+     "word": "ܓܘܓ",
+     "clue": "to wriggle, creep, crawl",
+     "row": 2,
+     "col": 2,
+     "length": 3
+    },
+    {
+     "number": 6,
+     "word": "ܒܝܬܐ",
+     "clue": "room, chamber, cell, place, location, area",
+     "row": 3,
+     "col": 4,
+     "length": 4
+    },
+    {
+     "number": 7,
+     "word": "ܩܐܡ",
+     "clue": "to start doing; used to indicate a change of action, commencing of a new action",
+     "row": 4,
+     "col": 6,
+     "length": 3
+    }
+   ]
+  }
+ ]
+}

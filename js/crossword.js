@@ -75,7 +75,7 @@
     overlay.querySelector("[data-xword-close]").addEventListener("click", close);
     overlay.querySelector("[data-xword-new]").addEventListener("click", function () {
       loadPuzzles().then(function () {
-        startPuzzle(pickRandomIndex());
+        startPuzzle(nextPuzzleIndex());
       });
     });
     overlay.querySelector("[data-xword-check]").addEventListener("click", checkPuzzle);
@@ -108,8 +108,11 @@
     return overlay;
   }
 
-  function pickRandomIndex() {
-    return Math.floor(Math.random() * puzzles.length);
+  var currentPuzzleIndex = -1;
+
+  function nextPuzzleIndex() {
+    currentPuzzleIndex = (currentPuzzleIndex + 1) % puzzles.length;
+    return currentPuzzleIndex;
   }
 
   // Intentionally not persisted (no localStorage/sessionStorage): the
@@ -131,7 +134,7 @@
     loadPuzzles().then(function () {
       overlay.removeAttribute("hidden");
       document.body.style.overflow = "hidden";
-      startPuzzle(pickRandomIndex());
+      startPuzzle(nextPuzzleIndex());
       markDiscovered();
     });
   }
