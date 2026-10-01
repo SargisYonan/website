@@ -1,0 +1,560 @@
+/* ==========================================================================
+   Font specimen pages (fonts/diba, fonts/nohadra). Builds on css/main.css
+   (tokens, topbar, eyebrow). Each page sets, on :root:
+     --sp-font        active font family (switched by specimen.js)
+     --sp-stroke      hairline stroke hiding seams between abutting glyphs
+     --sp-hero-fit    hero word width in em at full stretch, plus margin
+     --sp-base        baseline depth in em below the line top at line-height 1
+     --sp-pad-top     inspector glyph offset from the top of its box
+     --sp-metrics-h   inspector box height
+     --sp-metrics-size inspector glyph size
+   ========================================================================== */
+
+.dz-font,
+.dz-hero-word {
+  font-family: var(--sp-font), serif;
+  font-weight: 400;
+  -webkit-text-stroke: var(--sp-stroke, 0) currentColor;
+}
+
+.dz-note {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* ---- Hero ---------------------------------------------------------------- */
+.dz-hero { padding-top: 8px; padding-bottom: 32px; }
+.dz-hero > .eyebrow:first-child { margin-top: 24px; }
+
+.dz-hero-stage {
+  /* Wide enough for the word at full stretch (~3.9em). */
+  --hero-size: min(210px, calc((100vw - 2 * var(--pad)) / var(--sp-hero-fit)));
+  font-size: var(--hero-size);
+  height: 1.45em;
+  position: relative;
+  margin-top: 8px;
+}
+.dz-hero-word {
+  position: absolute;
+  top: 0.05em;
+  right: 0;
+  margin: 0;
+  font-size: 1em;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.dz-hero-word.is-active { opacity: 1; }
+
+.dz-hero-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+}
+.dz-hero-controls .dz-slider { max-width: 320px; min-width: 180px; }
+.dz-style-switch { display: flex; gap: 0; }
+.dz-style-switch .dz-chip + .dz-chip { border-left: 0; }
+.dz-hero-controls .dz-slider { flex: 1; }
+
+.dz-hero-lede {
+  margin-top: 24px;
+  min-height: 0;
+}
+.dz-inline-syr {
+  font-family: var(--sp-font), serif;
+  font-size: 1.15em;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+}
+
+.dz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.dz-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  border: 1.5px solid var(--text);
+  color: var(--text);
+  background: var(--bg);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.dz-btn:hover,
+.dz-btn--solid { background: var(--text); color: var(--bg); }
+.dz-btn--solid:hover { background: var(--bg); color: var(--text); }
+
+.dz-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 28px 0 0;
+  border: 1.5px solid var(--text);
+}
+.dz-facts > div { padding: 10px 14px; }
+.dz-facts > div + div { border-left: 1.5px solid var(--text); }
+.dz-facts dt {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.dz-facts dd { margin: 2px 0 0; font-size: 15px; font-weight: 600; }
+@media (max-width: 640px) {
+  .dz-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dz-facts > div:nth-child(3) { border-left: 0; }
+  .dz-facts > div:nth-child(n + 3) { border-top: 1.5px solid var(--text); }
+}
+
+/* ---- Ticker ---------------------------------------------------------------- */
+.dz-ticker {
+  background: var(--text);
+  color: var(--bg);
+  overflow: hidden;
+  padding: 14px 0 22px;
+  margin: 8px 0 24px;
+}
+.dz-ticker-track {
+  display: flex;
+  width: max-content;
+  font-size: 44px;
+  line-height: 1.2;
+  white-space: nowrap;
+  animation: dz-ticker 60s linear infinite;
+}
+.dz-ticker-track span { padding: 0 0.6em; }
+@keyframes dz-ticker {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+/* ---- Controls ---------------------------------------------------------------- */
+.dz-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.dz-slider-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.dz-slider output {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 1.5px;
+  background: var(--text);
+}
+input[type="range"]::-moz-range-track {
+  height: 1.5px;
+  background: var(--text);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -7.25px;
+  background: var(--text);
+  border: 0;
+  border-radius: 0;
+  transition: transform 0.12s ease;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--text);
+  border: 0;
+  border-radius: 0;
+}
+input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.25) rotate(45deg); }
+input[type="range"]:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 4px; }
+
+.dz-chip {
+  appearance: none;
+  height: 32px;
+  padding: 0 12px;
+  border: 1.5px solid var(--text);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 700 12px/1 var(--font-sans);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dz-chip:hover { background: var(--bg-elevated); }
+.dz-chip[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+
+/* ---- Tester ---------------------------------------------------------------- */
+.dz-tester {
+  border: 1.5px solid var(--text);
+}
+.dz-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 16px 24px;
+  align-items: end;
+  padding: 14px 16px;
+  border-bottom: 1.5px solid var(--text);
+}
+.dz-toggles { display: flex; gap: 6px; flex-wrap: wrap; }
+/* Fonts with OpenType feature toggles get the toggles on their own row. */
+.dz-controls.has-features { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.dz-controls.has-features .dz-toggles { grid-column: 1 / -1; }
+@media (max-width: 760px) {
+  .dz-controls.has-features { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  .dz-controls { grid-template-columns: minmax(0, 1fr); }
+}
+
+.dz-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 16px;
+  border-bottom: 1.5px solid var(--text);
+}
+.dz-preset {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 2px 6px;
+  font: 600 13px/1.4 var(--font-sans);
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.dz-preset:hover { color: var(--text); }
+.dz-preset.is-active { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+
+.dz-stage {
+  --size: 72px;
+  --leading: 1.45;
+  font-size: var(--size);
+  line-height: var(--leading);
+  min-height: 3.2em;
+  max-height: 80vh;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  padding: 0.25em 16px 0.35em;
+  outline: none;
+  overflow-wrap: anywhere;
+  text-align: right;
+  background: var(--bg);
+  color: var(--text);
+  caret-color: var(--text);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.dz-tester.is-inverted .dz-stage { background: var(--text); color: var(--bg); caret-color: var(--bg); }
+.dz-stage:focus-visible { box-shadow: inset 0 0 0 2px var(--text); }
+.dz-tester.is-inverted .dz-stage:focus-visible { box-shadow: inset 0 0 0 2px var(--bg); }
+
+.dz-keypad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  direction: rtl;
+  gap: 6px;
+  padding: 12px 16px 14px;
+  border-top: 1.5px solid var(--text);
+}
+.dz-keypad[hidden] { display: none; }
+.dz-key {
+  appearance: none;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 8px;
+  border: 1.5px solid var(--text);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sp-font), serif;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+.dz-key:hover { background: var(--text); color: var(--bg); }
+.dz-key--wide { font: 700 12px/1 var(--font-sans); letter-spacing: 0.04em; text-transform: uppercase; min-width: 72px; }
+
+/* ---- Inspector ---------------------------------------------------------------- */
+.dz-inspector {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  border: 1.5px solid var(--text);
+}
+@media (max-width: 760px) {
+  .dz-inspector { grid-template-columns: minmax(0, 1fr); }
+  .dz-forms { border-left: 0 !important; border-top: 1.5px solid var(--text); }
+}
+.dz-inspect-main { position: relative; padding: 0 0 12px; }
+
+/* With line-height 1 the baseline sits --sp-base below the line top, so
+   each guide sits at (--sp-base - value/1000)em below the glyph's top. */
+.dz-metrics {
+  --pad-top: var(--sp-pad-top);
+  font-size: var(--sp-metrics-size);
+  height: var(--sp-metrics-h);
+  position: relative;
+  overflow: hidden;
+}
+.dz-mline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--pad-top) + (var(--sp-base) - var(--v)) * 1em);
+  border-top: 1px dashed var(--border);
+}
+.dz-mline--base { border-top: 1.5px solid var(--text); }
+.dz-mline span {
+  position: absolute;
+  left: 12px;
+  top: 3px;
+  font: 500 11px/1 var(--font-mono);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.dz-big-glyph {
+  position: absolute;
+  top: var(--pad-top);
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1;
+  white-space: nowrap;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.dz-big-glyph.is-swapping { opacity: 0; transform: translate(-50%, 0.04em); }
+
+/* Design grid overlay; specimen.js sets the unit and aligns one line
+   with the baseline and one with the glyph's design edge. */
+.has-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-unit) var(--grid-unit);
+  background-position: var(--grid-x) var(--grid-y);
+  --grid-color: rgba(0, 0, 0, 0.12);
+}
+.dz-hero-stage.has-grid { --grid-color: rgba(0, 0, 0, 0.09); }
+.dz-inspect-tools { position: absolute; top: 10px; right: 10px; z-index: 1; }
+.dz-inspect-tools [hidden] { display: none; }
+
+.dz-inspect-info { padding: 0 16px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.dz-inspect-name { font-size: 22px; font-weight: 800; }
+.dz-inspect-meta { font: 500 13px/1.3 var(--font-mono); color: var(--text-muted); text-align: right; }
+
+.dz-forms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-left: 1.5px solid var(--text);
+}
+.dz-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 8px;
+  min-height: 140px;
+}
+.dz-form:nth-child(odd) { border-right: 1.5px solid var(--text); }
+.dz-form:nth-child(n + 3) { border-top: 1.5px solid var(--text); }
+.dz-form-glyph { font-size: 68px; line-height: 1.25; }
+.dz-form-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.dz-form.is-na .dz-form-glyph { opacity: 0.12; }
+
+.dz-glyph-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--sp-cell-min, 64px), 1fr));
+  direction: rtl;
+  margin-top: 12px;
+  border-top: 1.5px solid var(--text);
+  border-right: 1.5px solid var(--text);
+}
+.dz-glyph-cell {
+  appearance: none;
+  position: relative;
+  aspect-ratio: 1;
+  border: 0;
+  border-left: 1.5px solid var(--text);
+  border-bottom: 1.5px solid var(--text);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sp-font), serif;
+  font-size: 34px;
+  line-height: 1;
+  padding: 0 0 6px;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.dz-glyph-cell::after {
+  content: attr(data-cp);
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  font: 500 9px/1 var(--font-mono);
+  color: var(--text-muted);
+  direction: ltr;
+}
+.dz-glyph-cell:hover { background: var(--bg-elevated); }
+.dz-glyph-cell.is-active { background: var(--text); color: var(--bg); }
+.dz-glyph-cell.is-active::after { color: var(--bg); opacity: 0.7; }
+
+/* ---- Waterfall ---------------------------------------------------------------- */
+.dz-waterfall { border-top: 1.5px solid var(--text); }
+.dz-wf-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding: 6px 0;
+}
+.dz-wf-size { font: 500 12px/1 var(--font-mono); color: var(--text-muted); }
+.dz-wf-text {
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 1.5;
+  text-align: right;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 48px);
+  mask-image: linear-gradient(to right, transparent 0, #000 48px);
+}
+
+/* ---- Joins ---------------------------------------------------------------- */
+.dz-join-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  direction: rtl;
+  margin-top: 12px;
+  border-top: 1.5px solid var(--text);
+  border-right: 1.5px solid var(--text);
+}
+.dz-join {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 6px 8px;
+  border-left: 1.5px solid var(--text);
+  border-bottom: 1.5px solid var(--text);
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.dz-join:hover { background: var(--text); color: var(--bg); }
+.dz-join:hover .dz-join-label { color: var(--bg); }
+.dz-join-text { font-size: 34px; line-height: 1.5; white-space: nowrap; }
+.dz-join-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---- Marks ---------------------------------------------------------------- */
+.dz-marks-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.dz-carrier { display: flex; gap: 6px; }
+.dz-carrier .dz-chip { font-family: var(--sp-font), serif; font-size: 24px; text-transform: none; min-width: 40px; }
+.dz-mark-group {
+  margin-top: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.dz-mark-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  margin-top: 12px;
+  border-top: 1.5px solid var(--text);
+  border-left: 1.5px solid var(--text);
+}
+.dz-mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 6px 10px;
+  border-right: 1.5px solid var(--text);
+  border-bottom: 1.5px solid var(--text);
+}
+.dz-mark-glyph { font-size: var(--sp-mark-size, 64px); line-height: 1.5; }
+.dz-mark-name { font-size: 12px; font-weight: 700; text-align: center; }
+.dz-mark-cp { font: 500 10px/1 var(--font-mono); color: var(--text-muted); }
+
+/* ---- Punctuation ---------------------------------------------------------- */
+/* Cells carry all four borders and overlap their neighbours', so a
+   partly filled row leaves no stray border. */
+.dz-punct {
+  display: flex;
+  flex-wrap: wrap;
+  direction: rtl;
+  padding: 0 0 1.5px 1.5px;
+}
+.dz-punct > div {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--text);
+  margin: 0 0 -1.5px -1.5px;
+}
+.dz-punct .dz-p-glyph { font-size: 52px; line-height: 1.1; }
+.dz-punct .dz-mark-cp { direction: ltr; }
+
+/* ---- Reveal ---------------------------------------------------------------- */
+.dz-reveal { transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.dz-reveal.is-hidden { opacity: 0; transform: translateY(24px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dz-ticker-track { animation: none; }
+  .dz-reveal, .dz-big-glyph { transition: none; }
+}
+
+.site-footer a { color: inherit; }

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136338622-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-136338622-1');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nohadra Syriac — Sargis Yonan</title>
+  <meta name="description" content="The Nohadra Syriac fonts by Sargis Yonan: a bold, geometric, monospaced Syriac typeface family in two styles, Sapna and Amedia.">
+
+  <link rel="icon" href="../../img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="../../img/favicon.ico">
+  <link rel="preload" href="NohadraSyriac-Sapna.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="NohadraSyriac-Amedia.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../specimen/specimen.css">
+  <style>
+    @font-face {
+      font-family: "Nohadra Sapna";
+      src: url("NohadraSyriac-Sapna.otf") format("opentype");
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Nohadra Amedia";
+      src: url("NohadraSyriac-Amedia.otf") format("opentype");
+      font-display: block;
+    }
+    :root {
+      --sp-font: "Nohadra Sapna";
+      --sp-stroke: 0;
+      --sp-hero-fit: 4.0;
+      /* hhea and typo metrics are both 900/-300 (USE_TYPO_METRICS is set). */
+      --sp-base: 0.80;
+      --sp-pad-top: -0.17em;
+      --sp-metrics-h: 1.06em;
+      --sp-metrics-size: clamp(140px, 30vw, 300px);
+      --sp-mark-size: 104px;
+      --sp-cell-min: 56px;
+    }
+    /* Nohadra's ink sits between 505 and -304 units, so trim the empty
+       space the 900/-300 line box leaves above the hero word. */
+    .dz-hero-stage { height: 1.02em; }
+    .dz-hero-word { top: -0.22em; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="back-link" href="../../">← Sargis Yonan</a>
+    <a class="back-link" href="https://github.com/SargisYonan/NohadraSyriac" target="_blank" rel="noopener">GitHub ↗</a>
+  </header>
+
+  <main class="dz">
+
+    <!-- Hero: the name, stretched with kashida, on the design grid -->
+    <section class="wrap dz-hero">
+      <div class="eyebrow">Typeface family · v1.006</div>
+      <div class="dz-hero-stage has-grid" data-hero-stage></div>
+      <div class="dz-hero-controls">
+        <div class="dz-style-switch" data-style-switch role="group" aria-label="Style"></div>
+        <label class="dz-slider">
+          <span class="dz-slider-label">Kashida <output data-hero-out>0</output></span>
+          <input type="range" min="0" max="8" step="1" value="0" data-hero-stretch>
+        </label>
+        <button type="button" class="dz-chip" data-hero-play aria-pressed="true">Pause</button>
+      </div>
+      <p class="lede dz-hero-lede">
+        The Nohadra Syriac fonts are a bold, geometric and (mostly) monospaced Syriac typeface
+        family, with square, block-like characters and uniform line thickness. Every outline is
+        drawn on a grid of 101-unit squares. <strong>Sapna</strong> is the minimal block style;
+        <strong>Amedia</strong> has the same look and feel with rounder edges.
+      </p>
+      <div class="dz-actions">
+        <a class="dz-btn dz-btn--solid" href="NohadraSyriac-Sapna.otf" download>Download Sapna .otf</a>
+        <a class="dz-btn dz-btn--solid" href="NohadraSyriac-Amedia.otf" download>Download Amedia .otf</a>
+        <a class="dz-btn" href="https://github.com/SargisYonan/NohadraSyriac" target="_blank" rel="noopener">Source on GitHub</a>
+      </div>
+      <dl class="dz-facts">
+        <div><dt>Styles</dt><dd>Sapna, Amedia</dd></div>
+        <div><dt>Script</dt><dd>Syriac, East &amp; West vowels</dd></div>
+        <div><dt>Glyphs</dt><dd>209 per style</dd></div>
+        <div><dt>License</dt><dd>SIL OFL 1.1</dd></div>
+      </dl>
+    </section>
+
+    <div class="dz-ticker" aria-hidden="true">
+      <div class="dz-ticker-track dz-font" lang="syr" dir="rtl" data-ticker></div>
+    </div>
+
+    <!-- Type tester -->
+    <section class="block dz-reveal" id="tester">
+      <div class="wrap">
+        <div class="eyebrow">Type tester</div>
+        <div class="dz-tester" data-tester>
+          <div class="dz-controls">
+            <label class="dz-slider">
+              <span class="dz-slider-label">Size <output data-out="size">72px</output></span>
+              <input type="range" min="14" max="240" step="1" value="72" data-ctl="size">
+            </label>
+            <label class="dz-slider">
+              <span class="dz-slider-label">Leading <output data-out="leading">1.45</output></span>
+              <input type="range" min="0.9" max="2.6" step="0.05" value="1.45" data-ctl="leading">
+            </label>
+            <label class="dz-slider">
+              <span class="dz-slider-label">Kashida <output data-out="kashida">0</output></span>
+              <input type="range" min="0" max="6" step="1" value="0" data-ctl="kashida">
+            </label>
+            <div class="dz-toggles">
+              <button type="button" class="dz-chip" data-toggle="vowels" aria-pressed="true">Vowels</button>
+              <button type="button" class="dz-chip" data-toggle="invert" aria-pressed="false">Invert</button>
+              <button type="button" class="dz-chip" data-toggle="keys" aria-pressed="false">Keyboard</button>
+            </div>
+          </div>
+          <div class="dz-presets" data-presets></div>
+          <div class="dz-stage dz-font" lang="syr" dir="rtl" contenteditable="true" spellcheck="false" data-stage aria-label="Editable sample text"></div>
+          <div class="dz-keypad" data-keypad hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Glyph inspector -->
+    <section class="block dz-reveal" id="letters">
+      <div class="wrap">
+        <div class="eyebrow">Letters</div>
+        <div class="dz-inspector">
+          <div class="dz-inspect-main">
+            <div class="dz-inspect-tools">
+              <button type="button" class="dz-chip" data-grid-toggle aria-pressed="true" hidden>Grid</button>
+            </div>
+            <div class="dz-metrics has-grid" data-metrics></div>
+            <div class="dz-inspect-info">
+              <div class="dz-inspect-name" data-glyph-name>Alaph</div>
+              <div class="dz-inspect-meta" data-glyph-meta>U+0710 · Right-joining</div>
+            </div>
+          </div>
+          <div class="dz-forms" data-forms></div>
+        </div>
+        <div class="dz-glyph-grid" data-glyph-grid></div>
+      </div>
+    </section>
+
+    <!-- Waterfall -->
+    <section class="block dz-reveal" id="waterfall">
+      <div class="wrap">
+        <div class="eyebrow">Waterfall</div>
+        <div class="dz-waterfall" data-waterfall></div>
+      </div>
+    </section>
+
+    <!-- Joining proof -->
+    <section class="block dz-reveal" id="joins">
+      <div class="wrap">
+        <div class="eyebrow">Joining</div>
+        <p class="dz-note">Each dual-joining letter between two Beths and three in a row; each right-joining letter after Beth; and the Lamadh–Alaph and Taw–Alaph ligatures.</p>
+        <div class="dz-join-grid" data-joins></div>
+      </div>
+    </section>
+
+    <!-- Vowels and marks -->
+    <section class="block dz-reveal" id="marks">
+      <div class="wrap">
+        <div class="eyebrow">Vowels &amp; marks</div>
+        <div class="dz-marks-head">
+          <p class="dz-note">Every vowel and mark, on a dotted circle and on a letter.</p>
+          <div class="dz-carrier" data-carriers></div>
+        </div>
+        <div data-marks></div>
+      </div>
+    </section>
+
+    <!-- Punctuation -->
+    <section class="block dz-reveal" id="punctuation">
+      <div class="wrap">
+        <div class="eyebrow">Punctuation, numerals &amp; symbols</div>
+        <div class="dz-punct" data-punct></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Nohadra Syriac © 2024 Sargis Yonan · <a href="OFL.txt">SIL Open Font License 1.1</a></span>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script>
+    window.SPECIMEN = {
+      name: "Nohadra",
+      styles: [
+        { id: "sapna", label: "Sapna", family: '"Nohadra Sapna"' },
+        { id: "amedia", label: "Amedia", family: '"Nohadra Amedia"' }
+      ],
+      heroWord: "ܢܘܗܕܪܐ",
+      heroMax: 8,
+      baseline: 0.80,
+      // Outlines sit on 101-unit squares, starting 51 units in from the
+      // glyph's left edge.
+      grid: { unit: 0.101, x: 0.051 },
+      metrics: [
+        { v: 0.505, label: "Ascender 505" },
+        { v: 0.303, label: "x-height 303" },
+        { v: 0, label: "Baseline 0" },
+        { v: -0.304, label: "Descender −304" }
+      ],
+      extraLetters: [
+        ["ܔ", "Gamal Garshuni", "D"],
+        ["ܜ", "Teth Garshuni", "D"],
+        ["ܞ", "Yudh He", "R"],
+        ["ܧ", "Reversed Pe", "D"]
+      ],
+      ticker: ["ܢܘܗܕܪܐ", "ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ", "ܥܠ ܐܪܥܐ ܫܠܡܐ", "ܨܦܢܐ", "ܐܡܕܝܐ", "ܣܪܓܝܤ ܝܘܢܢ"],
+      presets: [
+        ["Sample", "ܥܠ ܐܪܥܐ ܫܠܡܐ ܘܣܒܪܐ ܛܒܐ ܠܒܪܢܫ̈ܐ"],
+        ["Nohadra", "ܢܘܗܕܪܐ - ܨܦܢܐ - ܐܡܕܝܐ"],
+        ["Eastern vowels", "ܦܸܬ̣ܓ̣ܵܡܵܘ̈ܗܝ ܕܩܘܿܗܠܲܬ̣ ܒܲܪ ܕܵܘܝܼܕܼ ܡܲܠܟܵܐ ܕܐܘܿܪܸܫܠܸܡ. ܗܒܸܠ ܗܸܒ̣̈ܠܝܼܢ: ܐܵܡ̇ܲܪ ܩܘܿܗܠܲܬ̣: ܗܒܸܠ ܗܸܒ̣̈ܠܝܼܢ. ܟܠܡܸܕܸ̇ܡ ܗܸܒ̣ܠܵܐ."],
+        ["Western vowels", "ܦܶܬܓܳܡܰܘ̈ܗܝ ܕܩܽܘܗܠܰܬ ܒܰܪ ܕܰܘܺܝܕ݂ ܡܰܠܟܳܐ ܕܽܐܘܪܺܫܠܶܡ."],
+        ["Alphabet", "ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ"],
+        ["Name", "ܣܪܓܝܤ ܝܘܢܢ"],
+        ["Numerals", "ܫܢܬܐ 6776 ♰ ܫܢܬܐ 2026"]
+      ],
+      waterfall: "ܡܵܢܵܐ ܝܘܼܬ̣ܪܵܢܵܐ ܠܒܲܪܢܵܫܵܐ ܒܟ̣ܠ ܥܲܡܠܵܐ ܕܗ̤ܘ ܥܵܡܹ̇ܠ ܬܚܹܝܬ̣ ܫܸܡܫܵܐ.",
+      features: [
+        { tag: "ss02", label: "ss02 Rings", title: "Stylistic set 2: Qushshaya and Rukkakha as rings above and below" },
+        { tag: "ss01", label: "ss01 Semkath", title: "Stylistic set 1: Semkath drawn as Final Semkath" }
+      ],
+      keypadMarks: [
+        "\u0732", "\u0735", "\u0738", "\u0739", "\u073C", "\u073F", "\u0308", "\u0747",
+        "\u0730", "\u0733", "\u0736", "\u073A", "\u073D"
+      ],
+      joinExtras: [["ܒܠܐ ܠܐ", "Lamadh–Alaph"], ["ܒܬܐ ܬܐ", "Taw–Alaph"]],
+      marks: [
+        {
+          title: "Eastern vowels",
+          items: [
+            ["\u0732", "Pthakha"], ["\u0735", "Zqapa"], ["\u0738", "Zlama Pshiqa"], ["\u0739", "Zlama Qashya"],
+            ["\u073C", "Hwasa / Esasa"], ["\u073F", "Rwakha"], ["\u0741", "Qushshaya"], ["\u0742", "Rukkakha"],
+            ["\u0747", "Talqana"], ["\u0308", "Seyame"]
+          ]
+        },
+        {
+          title: "Western vowels",
+          items: [
+            ["\u0730", "Pthaha above"], ["\u0731", "Pthaha below"], ["\u0733", "Zqapha above"], ["\u0734", "Zqapha below"],
+            ["\u0736", "Rbasa above"], ["\u0737", "Rbasa below"], ["\u073A", "Hbasa above"], ["\u073B", "Hbasa below"],
+            ["\u073D", "Esasa above"], ["\u073E", "Esasa below"]
+          ]
+        },
+        {
+          title: "Other marks",
+          items: [
+            ["\u0711", "Superscript Alaph"], ["\u0740", "Feminine dot"], ["\u0743", "Two vertical dots above"], ["\u0744", "Two vertical dots below"],
+            ["\u0745", "Three dots above"], ["\u0746", "Three dots below"], ["\u0748", "Oblique line below"], ["\u0749", "Music"],
+            ["\u074A", "Barrekh"], ["\u0303", "Tilde"], ["\u0304", "Macron"], ["\u0307", "Dot above"],
+            ["\u030A", "Ring above"], ["\u0320", "Minus below"], ["\u0323", "Dot below"], ["\u0324", "Two dots below"],
+            ["\u0325", "Ring below"], ["\u032D", "Circumflex below"], ["\u032E", "Breve below"], ["\u0330", "Tilde below"],
+            ["\u0331", "Macron below"], ["\u1DF8", "Dot above left"], ["\u1DFA", "Dot below left"]
+          ]
+        }
+      ],
+      punct: "܀܁܂܃܄܅܆܇܈܉܊܋܌܍،؛؟.:!()[]«»…0123456789+−=*/٪°♰♱"
+    };
+  </script>
+  <script src="../specimen/specimen.js"></script>
+</body>
+</html>

@@ -14,7 +14,7 @@
   var STORAGE_KEY = "lang";
 
   var translations = {
-    "hero-first": { en: "Sargis", syr: "ܣܪܓܝܣ" },
+    "hero-first": { en: "Sargis", syr: "ܣܪܓܝܤ" },
     "hero-last": { en: "Yonan", syr: "ܝܘܢـــــــܢ" },
     "about-text": {
       en: "I'm an engineer who works on robotics, hardware, firmware, software and Assyrian language projects. I'm a prototyping engineer on the Apple Design Team, focused on interaction design.",
@@ -26,6 +26,12 @@
     "more-word": { en: "More", syr: "ܚܙܝ ܒܘܫ ܙܘܕܐ" },
     "resume-word": { en: "Resume", syr: "ܪܙܘܡܐ" },
     "footer-name": { en: "Sargis Yonan", syr: "ܣܪܓܝܤ ܝܘܢܢ" },
+    "proj-diba-title": { en: "Diba", syr: "ܕܒܐ" },
+    "proj-diba-desc": {
+      en: "A mid-century modern Assyrian typeface inspired by the calligraphic style of Issa Benyamin.",
+      syr: "ܓܪܫܐ ܕܟܬܒ݂ܐ ܒܠܫܢܐ ܐܬܘܪܝܐ، ܒܨܘܪܬܐ ܕܟܠܝܓܪܦܐ ܕܥܝܣܐ ܒܢܝܡܝܢ."
+    },
+    "font-label-diba": { en: "Specimen", syr: "ܛܘܦ̮ܣܐ" },
     "proj-nohadra-title": { en: "The Nohadra Syriac Fonts Collection", syr: "ܟܢܘܫܝܐ ܕܦ̮ܘܢܬ ܕܢܘܗܕܪܐ" },
     "font-label-sapna": { en: "Sapna", syr: "ܨܦܢܐ" },
     "font-label-amedia": { en: "Amedia", syr: "ܐܡܕܝܐ" },
@@ -46,6 +52,19 @@
     "contact-github": { en: "GitHub", syr: "ܓܝܬܗܒ" },
     "contact-linkedin": { en: "LinkedIn", syr: "ܠܝܢܟܕܝܢ" }
   };
+
+  // Every second switch into Assyrian sets the name in Diba instead of
+  // Nohadra Sapna.
+  var syrSwitchCount = 0;
+
+  function setHeroFont(isSyr) {
+    if (isSyr) syrSwitchCount++;
+    if (isSyr && syrSwitchCount % 2 === 0) {
+      document.documentElement.setAttribute("data-hero-font", "diba");
+    } else {
+      document.documentElement.removeAttribute("data-hero-font");
+    }
+  }
 
   var heroFirst = document.querySelector('[data-i18n="hero-first"]');
   var heroLast = document.querySelector('[data-i18n="hero-last"]');
@@ -78,6 +97,7 @@
   }
 
   function finishSwitch(isSyr, lang) {
+    setHeroFont(isSyr);
     document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
     document.documentElement.setAttribute("dir", isSyr ? "rtl" : "ltr");
     updateTitle(isSyr);
@@ -106,6 +126,7 @@
     });
 
     window.setTimeout(function () {
+      setHeroFont(isSyr);
       document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
       document.documentElement.setAttribute("dir", isSyr ? "rtl" : "ltr");
       updateTitle(isSyr);

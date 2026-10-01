@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136338622-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-136338622-1');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diba — Sargis Yonan</title>
+  <meta name="description" content="Diba, a mid-century modern Assyrian typeface by Sargis Yonan, inspired by the calligraphic style of Issa Benyamin.">
+
+  <link rel="icon" href="../../img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="../../img/favicon.ico">
+  <link rel="preload" href="Diba-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../specimen/specimen.css">
+  <style>
+    @font-face {
+      font-family: "Diba";
+      src: url("Diba-Regular.ttf") format("truetype");
+      font-display: block;
+    }
+    :root {
+      --sp-font: "Diba";
+      /* Diba's joins abut exactly; a hairline stroke hides the
+         anti-aliasing seams between glyphs. */
+      --sp-stroke: 0.006em;
+      --sp-hero-fit: 3.9;
+      /* hhea 960/-560 and win 1240/840 both centre the same way. */
+      --sp-base: 0.70;
+      --sp-pad-top: 0.12em;
+      --sp-metrics-h: 1.42em;
+      --sp-metrics-size: clamp(120px, 26vw, 250px);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="back-link" href="../../">← Sargis Yonan</a>
+    <a class="back-link" href="https://github.com/SargisYonan/Diba" target="_blank" rel="noopener">GitHub ↗</a>
+  </header>
+
+  <main class="dz">
+
+    <!-- Hero: the name, stretched with kashida -->
+    <section class="wrap dz-hero">
+      <div class="eyebrow">Typeface · v1.0</div>
+      <div class="dz-hero-stage" data-hero-stage></div>
+      <div class="dz-hero-controls">
+        <label class="dz-slider">
+          <span class="dz-slider-label">Kashida <output data-hero-out>0</output></span>
+          <input type="range" min="0" max="10" step="1" value="0" data-hero-stretch>
+        </label>
+        <button type="button" class="dz-chip" data-hero-play aria-pressed="true">Pause</button>
+      </div>
+      <p class="lede dz-hero-lede">
+        Diba is a mid-century modern Assyrian typeface inspired by the calligraphic style of
+        Issa Benyamin and the letterforms in his book
+        <span class="dz-inline-syr" lang="syr" dir="rtl">ܫܦܝܪܘܬ-ܟܬܝܒܬܐ: ܟܠܝܓܪܦܐ ܐܬܘܪܝܬܐ</span>,
+        adapted with some twists of its own.
+      </p>
+      <div class="dz-actions">
+        <a class="dz-btn dz-btn--solid" href="Diba-Regular.ttf" download>Download .ttf</a>
+        <a class="dz-btn" href="https://github.com/SargisYonan/Diba" target="_blank" rel="noopener">Source on GitHub</a>
+      </div>
+      <dl class="dz-facts">
+        <div><dt>Style</dt><dd>Regular</dd></div>
+        <div><dt>Script</dt><dd>Syriac, Eastern vowels</dd></div>
+        <div><dt>Glyphs</dt><dd>134</dd></div>
+        <div><dt>License</dt><dd>SIL OFL 1.1</dd></div>
+      </dl>
+    </section>
+
+    <div class="dz-ticker" aria-hidden="true">
+      <div class="dz-ticker-track dz-font" lang="syr" dir="rtl" data-ticker></div>
+    </div>
+
+    <!-- Type tester -->
+    <section class="block dz-reveal" id="tester">
+      <div class="wrap">
+        <div class="eyebrow">Type tester</div>
+        <div class="dz-tester" data-tester>
+          <div class="dz-controls">
+            <label class="dz-slider">
+              <span class="dz-slider-label">Size <output data-out="size">72px</output></span>
+              <input type="range" min="14" max="240" step="1" value="72" data-ctl="size">
+            </label>
+            <label class="dz-slider">
+              <span class="dz-slider-label">Leading <output data-out="leading">1.45</output></span>
+              <input type="range" min="0.9" max="2.6" step="0.05" value="1.45" data-ctl="leading">
+            </label>
+            <label class="dz-slider">
+              <span class="dz-slider-label">Kashida <output data-out="kashida">0</output></span>
+              <input type="range" min="0" max="6" step="1" value="0" data-ctl="kashida">
+            </label>
+            <div class="dz-toggles">
+              <button type="button" class="dz-chip" data-toggle="vowels" aria-pressed="true">Vowels</button>
+              <button type="button" class="dz-chip" data-toggle="invert" aria-pressed="false">Invert</button>
+              <button type="button" class="dz-chip" data-toggle="keys" aria-pressed="false">Keyboard</button>
+            </div>
+          </div>
+          <div class="dz-presets" data-presets></div>
+          <div class="dz-stage dz-font" lang="syr" dir="rtl" contenteditable="true" spellcheck="false" data-stage aria-label="Editable sample text"></div>
+          <div class="dz-keypad" data-keypad hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Glyph inspector -->
+    <section class="block dz-reveal" id="letters">
+      <div class="wrap">
+        <div class="eyebrow">Letters</div>
+        <div class="dz-inspector">
+          <div class="dz-inspect-main">
+            <div class="dz-metrics" data-metrics></div>
+            <div class="dz-inspect-info">
+              <div class="dz-inspect-name" data-glyph-name>Alaph</div>
+              <div class="dz-inspect-meta" data-glyph-meta>U+0710 · Right-joining</div>
+            </div>
+          </div>
+          <div class="dz-forms" data-forms></div>
+        </div>
+        <div class="dz-glyph-grid" data-glyph-grid></div>
+      </div>
+    </section>
+
+    <!-- Waterfall -->
+    <section class="block dz-reveal" id="waterfall">
+      <div class="wrap">
+        <div class="eyebrow">Waterfall</div>
+        <div class="dz-waterfall" data-waterfall></div>
+      </div>
+    </section>
+
+    <!-- Joining proof -->
+    <section class="block dz-reveal" id="joins">
+      <div class="wrap">
+        <div class="eyebrow">Joining</div>
+        <p class="dz-note">Each dual-joining letter between two Beths and three in a row; each right-joining letter after Beth.</p>
+        <div class="dz-join-grid" data-joins></div>
+      </div>
+    </section>
+
+    <!-- Vowels and marks -->
+    <section class="block dz-reveal" id="marks">
+      <div class="wrap">
+        <div class="eyebrow">Vowels &amp; marks</div>
+        <div class="dz-marks-head">
+          <p class="dz-note">Every vowel and mark, on a dotted circle and on a letter.</p>
+          <div class="dz-carrier" data-carriers></div>
+        </div>
+        <div data-marks></div>
+      </div>
+    </section>
+
+    <!-- Punctuation -->
+    <section class="block dz-reveal" id="punctuation">
+      <div class="wrap">
+        <div class="eyebrow">Punctuation</div>
+        <div class="dz-punct" data-punct></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Diba © 2026 Sargis Yonan · <a href="OFL.txt">SIL Open Font License 1.1</a></span>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script>
+    window.SPECIMEN = {
+      name: "Diba",
+      styles: [{ id: "regular", label: "Regular", family: '"Diba"' }],
+      heroWord: "ܕܒܐ",
+      heroMax: 10,
+      baseline: 0.70,
+      metrics: [
+        { v: 0.699, label: "Ascender 699" },
+        { v: 0.5, label: "x-height 500" },
+        { v: 0, label: "Baseline 0" },
+        { v: -0.478, label: "Descender −478" }
+      ],
+      ticker: ["ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ", "ܫܠܡܐ ܘܫܝܢܐ", "ܒܝܬ ܢܗܪ̈ܝܢ", "ܕܒܐ", "ܚܲܕ݇ ܒܢܝܼܣܵܢ", "ܣܪܓܝܤ ܝܘܢܢ"],
+      presets: [
+        ["Greeting", "ܫܠܡܐ ܘܫܝܢܐ"],
+        ["Bet Nahrain", "ܒܝܬ ܢܗܪ̈ܝܢ"],
+        ["Kha b'Nisan", "ܚܲܕ݇ ܒܢܝܼܣܵܢ"],
+        ["Alphabet", "ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ"],
+        ["Paragraph", "ܕܪܐ ܐܙܠ ܘܕܪܐ ܐܬܐ. ܘܐܪܥܐ ܠܥܠܡ ܩܝܡܐ. ܕܢܚ ܫܡܫܐ ܘܥܪܒ ܫܡܫܐ. ܡܢܐ ܝܘܬܪܢܐ ܠܒܪܢܫܐ ܒܟܠ ܥܡܠܐ ܕܗܘ ܥܡܠ ܬܚܝܬ ܫܡܫܐ."],
+        ["Name", "ܣܪܓܝܤ ܝܘܢܢ"]
+      ],
+      waterfall: "ܕܪܐ ܐܙܠ ܘܕܪܐ ܐܬܐ. ܘܐܪܥܐ ܠܥܠܡ ܩܝܡܐ. ܕܢܚ ܫܡܫܐ ܘܥܪܒ ܫܡܫܐ. ܡܢܐ ܝܘܬܪܢܐ ܠܒܪܢܫܐ ܒܟܠ ܥܡܠܐ ܕܗܘ ܥܡܠ ܬܚܝܬ ܫܡܫܐ.",
+      keypadMarks: ["\u0732", "\u0735", "\u0738", "\u0739", "\u073C", "\u073F", "\u0308", "\u0747"],
+      joinExtras: [["ܒܬܐ ܬܐ", "Taw–Alaph"]],
+      marks: [{
+        items: [
+          ["\u0732", "Pthakha"], ["\u0735", "Zqapa"], ["\u0738", "Zlama Pshiqa"], ["\u0739", "Zlama Qashya"],
+          ["\u073C", "Hwasa / Esasa"], ["\u073F", "Rwakha"], ["\u0741", "Qushshaya"], ["\u0742", "Rukkakha"],
+          ["\u0747", "Talqana"], ["\u0308", "Seyame"], ["\u0711", "Superscript Alaph"], ["\u0303", "Tilde"],
+          ["\u0304", "Macron"], ["\u0307", "Dot above"], ["\u0320", "Minus below"], ["\u0323", "Dot below"],
+          ["\u0324", "Two dots below"], ["\u032E", "Breve below"], ["\u0330", "Tilde below"], ["\u0331", "Macron below"]
+        ]
+      }],
+      punct: "܀܁܂܅܊.:"
+    };
+  </script>
+  <script src="../specimen/specimen.js"></script>
+</body>
+</html>
