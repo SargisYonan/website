@@ -29,7 +29,7 @@
     "proj-diba-title": { en: "Diba", syr: "ܕܒܐ" },
     "proj-diba-desc": {
       en: "A mid-century modern Assyrian typeface inspired by the calligraphic style of Issa Benyamin.",
-      syr: "ܓܪܫܐ ܕܟܬܒ݂ܐ ܒܠܫܢܐ ܐܬܘܪܝܐ، ܒܨܘܪܬܐ ܕܟܠܝܓܪܦܐ ܕܥܝܣܐ ܒܢܝܡܝܢ."
+      syr: "ܓܪܫܐ ܕܟܬܒ݂ܐ، ܒܨܘܪܬܐ ܕܟܠܝܓܪܦ̮ܐ ܕܐܘܡܢܐ ܥܝܣܐ ܒܢܝܡܝܢ."
     },
     "font-label-diba": { en: "Specimen", syr: "ܛܘܦ̮ܣܐ" },
     "proj-nohadra-title": { en: "The Nohadra Syriac Fonts Collection", syr: "ܟܢܘܫܝܐ ܕܦ̮ܘܢܬ ܕܢܘܗܕܪܐ" },
@@ -52,19 +52,6 @@
     "contact-github": { en: "GitHub", syr: "ܓܝܬܗܒ" },
     "contact-linkedin": { en: "LinkedIn", syr: "ܠܝܢܟܕܝܢ" }
   };
-
-  // Every second switch into Assyrian sets the name in Diba instead of
-  // Nohadra Sapna.
-  var syrSwitchCount = 0;
-
-  function setHeroFont(isSyr) {
-    if (isSyr) syrSwitchCount++;
-    if (isSyr && syrSwitchCount % 2 === 0) {
-      document.documentElement.setAttribute("data-hero-font", "diba");
-    } else {
-      document.documentElement.removeAttribute("data-hero-font");
-    }
-  }
 
   var heroFirst = document.querySelector('[data-i18n="hero-first"]');
   var heroLast = document.querySelector('[data-i18n="hero-last"]');
@@ -97,7 +84,6 @@
   }
 
   function finishSwitch(isSyr, lang) {
-    setHeroFont(isSyr);
     document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
     document.documentElement.setAttribute("dir", isSyr ? "rtl" : "ltr");
     updateTitle(isSyr);
@@ -126,8 +112,7 @@
     });
 
     window.setTimeout(function () {
-      setHeroFont(isSyr);
-      document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
+        document.documentElement.setAttribute("lang", isSyr ? "syr" : "en");
       document.documentElement.setAttribute("dir", isSyr ? "rtl" : "ltr");
       updateTitle(isSyr);
       setNonHeroText(isSyr);

@@ -18,6 +18,9 @@
   <link rel="alternate icon" href="../../img/favicon.ico">
   <link rel="preload" href="NohadraSyriac-Sapna.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="NohadraSyriac-Amedia.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Syriac+Eastern:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../specimen/specimen.css">
   <style>
@@ -37,6 +40,7 @@
       --sp-hero-fit: 4.0;
       /* hhea and typo metrics are both 900/-300 (USE_TYPO_METRICS is set). */
       --sp-base: 0.80;
+      --sp-xheight: 0.303;
       --sp-pad-top: -0.17em;
       --sp-metrics-h: 1.06em;
       --sp-metrics-size: clamp(140px, 30vw, 300px);
@@ -65,7 +69,7 @@
       <div class="dz-hero-controls">
         <div class="dz-style-switch" data-style-switch role="group" aria-label="Style"></div>
         <label class="dz-slider">
-          <span class="dz-slider-label">Kashida <output data-hero-out>0</output></span>
+          <span class="dz-slider-label"><span class="dz-syr-label" lang="syr" dir="rtl">ܡܓܪܢܐ</span> <output data-hero-out>0</output></span>
           <input type="range" min="0" max="8" step="1" value="0" data-hero-stretch>
         </label>
         <button type="button" class="dz-chip" data-hero-play aria-pressed="true">Pause</button>
@@ -108,7 +112,7 @@
               <input type="range" min="0.9" max="2.6" step="0.05" value="1.45" data-ctl="leading">
             </label>
             <label class="dz-slider">
-              <span class="dz-slider-label">Kashida <output data-out="kashida">0</output></span>
+              <span class="dz-slider-label"><span class="dz-syr-label" lang="syr" dir="rtl">ܡܓܪܢܐ</span> <output data-out="kashida">0</output></span>
               <input type="range" min="0" max="6" step="1" value="0" data-ctl="kashida">
             </label>
             <div class="dz-toggles">
@@ -198,6 +202,9 @@
         { id: "sapna", label: "Sapna", family: '"Nohadra Sapna"' },
         { id: "amedia", label: "Amedia", family: '"Nohadra Amedia"' }
       ],
+      letterNames: {
+        "ܚ": "Ḥeth", "ܛ": "Ṭēth", "ܜ": "Ṭēth Garshuni", "ܥ": "Eh", "ܦ": "Peh", "ܧ": "Reversed Peh"
+      },
       heroWord: "ܢܘܗܕܪܐ",
       heroMax: 8,
       baseline: 0.80,
@@ -227,10 +234,6 @@
         ["Numerals", "ܫܢܬܐ 6776 ♰ ܫܢܬܐ 2026"]
       ],
       waterfall: "ܡܵܢܵܐ ܝܘܼܬ̣ܪܵܢܵܐ ܠܒܲܪܢܵܫܵܐ ܒܟ̣ܠ ܥܲܡܠܵܐ ܕܗ̤ܘ ܥܵܡܹ̇ܠ ܬܚܹܝܬ̣ ܫܸܡܫܵܐ.",
-      features: [
-        { tag: "ss02", label: "ss02 Rings", title: "Stylistic set 2: Qushshaya and Rukkakha as rings above and below" },
-        { tag: "ss01", label: "ss01 Semkath", title: "Stylistic set 1: Semkath drawn as Final Semkath" }
-      ],
       keypadMarks: [
         "\u0732", "\u0735", "\u0738", "\u0739", "\u073C", "\u073F", "\u0308", "\u0747",
         "\u0730", "\u0733", "\u0736", "\u073A", "\u073D"

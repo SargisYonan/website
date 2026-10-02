@@ -26,7 +26,12 @@
     ["ܩ", "Qaph", "D"], ["ܪ", "Resh", "R"], ["ܫ", "Shin", "D"], ["ܬ", "Taw", "R"]
   ]
     .concat(C.extraLetters || [])
-    .sort(function (a, b) { return a[0].codePointAt(0) - b[0].codePointAt(0); });
+    .sort(function (a, b) { return a[0].codePointAt(0) - b[0].codePointAt(0); })
+    .map(function (l) {
+      // Pages can spell letter names their own way.
+      var name = (C.letterNames || {})[l[0]];
+      return name ? [l[0], name, l[2]] : l;
+    });
   var JOINING = {};
   LETTERS.forEach(function (l) { JOINING[l[0]] = l[2]; });
 
@@ -239,9 +244,8 @@
     var stage = tester.querySelector("[data-stage]");
     var presetsEl = tester.querySelector("[data-presets]");
     var keypad = tester.querySelector("[data-keypad]");
-    var toggles = tester.querySelector(".dz-toggles");
 
-    var state = { source: C.presets[0][1], kashida: 0, vowels: true, features: {} };
+    var state = { source: C.presets[0][1], kashida: 0, vowels: true };
     var lastRange = null;
 
     function render() {
@@ -300,24 +304,6 @@
       sizeInput.value = 44;
       sizeInput.dispatchEvent(new Event("input"));
     }
-
-    // OpenType feature toggles (stylistic sets etc.)
-    if (C.features && C.features.length) tester.querySelector(".dz-controls").classList.add("has-features");
-    (C.features || []).forEach(function (f) {
-      var b = chip(f.label, false);
-      b.title = f.title || "";
-      b.addEventListener("click", function () {
-        var on = b.getAttribute("aria-pressed") !== "true";
-        b.setAttribute("aria-pressed", on ? "true" : "false");
-        state.features[f.tag] = on;
-        stage.style.fontFeatureSettings =
-          Object.keys(state.features)
-            .filter(function (t) { return state.features[t]; })
-            .map(function (t) { return '"' + t + '" 1'; })
-            .join(", ") || "normal";
-      });
-      toggles.insertBefore(b, toggles.firstChild);
-    });
 
     // Toggles
     tester.querySelectorAll("[data-toggle]").forEach(function (btn) {

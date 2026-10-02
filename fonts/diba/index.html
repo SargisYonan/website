@@ -17,6 +17,9 @@
   <link rel="icon" href="../../img/favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="../../img/favicon.ico">
   <link rel="preload" href="Diba-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Syriac+Eastern:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../specimen/specimen.css">
   <style>
@@ -33,6 +36,7 @@
       --sp-hero-fit: 3.9;
       /* hhea 960/-560 and win 1240/840 both centre the same way. */
       --sp-base: 0.70;
+      --sp-xheight: 0.5;
       --sp-pad-top: 0.12em;
       --sp-metrics-h: 1.42em;
       --sp-metrics-size: clamp(120px, 26vw, 250px);
@@ -54,7 +58,7 @@
       <div class="dz-hero-stage" data-hero-stage></div>
       <div class="dz-hero-controls">
         <label class="dz-slider">
-          <span class="dz-slider-label">Kashida <output data-hero-out>0</output></span>
+          <span class="dz-slider-label"><span class="dz-syr-label" lang="syr" dir="rtl">ܡܓܪܢܐ</span> <output data-hero-out>0</output></span>
           <input type="range" min="0" max="10" step="1" value="0" data-hero-stretch>
         </label>
         <button type="button" class="dz-chip" data-hero-play aria-pressed="true">Pause</button>
@@ -62,7 +66,7 @@
       <p class="lede dz-hero-lede">
         Diba is a mid-century modern Assyrian typeface inspired by the calligraphic style of
         Issa Benyamin and the letterforms in his book
-        <span class="dz-inline-syr" lang="syr" dir="rtl">ܫܦܝܪܘܬ-ܟܬܝܒܬܐ: ܟܠܝܓܪܦܐ ܐܬܘܪܝܬܐ</span>,
+        <a class="dz-inline-syr" href="https://16209.rmwebopac.com/item/YF2zBolt1ESHSlLWcwZrmQ_tFCUl6V_bUCk20oxa64kGw" target="_blank" rel="noopener" lang="syr" dir="rtl">ܫܦܝܪܘܬ-ܟܬܝܒܬܐ: ܟܠܝܓܪܦܐ ܐܬܘܪܝܬܐ</a>,
         adapted with some twists of its own.
       </p>
       <div class="dz-actions">
@@ -97,7 +101,7 @@
               <input type="range" min="0.9" max="2.6" step="0.05" value="1.45" data-ctl="leading">
             </label>
             <label class="dz-slider">
-              <span class="dz-slider-label">Kashida <output data-out="kashida">0</output></span>
+              <span class="dz-slider-label"><span class="dz-syr-label" lang="syr" dir="rtl">ܡܓܪܢܐ</span> <output data-out="kashida">0</output></span>
               <input type="range" min="0" max="6" step="1" value="0" data-ctl="kashida">
             </label>
             <div class="dz-toggles">
@@ -181,6 +185,11 @@
     window.SPECIMEN = {
       name: "Diba",
       styles: [{ id: "regular", label: "Regular", family: '"Diba"' }],
+      letterNames: {
+        "ܐ": "Alap", "ܒ": "Bet", "ܕ": "Dalat", "ܖ": "Dotless Dalat-Resh", "ܚ": "Khet",
+        "ܝ": "Yud", "ܟ": "Kap", "ܠ": "Lamad", "ܣ": "Semkat", "ܤ": "Final Semkat",
+        "ܥ": "Eh", "ܦ": "Peh", "ܨ": "Sade", "ܩ": "Qop"
+      },
       heroWord: "ܕܒܐ",
       heroMax: 10,
       baseline: 0.70,
@@ -190,25 +199,25 @@
         { v: 0, label: "Baseline 0" },
         { v: -0.478, label: "Descender −478" }
       ],
-      ticker: ["ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ", "ܫܠܡܐ ܘܫܝܢܐ", "ܒܝܬ ܢܗܪ̈ܝܢ", "ܕܒܐ", "ܚܲܕ݇ ܒܢܝܼܣܵܢ", "ܣܪܓܝܤ ܝܘܢܢ"],
+      ticker: ["ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ", "ܫܠܡܐ ܘܫܝܢܐ", "ܒܝܬ ܢܗܪ̈ܝܢ", "ܕܒܐ", "ܚܕ݇ ܒܢܝܣܢ", "ܣܪܓܝܤ ܝܘܢܢ"],
       presets: [
         ["Greeting", "ܫܠܡܐ ܘܫܝܢܐ"],
         ["Bet Nahrain", "ܒܝܬ ܢܗܪ̈ܝܢ"],
-        ["Kha b'Nisan", "ܚܲܕ݇ ܒܢܝܼܣܵܢ"],
+        ["Kha b'Nisan", "ܚܕ݇ ܒܢܝܣܢ"],
         ["Alphabet", "ܐܒܓܕܗܘܙܚܛܝܟܠܡܢܣܥܦܨܩܪܫܬ"],
         ["Paragraph", "ܕܪܐ ܐܙܠ ܘܕܪܐ ܐܬܐ. ܘܐܪܥܐ ܠܥܠܡ ܩܝܡܐ. ܕܢܚ ܫܡܫܐ ܘܥܪܒ ܫܡܫܐ. ܡܢܐ ܝܘܬܪܢܐ ܠܒܪܢܫܐ ܒܟܠ ܥܡܠܐ ܕܗܘ ܥܡܠ ܬܚܝܬ ܫܡܫܐ."],
         ["Name", "ܣܪܓܝܤ ܝܘܢܢ"]
       ],
       waterfall: "ܕܪܐ ܐܙܠ ܘܕܪܐ ܐܬܐ. ܘܐܪܥܐ ܠܥܠܡ ܩܝܡܐ. ܕܢܚ ܫܡܫܐ ܘܥܪܒ ܫܡܫܐ. ܡܢܐ ܝܘܬܪܢܐ ܠܒܪܢܫܐ ܒܟܠ ܥܡܠܐ ܕܗܘ ܥܡܠ ܬܚܝܬ ܫܡܫܐ.",
       keypadMarks: ["\u0732", "\u0735", "\u0738", "\u0739", "\u073C", "\u073F", "\u0308", "\u0747"],
-      joinExtras: [["ܒܬܐ ܬܐ", "Taw–Alaph"]],
+      joinExtras: [["ܒܬܐ ܬܐ", "Taw–Alap"]],
       marks: [{
         items: [
-          ["\u0732", "Pthakha"], ["\u0735", "Zqapa"], ["\u0738", "Zlama Pshiqa"], ["\u0739", "Zlama Qashya"],
-          ["\u073C", "Hwasa / Esasa"], ["\u073F", "Rwakha"], ["\u0741", "Qushshaya"], ["\u0742", "Rukkakha"],
-          ["\u0747", "Talqana"], ["\u0308", "Seyame"], ["\u0711", "Superscript Alaph"], ["\u0303", "Tilde"],
+          ["\u0732", "Ptakha"], ["\u0735", "Zqapa"], ["\u0738", "Zlama Pshiqa"], ["\u0739", "Zlama Qashya"],
+          ["\u073C", "Khwasa"], ["\u073F", "Rwakha"], ["\u0741", "Qushshaya"], ["\u0742", "Rukkakha"],
+          ["\u0747", "Talqana"], ["\u0308", "Seyame"], ["\u0711", "Superscript Alap"], ["\u0303", "Majleana Top"],
           ["\u0304", "Macron"], ["\u0307", "Dot above"], ["\u0320", "Minus below"], ["\u0323", "Dot below"],
-          ["\u0324", "Two dots below"], ["\u032E", "Breve below"], ["\u0330", "Tilde below"], ["\u0331", "Macron below"]
+          ["\u0324", "Two dots below"], ["\u032E", "Breve below"], ["\u0330", "Majleana Bottom"], ["\u0331", "Macron below"]
         ]
       }],
       punct: "܀܁܂܅܊.:"

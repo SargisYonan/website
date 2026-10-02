@@ -5,6 +5,7 @@
      --sp-stroke      hairline stroke hiding seams between abutting glyphs
      --sp-hero-fit    hero word width in em at full stretch, plus margin
      --sp-base        baseline depth in em below the line top at line-height 1
+     --sp-xheight     x-height in em
      --sp-pad-top     inspector glyph offset from the top of its box
      --sp-metrics-h   inspector box height
      --sp-metrics-size inspector glyph size
@@ -63,11 +64,13 @@
   min-height: 0;
 }
 .dz-inline-syr {
-  font-family: var(--sp-font), serif;
-  font-size: 1.15em;
+  font-family: "Noto Sans Syriac Eastern", var(--font-sans);
+  font-weight: 600;
   unicode-bidi: isolate;
   white-space: nowrap;
 }
+a.dz-inline-syr { color: inherit; text-underline-offset: 3px; }
+a.dz-inline-syr:hover { opacity: 0.6; }
 
 .dz-actions {
   display: flex;
@@ -116,18 +119,25 @@
 }
 
 /* ---- Ticker ---------------------------------------------------------------- */
+/* The letter bodies (baseline to x-height) sit centred in the band, with
+   descenders hanging below: at line-height 1 the baseline is --sp-base
+   below the track's top, so the body's middle is at
+   (--sp-base - --sp-xheight / 2)em, which is moved to the band's middle. */
 .dz-ticker {
+  position: relative;
+  font-size: 44px;
+  height: 2em;
   background: var(--text);
   color: var(--bg);
   overflow: hidden;
-  padding: 14px 0 22px;
   margin: 8px 0 24px;
 }
 .dz-ticker-track {
+  position: absolute;
+  top: calc((1 - var(--sp-base) + var(--sp-xheight) / 2) * 1em);
   display: flex;
   width: max-content;
-  font-size: 44px;
-  line-height: 1.2;
+  line-height: 1;
   white-space: nowrap;
   animation: dz-ticker 60s linear infinite;
 }
@@ -153,6 +163,14 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+.dz-syr-label {
+  font-family: "Noto Sans Syriac Eastern", var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: 1;
 }
 .dz-slider output {
   font-family: var(--font-mono);
@@ -229,12 +247,6 @@ input[type="range"]:focus-visible { outline: 2px solid var(--focus-ring); outlin
   border-bottom: 1.5px solid var(--text);
 }
 .dz-toggles { display: flex; gap: 6px; flex-wrap: wrap; }
-/* Fonts with OpenType feature toggles get the toggles on their own row. */
-.dz-controls.has-features { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.dz-controls.has-features .dz-toggles { grid-column: 1 / -1; }
-@media (max-width: 760px) {
-  .dz-controls.has-features { grid-template-columns: minmax(0, 1fr); }
-}
 @media (max-width: 760px) {
   .dz-controls { grid-template-columns: minmax(0, 1fr); }
 }

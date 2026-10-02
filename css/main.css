@@ -270,48 +270,33 @@ button:focus-visible {
   text-transform: uppercase;
   color: var(--text);
 }
+/* The Assyrian name is set in Diba, sized to keep the block's original
+   footprint: each line spans the width Nohadra Sapna's did at
+   clamp(63px, 23.35vw, 260px), with the same first-line ink top, gap
+   between the lines, and layout height. */
 :root[dir="rtl"] .hero-name {
-  font-family: "NohadraSyriac-Sapna", var(--font-sans);
-  text-transform: none;
-  font-size: clamp(63px, 23.35vw, 260px);
-  position: relative;
-  top: -0.317em;
-  margin-bottom: -0.317em;
-}
-.hero-name span {
-  display: block;
-  font-size: clamp(40px, 14.7vw, 163px);
-}
-:root[dir="rtl"] .hero-name span {
-  font-size: clamp(63px, 23.35vw, 260px);
-}
-:root[dir="rtl"] .hero-name span + span {
-  margin-top: -0.5em;
-  position: relative;
-  top: 0.07em;
-}
-/* Every second switch to Assyrian sets the name in Diba. Sized so each
-   line spans the same width as in Nohadra Sapna (Diba is ~1.37x wider
-   per em), with the first line's ink top, the gap between the lines,
-   and the block's layout height matched to the Sapna setting above. */
-:root[dir="rtl"][data-hero-font="diba"] .hero-name {
   font-family: "Diba", var(--font-sans);
   font-weight: 400;
+  text-transform: none;
   letter-spacing: 0;
   line-height: 1;
   font-size: clamp(46px, 17.06vw, 190px);
+  position: relative;
   top: -0.049em;
   margin-bottom: -0.268em;
   /* Diba's joins abut exactly; a hairline stroke hides the
      anti-aliasing seams between glyphs at display sizes. */
   -webkit-text-stroke: 0.006em currentColor;
 }
-:root[dir="rtl"][data-hero-font="diba"] .hero-name span {
+.hero-name span {
+  display: block;
+  font-size: clamp(40px, 14.7vw, 163px);
+}
+:root[dir="rtl"] .hero-name span {
   font-size: clamp(46px, 17.06vw, 190px);
 }
-:root[dir="rtl"][data-hero-font="diba"] .hero-name span + span {
+:root[dir="rtl"] .hero-name span + span {
   margin-top: -0.344em;
-  top: 0;
 }
 
 /* ---- Sections ---------------------------------------------------------- */
