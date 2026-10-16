@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136338622-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-136338622-1');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eden — Sargis Yonan</title>
+  <meta name="description" content="Eden, an Eastern Syriac typeface for screens by Sargis Yonan, with every letter compared form by form against Ctesiphon, Ramsina and Noto.">
+
+  <link rel="icon" href="../../img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="../../img/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Syriac+Eastern:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../specimen/specimen.css">
+  <style>
+    /* Eden has no compiled font yet: every letter on this page is an SVG
+       drawn from the outlines in Eden.glyphs (see eden-data.js). */
+    .ed-syr { font-family: "Noto Sans Syriac Eastern", var(--font-sans); font-weight: 600; }
+    .ed-svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .ed-ink { fill: currentColor; }
+    .ed-ml { stroke: var(--border); stroke-width: 3; stroke-dasharray: 10 8; }
+    .ed-ml--base { stroke: var(--text); stroke-dasharray: none; stroke-width: 4; }
+    .ed-ml-label { font: 500 30px var(--font-mono); fill: var(--text-muted); }
+    .ed-empty { font: 700 34px var(--font-sans); fill: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* Hero */
+    .ed-hero-title { font-size: clamp(56px, 12vw, 120px); font-weight: 800; line-height: 1; letter-spacing: -0.03em; margin-top: 8px; }
+    .ed-hero-title { display: flex; align-items: baseline; min-height: 1.4em; }
+    .ed-hero-title.is-syriac { flex-direction: row-reverse; justify-content: flex-end; letter-spacing: 0; font-weight: 400; }
+    .ed-hero-title.is-syriac .ed-hero-word { font-family: "Eden", serif; font-size: 2.2em; line-height: 0; }
+    .ed-caret { display: inline-block; width: 0.06em; height: 0.8em; margin: 0 0.04em; background: currentColor; align-self: center; animation: ed-blink 1s steps(1) infinite; }
+    .ed-hero-title.is-typing .ed-caret { animation: none; }
+    .ed-hero-title.is-done .ed-caret { opacity: 0; transition: opacity .4s; animation: none; }
+    @keyframes ed-blink { 50% { opacity: 0; } }
+    .ed-hero-tag { font-size: clamp(20px, 3.4vw, 28px); font-weight: 700; line-height: 1.25; margin-top: 18px; max-width: 26ch; }
+
+    /* Text */
+    @font-face { font-family: "Eden"; src: url("Eden.ttf") format("truetype"); font-weight: 400; font-display: block; }
+    .ed-font { font-family: "Eden", serif; font-synthesis: none; }
+    .dz-hero .dz-inline-syr { font-family: "Eden", serif; font-weight: 400; font-synthesis: none; font-size: 1.3em; }
+    .dz-wf-text.ed-font { font-family: "Eden", serif; }
+    .ed-samples { border-top: 1.5px solid var(--text); }
+    .ed-sample { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: baseline; }
+    .ed-sample-label { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+    .ed-sample-text { font-family: "Eden", serif; text-align: right; overflow-wrap: anywhere; }
+    @media (max-width: 640px) { .ed-sample { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+
+    /* Spectrum */
+    .ed-spectrum { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1.5px solid var(--text); margin-top: 16px; }
+    .ed-spec-cell { margin: 0; padding: 10px 10px 0; display: flex; flex-direction: column; }
+    .ed-spec-cell + .ed-spec-cell { border-left: 1.5px solid var(--text); }
+    .ed-spec-cell .ed-svg { flex: 1; }
+    .ed-spec-cell figcaption span { color: var(--text-muted); }
+    .ed-scale {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted);
+      margin-top: 8px;
+    }
+    .ed-scale span:last-child { text-align: right; }
+    @media (max-width: 640px) {
+      .ed-spectrum { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ed-spec-cell:nth-child(3) { border-left: 0; }
+      .ed-spec-cell:nth-child(n + 3) { border-top: 1.5px solid var(--text); }
+      .ed-scale { display: none; }
+    }
+    .ed-spec-cell figcaption,
+    .ed-cell figcaption {
+      display: flex; justify-content: space-between; gap: 8px;
+      padding: 8px 4px 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .is-eden { background: var(--text); color: var(--bg); }
+    .is-eden .ed-ml { stroke: rgba(255, 255, 255, 0.28); }
+    .is-eden .ed-ml--base { stroke: var(--bg); }
+    .is-eden .ed-ml-label, .is-eden figcaption span { fill: rgba(255, 255, 255, 0.6); color: rgba(255, 255, 255, 0.6); }
+    .is-eden .ed-empty { fill: rgba(255, 255, 255, 0.5); }
+    .ed-spec-bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 14px; }
+    .ed-pick { display: flex; flex-wrap: wrap; gap: 6px; direction: rtl; }
+    .ed-chip-syr { font-family: "Eden", var(--font-sans); font-weight: 400; font-synthesis: none; font-size: 27px; line-height: 1; text-transform: none; min-width: 40px; }
+
+    /* Prose */
+    .ed-prose p { max-width: 68ch; }
+    .ed-prose p + p { margin-top: 14px; }
+    .ed-two {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      border: 1.5px solid var(--text); margin-top: 20px;
+    }
+    .ed-two > div { padding: 16px 18px 18px; }
+    .ed-two > div + div { border-left: 1.5px solid var(--text); }
+    .ed-two h3 { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+    .ed-two .ed-two-sub { font-size: 13px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+    .ed-two p { font-size: 16px; margin-top: 10px; }
+    @media (max-width: 700px) {
+      .ed-two { grid-template-columns: minmax(0, 1fr); }
+      .ed-two > div + div { border-left: 0; border-top: 1.5px solid var(--text); }
+    }
+
+    /* The test */
+      display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px;
+      padding: 14px 0; border-bottom: 1.5px solid var(--text);
+    }
+
+
+    /* Principles */
+    .ed-principles { counter-reset: p; list-style: none; padding: 0; margin: 20px 0 0; border-top: 1.5px solid var(--text); }
+    .ed-principles li { counter-increment: p; padding: 16px 0 18px; border-bottom: 1.5px solid var(--text); }
+    .ed-principles li::before { content: counter(p, decimal-leading-zero); font: 500 12px/1 var(--font-mono); color: var(--text-muted); }
+    .ed-principles h3 { font-size: 18px; font-weight: 800; line-height: 1.25; margin-top: 8px; }
+    .ed-principles p { font-size: 15px; margin-top: 6px; color: var(--text-muted); max-width: 68ch; }
+
+    /* Grid diagram */
+    .ed-grid-fig { border: 1.5px solid var(--text); margin-top: 20px; padding: 10px; }
+    .ed-grid-fig { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 20px; direction: rtl; }
+    @media (max-width: 560px) { .ed-grid-fig { grid-template-columns: minmax(0, 1fr); } }
+    .ed-grid-fig .ed-svg { direction: ltr; }
+    .ed-grid-word { font-family: "Eden", serif; font-size: 1000px; fill: var(--text); }
+    .ed-band { stroke: var(--border); stroke-width: 3; }
+    .ed-col { stroke: rgba(0, 0, 0, 0.05); stroke-width: 2; }
+    .ed-shleta { fill: rgba(0, 0, 0, 0.06); }
+
+
+    .ed-letters-empty { margin-top: 20px; padding: 28px 16px; border: 1.5px dashed var(--border); color: var(--text-muted); font-size: 14px; text-align: center; }
+    .ed-letter { border: 1.5px solid var(--text); margin-top: 20px; scroll-margin-top: 72px; }
+    .ed-letter[hidden] { display: none; }
+    .ed-letter-head { display: flex; align-items: center; gap: 16px; padding: 12px 16px; border-bottom: 1.5px solid var(--text); }
+    .ed-letter-char { font-family: "Noto Sans Syriac Eastern", var(--font-sans); font-size: 40px; line-height: 1; min-width: 44px; text-align: center; }
+    .ed-letter-head > div { flex: 1; min-width: 0; }
+    .ed-letter-name { font-size: 22px; font-weight: 800; line-height: 1.1; }
+    .ed-letter-meta { font: 500 12px/1.3 var(--font-mono); color: var(--text-muted); margin-top: 3px; }
+    .ed-status { font: 800 11px/1 var(--font-sans); letter-spacing: 0.06em; text-transform: uppercase; padding: 7px 9px; border: 1.5px solid var(--text); white-space: nowrap; }
+    .ed-status--drafting, .ed-status--settled { background: var(--text); color: var(--bg); }
+    .ed-status--todo { color: var(--text-muted); border-color: var(--border); }
+    .ed-status--sketch { border-style: dashed; }
+
+    .ed-compare, .ed-forms { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .ed-forms { border-top: 1.5px solid var(--text); grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .ed-cell { margin: 0; padding: 6px 6px 0; }
+    .ed-compare .ed-cell + .ed-cell { border-left: 1.5px solid var(--text); }
+    .ed-forms .ed-cell:first-child { grid-column: 3; }
+    .ed-cell figcaption { padding: 6px 2px 8px; }
+    @media (max-width: 560px) {
+      .ed-compare { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ed-compare .ed-cell:nth-child(3) { border-left: 0; }
+      .ed-compare .ed-cell:nth-child(n + 3) { border-top: 1.5px solid var(--text); }
+      .ed-forms { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ed-forms .ed-cell:first-child { grid-column: 1; }
+    }
+
+    .ed-form-row + .ed-form-row { border-top: 1.5px solid var(--text); }
+    .ed-form-row-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 8px 16px; border-bottom: 1px solid var(--border); }
+    .ed-form-row-head b { font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .ed-form-row-head span { font-size: 13px; color: var(--text-muted); }
+    .ed-form-row-head code { font: 500 11px/1.3 var(--font-mono); color: var(--text-muted); }
+    .ed-row-state { margin-left: auto; font: 800 10px/1 var(--font-sans); font-style: normal; letter-spacing: .06em; text-transform: uppercase; padding: 4px 6px; border: 1.5px solid var(--text); }
+    .ed-row-state--drawn { background: var(--text); color: var(--bg); }
+    .ed-row-state--stand-in { background: #1f5fd6; border-color: #1f5fd6; color: #fff; }
+    .ed-row-state--not-drawn, .ed-row-state--base-only { border-style: dashed; color: var(--text-muted); }
+    .is-eden.is-standin .ed-ink { fill: #7fa6ff; }
+    .ed-letter-head + .ed-form-row { border-top: 0; }
+    .ed-modules { border-collapse: collapse; margin: 6px 0 20px; font-size: 15px; }
+    .ed-modules th { text-align: left; font-weight: 700; padding: 5px 16px 5px 0; white-space: nowrap; vertical-align: top; }
+    .ed-modules td { padding: 5px 0; color: var(--text-muted); }
+    .ed-modules tr + tr { border-top: 1px solid var(--border); }
+    .ed-open { margin: 0 16px 14px; padding: 10px 14px; border: 1.5px dashed var(--text); }
+    .ed-letter > .ed-open:nth-child(2) { margin-top: 14px; }
+    .ed-open-label { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+    .ed-open ul { margin: 6px 0 0; padding-left: 18px; font-size: 15px; }
+    .ed-compare + .ed-open, .ed-forms + .ed-open { margin-top: 14px; }
+
+    /* Parts */
+    .ed-parts {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      margin-top: 16px; border-top: 1.5px solid var(--text); border-left: 1.5px solid var(--text);
+    }
+    .ed-part { margin: 0; padding: 6px 6px 0; border-right: 1.5px solid var(--text); border-bottom: 1.5px solid var(--text); scroll-margin-top: 72px; }
+    .ed-part:target { background: var(--bg-elevated); }
+    .ed-part figcaption { display: flex; flex-direction: column; gap: 4px; padding: 6px 4px 10px; }
+    .ed-part figcaption b { font: 600 12px/1.3 var(--font-mono); overflow-wrap: anywhere; }
+    .ed-part-users { display: flex; flex-wrap: wrap; gap: 4px; direction: rtl; justify-content: flex-end; color: var(--text-muted); }
+    .ed-part-users a {
+      font-family: "Eden", var(--font-sans); font-weight: 400; font-synthesis: none; font-size: 24px; line-height: 1;
+      min-width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--text); color: var(--text); text-decoration: none;
+    }
+    /* Eden's letters fill only the lower half of its line box: lift them to
+       the middle of a button. */
+    .ed-syr-lift { position: relative; top: -0.28em; }
+    .ed-part-users a:hover { background: var(--text); color: var(--bg); }
+    .ed-subhead { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 24px; }
+    .ed-letter-note { margin: 6px 0 0; font-size: 13px; line-height: 1.4; max-width: 60ch; }
+    .ed-letter-note code { font-size: 12px; }
+    .ed-checklist { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 10px 16px 0; }
+    .ed-checklist > span:first-child { font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-right: 4px; }
+    .ed-form-chip { font: 700 11px/1 var(--font-sans); letter-spacing: 0.04em; text-transform: uppercase; padding: 6px 8px; border: 1.5px dashed var(--border); color: var(--text-muted); }
+    .ed-form-chip.is-drawn { border: 1.5px solid var(--text); background: var(--text); color: var(--bg); }
+    .ed-form-chip.is-filled { border: 1.5px solid #1f5fd6; background: #1f5fd6; color: #fff; }
+
+    .ed-foot-note { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="back-link" href="../../">← Sargis Yonan</a>
+  </header>
+
+  <main class="dz">
+
+    <!-- Hero -->
+    <section class="wrap dz-hero">
+      <div class="eyebrow">Typeface · Pre-Release</div>
+      <h1 class="ed-hero-title" aria-label="Eden" data-hero-title><span class="ed-hero-word" aria-hidden="true">Eden</span><span class="ed-caret" aria-hidden="true"></span></h1>
+      <p class="ed-hero-tag">A recognizable, modern Syriac script.</p>
+      <p class="lede dz-hero-lede">
+        Eden is an Eastern Syriac (<span class="dz-inline-syr" lang="syr" dir="rtl">ܡܕܢܚܝܐ</span>) typeface
+        made primarily for digital text. It keeps the structure, contrast and silhouettes that make written
+        Assyrian recognizable, and redraws them as type instead of imitating ink on paper.
+      </p>
+      <dl class="dz-facts">
+        <div><dt>Script</dt><dd>Syriac, Eastern</dd></div>
+        <div><dt>Grid</dt><dd>100u bands</dd></div>
+        <div><dt>Weight</dt><dd>Regular</dd></div>
+      </dl>
+    </section>
+
+    <!-- The problem -->
+    <section class="block" id="problem">
+      <div class="wrap ed-prose">
+        <div class="eyebrow">The problem</div>
+        <p>Digital Eastern Syriac fonts mostly go one of two ways: they copy ink on a manuscript, or they forget it altogether.</p>
+        <div class="ed-two">
+          <div>
+            <h3>Skeuomorphic</h3>
+            <p>
+              These keep everything a broad nib cut at 5–20° leaves behind: chisel-cut tips, wedge entries,
+              hairline flicks, strokes that swell where the ink pooled. On a screen there's no tool, and the
+              hairlines drop out and the tips alias at text sizes.
+            </p>
+          </div>
+          <div>
+            <h3>Flattened</h3>
+            <p>
+              These fonts fix rendering issues by removing contrast: one weight, straight diagonals, the same
+              ending everywhere. It's clean, but letters lose the features that tell them apart and make the
+              text look Assyrian. It's a Latin sans applied to a script that doesn't work that way.
+            </p>
+          </div>
+        </div>
+        <p style="margin-top: 20px;">Eden sits between them. For each stroke, end and swell in the traditional letters, it asks whether the letter needs it or only the pen made it. What tells letters apart stays, what the script needs but the pen shaped is redrawn, and what only the pen made goes.</p>
+      </div>
+    </section>
+
+    <!-- Spectrum -->
+    <section class="block" id="spectrum">
+      <div class="wrap">
+        <div class="eyebrow">Where Eden sits</div>
+        <div class="ed-scale" aria-hidden="true"><span>← Ink on paper</span><span></span><span></span><span>Flat geometry →</span></div>
+        <div class="ed-spectrum" data-spectrum></div>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section class="block" id="principles">
+      <div class="wrap">
+        <div class="eyebrow">Principles</div>
+        <ol class="ed-principles">
+          <li><h3>Every letter has to be recognizable.</h3><p>Someone who learned to read from the scribal hand should know each letter right away. If simplifying a shape makes it harder to read, the shape stays.</p></li>
+          <li><h3>Contrast comes from how the letter is written.</h3><p>Some strokes are heavier than others because that's how the letter goes: Alap's stem, Lamad's tapering diagonal. Nothing is shaped to look like a nib cut it.</p></li>
+          <li><h3>Turns end round, lifts end flat.</h3><p>Where the pen turned at the end of a stroke, the end is round, like Alap's head and Gamal's tail. Where the pen lifted, the stroke stops flat. Sharp points are left where two curves meet and on the teeth.</p></li>
+          <li><h3>The Shleṭa holds the word together.</h3><p>The baseline stroke is 100 units tall and flat in every letter, and every join happens on it. The letters' feet are drawn to its height.</p></li>
+          <li><h3>Letters are made of shared parts.</h3><p>Stems, bowls, teeth and the Shleṭa are drawn once on a 50-unit grid and reused (see <a href="#parts">Parts</a>). Fix a part and every letter that uses it is fixed too.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <section class="block" id="grid">
+      <div class="wrap">
+        <div class="eyebrow">Grid &amp; metrics</div>
+        <div class="ed-grid-fig" data-grid></div>
+      </div>
+    </section>
+
+    <!-- Text -->
+    <section class="block" id="text">
+      <div class="wrap">
+        <div class="eyebrow">Text</div>
+        <div class="dz-tester ed-tester" data-ed-tester>
+          <div class="dz-controls">
+            <label class="dz-slider">
+              <span class="dz-slider-label">Size <output data-ed-out="size">72px</output></span>
+              <input type="range" min="12" max="200" step="1" value="72" data-ed-ctl="size">
+            </label>
+            <label class="dz-slider">
+              <span class="dz-slider-label">Leading <output data-ed-out="leading">1.6</output></span>
+              <input type="range" min="1" max="2.6" step="0.05" value="1.6" data-ed-ctl="leading">
+            </label>
+            <div class="dz-toggles">
+              <button type="button" class="dz-chip" data-ed-invert aria-pressed="false">Invert</button>
+            </div>
+          </div>
+          <div class="dz-stage ed-font" lang="syr" dir="rtl" contenteditable="true" spellcheck="false" data-ed-stage aria-label="Editable sample text"></div>
+        </div>
+        <h3 class="ed-subhead">Waterfall</h3>
+        <div class="dz-waterfall" data-ed-waterfall></div>
+        <h3 class="ed-subhead">Samples</h3>
+        <div class="ed-samples" data-ed-samples></div>
+      </div>
+    </section>
+
+    <!-- Parts -->
+    <section class="block" id="parts">
+      <div class="wrap">
+        <div class="eyebrow">Parts</div>
+        <div class="ed-parts" data-parts></div>
+      </div>
+    </section>
+
+    <!-- Letters -->
+    <section class="block" id="letters">
+      <div class="wrap">
+        <div class="eyebrow">Letter log</div>
+        <div class="ed-spec-bar">
+          <div class="ed-pick" data-index role="group" aria-label="Letters"></div>
+          <div class="dz-toggles">
+            <button type="button" class="dz-chip" data-toggle="metrics" aria-pressed="true">Metrics</button>
+          </div>
+        </div>
+        <div data-letters></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Eden © 2026 Sargis Yonan</span>
+      <p class="ed-foot-note">Reference outlines: SyrCOM Ctesiphon © 2002 Beth Mardutho: The Syriac Institute (Meltho license); Ramsina © SIL International (SIL OFL); Noto Sans Syriac Eastern © Google (SIL OFL).</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+  <script src="eden-data.js"></script>
+  <script src="log.js"></script>
+  <script src="eden.js"></script>
+</body>
+</html>

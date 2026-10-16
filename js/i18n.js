@@ -32,6 +32,12 @@
       syr: "ܓܪܫܐ ܕܟܬܒ݂ܐ، ܒܨܘܪܬܐ ܕܟܠܝܓܪܦ̮ܐ ܕܐܘܡܢܐ ܥܝܣܐ ܒܢܝܡܝܢ."
     },
     "font-label-diba": { en: "Specimen", syr: "ܛܘܦ̮ܣܐ" },
+    "proj-eden-title": { en: "Eden", syr: "ܥܕܢ" },
+    "proj-eden-desc": {
+      en: "A modern digital-first Eastern Syriac typeface (Pre-Release)",
+      syr: "ܓܪܫܐ ܕܟܬܒ݂ܐ ܚܕܬܐ ܒܟܬܒ݂ܐ ܡܕܢܚܝܐ."
+    },
+    "font-label-eden": { en: "Specimen", syr: "ܛܘܦ̮ܣܐ" },
     "proj-nohadra-title": { en: "The Nohadra Syriac Fonts Collection", syr: "ܟܢܘܫܝܐ ܕܦ̮ܘܢܬ ܕܢܘܗܕܪܐ" },
     "font-label-sapna": { en: "Sapna", syr: "ܨܦܢܐ" },
     "font-label-amedia": { en: "Amedia", syr: "ܐܡܕܝܐ" },
