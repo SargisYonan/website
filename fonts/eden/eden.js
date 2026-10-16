@@ -329,8 +329,12 @@
       }
     });
     // Links from elsewhere on the page (a part's letters) and on load.
-    window.addEventListener("hashchange", function () { showLetter(location.hash.slice(1), true); });
-    showLetter(location.hash.slice(1), true);
+    // Only #l-… links pick a letter; a section link (#grid) leaves it alone.
+    function linked() { return /^#l-/.test(location.hash) ? location.hash.slice(1) : null; }
+    window.addEventListener("hashchange", function () { if (linked()) showLetter(linked(), true); });
+    // A letter linked to opens (and scrolls into view); otherwise Alap is open.
+    if (linked()) showLetter(linked(), true);
+    else showLetter("l-alap", false);
   }
 
   /* ---- Text ------------------------------------------------------------- */
