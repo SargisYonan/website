@@ -36,7 +36,7 @@
     .ed-hero-title { font-size: clamp(56px, 12vw, 120px); font-weight: 800; line-height: 1; letter-spacing: -0.03em; margin-top: 8px; }
     .ed-hero-title { display: flex; align-items: baseline; min-height: 1.4em; }
     .ed-hero-title.is-syriac { flex-direction: row-reverse; justify-content: flex-end; letter-spacing: 0; font-weight: 400; }
-    .ed-hero-title.is-syriac .ed-hero-word { font-family: "Eden", serif; font-size: 2.2em; line-height: 0; }
+    .ed-hero-title.is-syriac .ed-hero-word { font-family: "Eden", serif; font-size: 2.2em; line-height: 0; position: relative; top: 0.2em; }
     .ed-caret { display: inline-block; width: 0.06em; height: 0.8em; margin: 0 0.04em; background: currentColor; align-self: center; animation: ed-blink 1s steps(1) infinite; }
     .ed-hero-title.is-typing .ed-caret { animation: none; }
     .ed-hero-title.is-done .ed-caret { opacity: 0; transition: opacity .4s; animation: none; }
@@ -44,10 +44,10 @@
     .ed-hero-tag { font-size: clamp(20px, 3.4vw, 28px); font-weight: 700; line-height: 1.25; margin-top: 18px; max-width: 26ch; }
 
     /* Text */
-    @font-face { font-family: "Eden"; src: url("Eden.ttf") format("truetype"); font-weight: 400; font-display: block; }
+    @font-face { font-family: "Eden"; src: url("Eden-Variable.ttf") format("truetype-variations"), url("Eden-Variable.ttf") format("truetype"); font-weight: 200 700; font-display: block; }
     .ed-font { font-family: "Eden", serif; font-synthesis: none; }
-    .dz-hero .dz-inline-syr { font-family: "Eden", serif; font-weight: 400; font-synthesis: none; font-size: 1.3em; }
-    .dz-wf-text.ed-font { font-family: "Eden", serif; }
+    .dz-hero .dz-inline-syr { font-family: "Eden", serif; font-weight: 400; font-synthesis: none; font-size: 1.3em; line-height: 0; }
+    .dz-wf-text.ed-font { font-family: "Eden", serif; line-height: 1.2; }
     .ed-samples { border-top: 1.5px solid var(--text); }
     .ed-sample { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: baseline; }
     .ed-sample-label { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
@@ -83,9 +83,36 @@
     .is-eden .ed-ml--base { stroke: var(--bg); }
     .is-eden .ed-ml-label, .is-eden figcaption span { fill: rgba(255, 255, 255, 0.6); color: rgba(255, 255, 255, 0.6); }
     .is-eden .ed-empty { fill: rgba(255, 255, 255, 0.5); }
-    .ed-spec-bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 14px; }
-    .ed-pick { display: flex; flex-wrap: wrap; gap: 6px; direction: rtl; }
-    .ed-chip-syr { font-family: "Eden", var(--font-sans); font-weight: 400; font-synthesis: none; font-size: 27px; line-height: 1; text-transform: none; min-width: 40px; }
+    /* Letter log: a weight slider, then a character map of the Syriac letters, by code point */
+    .ed-log-weight { max-width: 320px; margin-top: 14px; }
+    .ed-charmap { display: grid; grid-template-columns: 48px repeat(var(--cols, 16), minmax(0, 1fr)); margin-top: 14px; border-top: 1.5px solid var(--text); border-left: 1.5px solid var(--text); }
+    .ed-cm-head, .ed-cm-cell { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .ed-cm-head { display: flex; align-items: center; justify-content: center; font: 500 11px/1 var(--font-mono); color: var(--text-muted); padding: 6px 0; }
+    .ed-cm-row { justify-content: flex-start; padding-left: 8px; }
+    .ed-cm-cell {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+      min-height: 70px; padding: 8px 0 6px; background: none; color: var(--text); font: inherit; border-top: 0; border-left: 0;
+    }
+    .ed-cm-char { font-family: "Eden", var(--font-sans); font-weight: inherit; font-synthesis: none; font-size: 42px; line-height: 1; height: 30px; display: flex; align-items: center; }
+    .ed-cm-code { font: 500 9px/1 var(--font-mono); color: var(--text-muted); }
+    .ed-cm-svg { height: 40px; width: 30px; margin: -6px 0 -2px; fill: currentColor; overflow: visible; }
+    .ed-cm-empty { width: 18px; height: 18px; border: 1px dashed var(--text-muted); opacity: 0.6; }
+    button.ed-cm-cell { cursor: pointer; }
+    button.ed-cm-cell:hover { background: var(--border); }
+    button.ed-cm-cell:focus-visible { outline: 2px solid var(--text); outline-offset: -3px; }
+    button.ed-cm-cell[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+    button.ed-cm-cell[aria-pressed="true"] .ed-cm-code { color: var(--bg); opacity: 0.7; }
+    .ed-cm-cell.is-none { background: repeating-linear-gradient(135deg, transparent 0 5px, var(--border) 5px 6px); }
+    .ed-cm-lig { grid-column: span 2; }
+    .ed-cm-gap { grid-column: span var(--rest, 1); border-right: 1.5px solid var(--text); border-bottom: 1px solid var(--border); }
+    .ed-charmap .ed-cm-end { border-right: 1.5px solid var(--text); }
+    .ed-charmap .ed-cm-last { border-bottom: 1.5px solid var(--text); }
+    @media (max-width: 640px) {
+      .ed-charmap { grid-template-columns: 44px repeat(var(--cols, 8), minmax(0, 1fr)); }
+      .ed-cm-cell { min-height: 60px; }
+      .ed-cm-char { font-size: 34px; height: 26px; }
+      .ed-cm-svg { height: 36px; margin: -6px 0 -2px; }
+    }
 
     /* Prose */
     .ed-prose p { max-width: 68ch; }
@@ -103,12 +130,6 @@
       .ed-two { grid-template-columns: minmax(0, 1fr); }
       .ed-two > div + div { border-left: 0; border-top: 1.5px solid var(--text); }
     }
-
-    /* The test */
-      display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px;
-      padding: 14px 0; border-bottom: 1.5px solid var(--text);
-    }
-
 
     /* Principles */
     .ed-principles { counter-reset: p; list-style: none; padding: 0; margin: 20px 0 0; border-top: 1.5px solid var(--text); }
@@ -132,7 +153,7 @@
     .ed-letter { border: 1.5px solid var(--text); margin-top: 20px; scroll-margin-top: 72px; }
     .ed-letter[hidden] { display: none; }
     .ed-letter-head { display: flex; align-items: center; gap: 16px; padding: 12px 16px; border-bottom: 1.5px solid var(--text); }
-    .ed-letter-char { font-family: "Noto Sans Syriac Eastern", var(--font-sans); font-size: 40px; line-height: 1; min-width: 44px; text-align: center; }
+    .ed-letter-char { font-family: "Eden", var(--font-sans); font-weight: 400; font-synthesis: none; font-size: 60px; line-height: 1; min-width: 52px; text-align: center; }
     .ed-letter-head > div { flex: 1; min-width: 0; }
     .ed-letter-name { font-size: 22px; font-weight: 800; line-height: 1.1; }
     .ed-letter-meta { font: 500 12px/1.3 var(--font-mono); color: var(--text-muted); margin-top: 3px; }
@@ -193,7 +214,7 @@
     }
     /* Eden's letters fill only the lower half of its line box: lift them to
        the middle of a button. */
-    .ed-syr-lift { position: relative; top: -0.28em; }
+    .ed-syr-lift { position: relative; top: -0.08em; }
     .ed-part-users a:hover { background: var(--text); color: var(--bg); }
     .ed-subhead { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 24px; }
     .ed-letter-note { margin: 6px 0 0; font-size: 13px; line-height: 1.4; max-width: 60ch; }
@@ -228,7 +249,7 @@
       <dl class="dz-facts">
         <div><dt>Script</dt><dd>Syriac, Eastern</dd></div>
         <div><dt>Grid</dt><dd>100u bands</dd></div>
-        <div><dt>Weight</dt><dd>Regular</dd></div>
+        <div><dt>Weights</dt><dd>ExtraLight to Bold, variable</dd></div>
       </dl>
     </section>
 
@@ -301,8 +322,12 @@
               <input type="range" min="12" max="200" step="1" value="72" data-ed-ctl="size">
             </label>
             <label class="dz-slider">
-              <span class="dz-slider-label">Leading <output data-ed-out="leading">1.6</output></span>
-              <input type="range" min="1" max="2.6" step="0.05" value="1.6" data-ed-ctl="leading">
+              <span class="dz-slider-label">Leading <output data-ed-out="leading">1.2</output></span>
+              <input type="range" min="0.8" max="2.2" step="0.05" value="1.2" data-ed-ctl="leading">
+            </label>
+            <label class="dz-slider">
+              <span class="dz-slider-label">Weight <output data-ed-out="weight">400</output></span>
+              <input type="range" min="200" max="700" step="1" value="400" data-ed-ctl="weight">
             </label>
             <div class="dz-toggles">
               <button type="button" class="dz-chip" data-ed-invert aria-pressed="false">Invert</button>
@@ -310,6 +335,8 @@
           </div>
           <div class="dz-stage ed-font" lang="syr" dir="rtl" contenteditable="true" spellcheck="false" data-ed-stage aria-label="Editable sample text"></div>
         </div>
+        <h3 class="ed-subhead">Weights</h3>
+        <div class="ed-samples" data-ed-weights></div>
         <h3 class="ed-subhead">Waterfall</h3>
         <div class="dz-waterfall" data-ed-waterfall></div>
         <h3 class="ed-subhead">Samples</h3>
@@ -329,12 +356,11 @@
     <section class="block" id="letters">
       <div class="wrap">
         <div class="eyebrow">Letter log</div>
-        <div class="ed-spec-bar">
-          <div class="ed-pick" data-index role="group" aria-label="Letters"></div>
-          <div class="dz-toggles">
-            <button type="button" class="dz-chip" data-toggle="metrics" aria-pressed="true">Metrics</button>
-          </div>
-        </div>
+        <label class="dz-slider ed-log-weight">
+          <span class="dz-slider-label">Weight <output data-ed-log-out>400</output></span>
+          <input type="range" min="200" max="700" step="1" value="400" data-ed-log-weight>
+        </label>
+        <div class="ed-charmap" data-index role="group" aria-label="Syriac letters by Unicode code point"></div>
         <div data-letters></div>
       </div>
     </section>

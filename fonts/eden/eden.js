@@ -16,7 +16,22 @@
     { key: "noto", label: "Noto", note: "Geometric" }
   ];
 
-  var state = { metrics: true, letter: null };
+  var state = { metrics: true, letter: null, wght: 400 };
+
+  // Every card the character map can open: the letters in the log, then a
+  // plain card for each other character Eden has (eden-data.js "chars").
+  var ENTRIES = LOG.slice();
+  var BY_CHAR = {};
+  LOG.forEach(function (e) { BY_CHAR[e.char] = e; });
+  Object.keys(DATA.chars || {}).forEach(function (hex) {
+    var c = DATA.chars[hex], ch = String.fromCodePoint(parseInt(hex, 16));
+    if (BY_CHAR[ch]) return;
+    var cp = parseInt(hex, 16);
+    var e = { char: ch, name: c.n, glyph: c.g, id: "u-" + hex.toLowerCase(), mark: !!c.mark,
+              kind: c.mark ? "Mark" : (cp >= 0x0710 && cp <= 0x072F) || cp === 0x0640 ? "" : "Punctuation" };
+    ENTRIES.push(e);
+    BY_CHAR[ch] = e;
+  });
 
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
@@ -24,6 +39,54 @@
     return String(s).replace(/[&<>"]/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
     });
+  }
+
+  /* ---- Weights ----------------------------------------------------------- */
+  // The letter log's weight slider. eden-data.js carries each letter form in
+  // every master (g.m, by master id) and Noto at the matching weights
+  // (refsAt); a weight between two masters interpolates their outlines,
+  // which match command for command.
+  var MASTERS = DATA.masters || [{ id: "m01", wght: 400 }];
+  var NUM = /-?\d*\.?\d+/g;
+
+  function bracket(stops, w) {
+    for (var i = 0; i < stops.length - 1; i++) {
+      if (w <= stops[i + 1]) return [i, Math.max(0, Math.min(1, (w - stops[i]) / (stops[i + 1] - stops[i])))];
+    }
+    return [stops.length - 2, 1];
+  }
+
+  function lerpGlyph(a, b, t, base) {
+    if (!a || !b) return base;
+    if (t === 0) return a;
+    if (t === 1) return b;
+    var nb = b.d.match(NUM) || [], i = 0;
+    var d = a.d.replace(NUM, function (v) { var o = +v + (+nb[i++] - +v) * t; return String(Math.round(o * 10) / 10); });
+    if (i !== nb.length) return base;
+    var out = { w: a.w + (b.w - a.w) * t, d: d };
+    if (a.b && b.b) out.b = a.b.map(function (v, k) { return v + (b.b[k] - v) * t; });
+    return out;
+  }
+
+  // An Eden glyph at the slider's weight (its Regular drawing if a master is missing).
+  function edenAt(g) {
+    if (!g || !g.d || state.wght === 400 || !g.m) return g;
+    var stops = MASTERS.map(function (m) { return m.wght; });
+    var bt = bracket(stops, state.wght);
+    function v(m) { return m.id === "m01" ? g : g.m[m.id] && { w: g.m[m.id][0], d: g.m[m.id][1], b: g.m[m.id][2] }; }
+    var r = lerpGlyph(v(MASTERS[bt[0]]), v(MASTERS[bt[0] + 1]), bt[1], g);
+    return r === g ? g : Object.assign({}, g, r);
+  }
+
+  // A reference glyph at the slider's weight: Noto follows (refsAt), the others are fixed.
+  function refAt(src, pick) {
+    var at = DATA.refsAt && DATA.refsAt[src];
+    if (!at) return pick(DATA.refs[src]);
+    var stops = MASTERS.map(function (m) { return m.wght; });
+    var bt = bracket(stops, state.wght);
+    function v(w) { return w === 400 ? pick(DATA.refs[src]) : at[w] && pick(at[w]); }
+    var base = pick(DATA.refs[src]);
+    return lerpGlyph(v(stops[bt[0]]), v(stops[bt[0] + 1]), bt[1], base);
   }
 
   function edenGlyph(name) {
@@ -76,12 +139,14 @@
   }
   // A reference font's glyph for one form of a letter, as HarfBuzz picks it
   // (exported by tools/build_proof.py).
-  function refForm(src, entry, suffix) {
-    var ref = DATA.refs[src];
+  function refForm(src, entry, suffix, weighted) {
     var ch = entry.ref || entry.char;
-    if (!ref) return null;
-    if (!suffix) return ref[ch] || null;
-    return ref.forms && ref.forms[ch] && ref.forms[ch][suffix] || null;
+    if (!DATA.refs[src]) return null;
+    function pick(ref) {
+      if (!suffix) return ref[ch] || null;
+      return ref.forms && ref.forms[ch] && ref.forms[ch][suffix] || null;
+    }
+    return weighted ? refAt(src, pick) : pick(DATA.refs[src]);
   }
   // Eden's lead form, and the same form in the reference fonts.
   function glyphFor(src, entry) {
@@ -125,7 +190,9 @@
       '" role="img" aria-label="' + esc(opts.label || "") + '">';
     if (state.metrics || opts.metrics) out += metricLines(f, opts.labels);
     if (g) {
-      out += '<g transform="translate(' + (-g.w / 2) + ' 0) scale(1 -1)">';
+      // A mark has no advance: centre it on its ink.
+      var cx = g.w || !g.b ? g.w / 2 : (g.b[0] + g.b[2]) / 2;
+      out += '<g transform="translate(' + (-cx) + ' 0) scale(1 -1)">';
       out += '<path class="ed-ink" d="' + g.d + '"/>';
       out += "</g>";
     } else {
@@ -195,7 +262,7 @@
     var cellsByRow = rows.map(function (x) {
       var suffix = x.baseOnly ? "" : suffixOf(entry, x.name);
       return SOURCES.map(function (s) {
-        return s.key === "eden" ? (x.g && x.g.d ? x.g : null) : refForm(s.key, entry, suffix);
+        return s.key === "eden" ? (x.g && x.g.d ? edenAt(x.g) : null) : refForm(s.key, entry, suffix, true);
       });
     });
     var f = frame([].concat.apply([], cellsByRow));
@@ -205,7 +272,7 @@
     var optional = (DATA.dlig || []).indexOf(entry.char) >= 0;
     var html =
       '<header class="ed-letter-head">' +
-        '<span class="ed-letter-char" lang="syr">' + entry.char + "</span>" +
+        '<span class="ed-letter-char" lang="syr" style="font-weight:' + state.wght + '">' + shownChar(entry) + "</span>" +
         '<div><h3 class="ed-letter-name">' + entry.name + '</h3><div class="ed-letter-meta">' + meta + "</div>" +
           (optional ? '<p class="ed-letter-note">Optional: off by default. Turn it on with discretionary ligatures ' +
             '(<code>font-variant-ligatures: discretionary-ligatures</code> in CSS, or the Discretionary Ligatures ' +
@@ -215,8 +282,8 @@
     html += rows.map(function (x, r) {
       var suffix = x.baseOnly ? "" : suffixOf(entry, x.name);
       return '<div class="ed-form-row">' +
-        '<div class="ed-form-row-head"><b>' + esc(x.label) + "</b>" +
-        (FORM_NOTE[suffix] ? "<span>" + esc(FORM_NOTE[suffix]) + "</span>" : "") +
+        '<div class="ed-form-row-head"><b>' + esc(entry.kind || x.label) + "</b>" +
+        (!entry.kind && FORM_NOTE[suffix] ? "<span>" + esc(FORM_NOTE[suffix]) + "</span>" : "") +
         '<code>' + esc(x.name) + (x.g.x === 0 ? " · not exported" : "") + "</code>" +
         "</div>" +
         '<div class="ed-compare">' + SOURCES.map(function (s, i) {
@@ -287,27 +354,103 @@
 
   // One letter at a time: the one picked in the index (or linked to as
   // #l-name), or none.
-  function letterId(e) { return "l-" + e.name.toLowerCase(); }
+  function letterId(e) { return e.id || "l-" + e.name.toLowerCase(); }
 
   function renderLetters() {
-    var e = LOG.filter(function (x) { return letterId(x) === state.letter; })[0];
+    var e = ENTRIES.filter(function (x) { return letterId(x) === state.letter; })[0];
     $("[data-letters]").innerHTML = e
       ? '<article class="ed-letter" id="' + letterId(e) + '" data-status="' + e.status + '">' + renderLetter(e) + "</article>"
       : '<p class="ed-letters-empty">Click a letter above to see its forms.</p>';
-    $$("[data-index] .dz-chip").forEach(function (b) {
+    $$("[data-index] button.ed-cm-cell").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.id === state.letter));
     });
   }
 
+  // The index is a character map laid out by code point like a Unicode
+  // chart, 16 to a row (8 on a phone): the Syriac block (punctuation,
+  // letters, vowels and other marks), then rows for the combining marks and
+  // other punctuation Syriac text uses, and the ligatures. Everything Eden
+  // has opens a card; code points Eden doesn't have are hatched.
+  var CM_NARROW = window.matchMedia("(max-width: 640px)");
+  var CM_GROUPS = [
+    { label: "Marks", cps: [0x0303, 0x0304, 0x0307, 0x0308, 0x030A, 0x0323, 0x0324, 0x0325, 0x032D, 0x032E, 0x0330, 0x0331, 0x1DF8, 0x1DFA] },
+    { label: "Punct.", cps: [0x060C, 0x061B, 0x061F, 0x0640, 0x2670, 0x2671] }
+  ];
+
+  function codeOf(c) { return c.toString(16).toUpperCase().padStart(4, "0"); }
+
+  // Shown on a dotted circle when it's a combining mark.
+  function shownChar(e) { return e.mark ? "\u25CC" + e.char : e.char; }
+
+  // A mark in the map, drawn from its outline at the slider's weight, set
+  // just above or below a dotted circle where a letter's body would be (as in
+  // the Unicode charts).
+  function markSvg(e) {
+    var g = edenAt(edenGlyph(e.glyph));
+    var tx = 0, ty = 0;
+    if (g && g.b) {
+      tx = -(g.b[0] + g.b[2]) / 2;
+      ty = (g.b[1] + g.b[3]) / 2 > 150 ? 350 - g.b[1] : -60 - g.b[3];
+    }
+    return '<svg class="ed-cm-svg" viewBox="-350 -620 700 960" aria-hidden="true">' +
+      '<circle cx="0" cy="-150" r="140" fill="none" stroke="currentColor" stroke-width="16" stroke-dasharray="32 24" opacity="0.6"/>' +
+      (g ? '<path transform="translate(' + tx + " " + (-ty) + ') scale(1 -1)" d="' + g.d + '"/>' : "") + "</svg>";
+  }
+
+  function cmCell(text, codes, entry, cls) {
+    var label = codes.map(function (c) { return "U+" + c; }).join(" + ");
+    // Not drawn yet: an empty dashed box. A mark: its outline. Else: the character in Eden.
+    var drawn = entry && Array.from(entry.char).length === 1 ? edenGlyph(entry.glyph) : true;
+    var glyph = !entry ? "" : !drawn ? '<span class="ed-cm-empty"></span>' : entry.mark ? markSvg(entry) : text;
+    var inner = '<span class="ed-cm-char" lang="syr" dir="rtl">' + glyph + '</span><span class="ed-cm-code">' + codes.join(" ") + "</span>";
+    if (entry) {
+      return '<button type="button" class="ed-cm-cell' + cls + '" data-id="' + letterId(entry) + '" title="' + label + " " + esc(entry.name) +
+        '" aria-label="' + esc(entry.name) + ", " + label + '" aria-controls="letter-view" aria-pressed="false">' + inner + "</button>";
+    }
+    return '<div class="ed-cm-cell' + cls + '" title="' + label + ' (not in Eden)">' + inner + "</div>";
+  }
+
+  function cmCode(c, cols, col, last) {
+    var e = BY_CHAR[String.fromCodePoint(c)];
+    var cls = (col === cols - 1 ? " ed-cm-end" : "") + (last ? " ed-cm-last" : "") + (e ? "" : " is-none");
+    return cmCell(e ? shownChar(e) : "", [codeOf(c)], e, cls);
+  }
+
   function renderIndex() {
-    $("[data-index]").innerHTML = LOG.map(function (e) {
-      return '<button type="button" class="dz-chip ed-chip-syr" data-id="' + letterId(e) + '" title="' + e.name +
-        '" aria-controls="letter-view" aria-pressed="false" lang="syr"><span class="ed-syr-lift">' + e.char + "</span></button>";
+    var cols = CM_NARROW.matches ? 8 : 16;
+    var host = $("[data-index]");
+    host.style.setProperty("--cols", cols);
+    var html = '<div class="ed-cm-head"></div>';
+    for (var i = 0; i < cols; i++) {
+      html += '<div class="ed-cm-head' + (i === cols - 1 ? " ed-cm-end" : "") + '">' + (cols === 16 ? i.toString(16).toUpperCase() : "+" + i) + "</div>";
+    }
+    for (var row = 0x0700; row < 0x0750; row += cols) {
+      html += '<div class="ed-cm-head ed-cm-row">' + (cols === 16 ? codeOf(row).slice(0, 3) + "x" : codeOf(row)) + "</div>";
+      for (var c = row; c < row + cols; c++) html += cmCode(c, cols, c - row, false);
+    }
+    // The other marks and punctuation, in rows of their own.
+    CM_GROUPS.forEach(function (g) {
+      for (var k = 0; k < g.cps.length; k += cols) {
+        html += '<div class="ed-cm-head ed-cm-row">' + (k ? "" : g.label) + "</div>";
+        var run = g.cps.slice(k, k + cols);
+        html += run.map(function (c, j) { return cmCode(c, cols, j, false); }).join("");
+        if (run.length < cols) html += '<div class="ed-cm-gap" style="grid-column: span ' + (cols - run.length) + '"></div>';
+      }
+    });
+    // Ligatures: two columns each, then a filler to the end of the row.
+    var ligs = LOG.filter(function (e) { return Array.from(e.char).length > 1; });
+    html += '<div class="ed-cm-head ed-cm-row ed-cm-last">Lig.</div>';
+    html += ligs.map(function (e) {
+      var codes = Array.from(e.char).map(function (x) { return codeOf(x.codePointAt(0)); });
+      return cmCell(e.char, codes, e, " ed-cm-lig ed-cm-last");
     }).join("");
+    var rest = cols - 2 * ligs.length;
+    if (rest > 0) html += '<div class="ed-cm-gap ed-cm-last" style="grid-column: span ' + rest + '"></div>';
+    host.innerHTML = html;
   }
 
   function showLetter(id, scroll) {
-    var known = LOG.some(function (e) { return letterId(e) === id; });
+    var known = ENTRIES.some(function (e) { return letterId(e) === id; });
     state.letter = known ? id : null;
     renderLetters();
     if (known && scroll) $("#" + id).scrollIntoView({ block: "start" });
@@ -316,7 +459,7 @@
   function initLetters() {
     $("[data-letters]").id = "letter-view";
     $("[data-index]").addEventListener("click", function (ev) {
-      var b = ev.target.closest(".dz-chip");
+      var b = ev.target.closest("button.ed-cm-cell");
       if (!b) return;
       var id = b.dataset.id;
       // Clicking the open letter closes it.
@@ -330,7 +473,7 @@
     });
     // Links from elsewhere on the page (a part's letters) and on load.
     // Only #l-… links pick a letter; a section link (#grid) leaves it alone.
-    function linked() { return /^#l-/.test(location.hash) ? location.hash.slice(1) : null; }
+    function linked() { return /^#[lu]-/.test(location.hash) ? location.hash.slice(1) : null; }
     window.addEventListener("hashchange", function () { if (linked()) showLetter(linked(), true); });
     // A letter linked to opens (and scrolls into view); otherwise Alap is open.
     if (linked()) showLetter(linked(), true);
@@ -355,7 +498,14 @@
     $$("[data-ed-ctl]", tester).forEach(function (input) {
       var update = function () {
         var k = input.dataset.edCtl;
-        stage.style.setProperty(k === "size" ? "--size" : "--leading", k === "size" ? input.value + "px" : input.value);
+        if (k === "weight") {
+          // The variable font runs from ExtraLight (200) to Bold (700); the
+          // waterfall follows the tester's weight.
+          stage.style.fontWeight = input.value;
+          $$("[data-ed-waterfall] .dz-wf-text").forEach(function (t) { t.style.fontWeight = input.value; });
+        } else {
+          stage.style.setProperty(k === "size" ? "--size" : "--leading", k === "size" ? input.value + "px" : input.value);
+        }
         $('[data-ed-out="' + k + '"]', tester).textContent = k === "size" ? input.value + "px" : input.value;
       };
       input.addEventListener("input", update);
@@ -365,6 +515,12 @@
       var on = tester.classList.toggle("is-inverted");
       this.setAttribute("aria-pressed", String(on));
     });
+    $("[data-ed-weights]").innerHTML = [
+      [200, "ExtraLight"], [300, "Light"], [400, "Regular"], [500, "Medium"], [600, "SemiBold"], [700, "Bold"]
+    ].map(function (w) {
+      return '<div class="ed-sample"><span class="ed-sample-label">' + w[0] + " · " + w[1] + '</span>' +
+        '<p class="ed-sample-text" lang="syr" dir="rtl" style="font-size:32px;line-height:1.5;font-weight:' + w[0] + '">' + esc(GARDEN) + "</p></div>";
+    }).join("");
     $("[data-ed-waterfall]").innerHTML = [12, 14, 16, 18, 24, 32, 48, 64, 96, 128].map(function (sz) {
       return '<div class="dz-wf-row"><span class="dz-wf-size">' + sz + 'px</span>' +
         '<span class="dz-wf-text ed-font" lang="syr" dir="rtl" style="font-size:' + sz + 'px">' + esc(SPECIMEN) + "</span></div>";
@@ -374,7 +530,7 @@
       ["A bird in the garden", GARDEN], ["A bird in the garden, with vowels", GARDEN_POINTED]
     ].map(function (t) {
       return '<div class="ed-sample"><span class="ed-sample-label">' + esc(t[0]) + '</span>' +
-        '<p class="ed-sample-text" lang="syr" dir="rtl" style="font-size:32px;line-height:1.9">' + esc(t[1]) + "</p></div>";
+        '<p class="ed-sample-text" lang="syr" dir="rtl" style="font-size:32px;line-height:1.5">' + esc(t[1]) + "</p></div>";
     }).join("");
   }
 
@@ -429,16 +585,17 @@
     renderParts();
     renderIndex();
     initLetters();
-
-    $$("[data-toggle]").forEach(function (b) {
-      b.addEventListener("click", function () {
-        var k = b.dataset.toggle;
-        state[k] = !state[k];
-        $$('[data-toggle="' + k + '"]').forEach(function (x) { x.setAttribute("aria-pressed", String(state[k])); });
-        renderParts();
-        renderLetters();
-      });
+    // The weight slider redraws the open letter, and sets the map in that weight.
+    var slider = $("[data-ed-log-weight]");
+    slider.addEventListener("input", function () {
+      state.wght = +slider.value;
+      $("[data-ed-log-out]").textContent = slider.value;
+      $("[data-index]").style.fontWeight = slider.value;
+      renderIndex();
+      renderLetters();
     });
+    // The character map is 16 columns wide, or 8 on a phone.
+    CM_NARROW.addEventListener("change", function () { renderIndex(); renderLetters(); });
   }
 
   init();
