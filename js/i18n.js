@@ -17,8 +17,8 @@
     "hero-first": { en: "Sargis", syr: "ܣܪܓܝܤ" },
     "hero-last": { en: "Yonan", syr: "ܝܘܢـــــــܢ" },
     "about-text": {
-      en: "I'm an engineer who works on robotics, hardware, firmware, software and Assyrian language projects. I'm a prototyping engineer on the Apple Design Team, focused on interaction design.",
-      syr: "ܝܘܢ ܡܚܪܐ ܒܓܝܓ݂ܠܐ ܕܚܫܘܒ݂̈ܐ ܘܪܘܒܘܛܝܩܝܐ, ܘܦܠܚܢ ܥܠ ܬܚܪ̈ܙܝܬܐ ܦܪܝܫ̈ܐ ܒܟܠ ܕܪ̈ܓ݂ܐ. ܐܦ ܐܝܬ ܠܝ ܥܒ݂̈ܕܝܬܐ ܒܚܩܠܐ ܕܓܪܫܬܐ ܘܟܬܒ݂ܬܐ ܕܠܫܢܐ ܐܬܘܪܝܐ. ܗܕܝܐ ܝ݇ܘܢ ܦܠܚܐ ܠܛܘܦ̮ܣܝ̈ܐ ܩܕ݇ܡܝ̈ܐ ܓܘ ܒܝܬ ܬܦܢܟ݂ܐ ܕܐܦܠ."
+      en: "I'm an engineer who works on projects ranging from robotics to the Assyrian language. I'm an interaction design prototyper on the Apple Design Team.",
+      syr: "ܐܢܐ ܝܘܢ ܡܚܪܐ ܒܓܝܓ݂ܠܐ ܕܚܫܘܒ݂̈ܐ ܘܪܘܒܘܛܝܩܝܐ. ܐܦ ܐܝܬ ܠܝ ܥܒ݂̈ܕܝܬܐ ܒܚܩܠܐ ܕܠܫܢܐ ܐܬܘܪܝܐ. ܗܕܝܐ ܝ݇ܘܢ ܦܠܚܐ ܠܛܘܦ̮ܣܝ̈ܐ ܩܕ݇ܡܝ̈ܐ ܓܘ ܒܝܬ ܬܦܢܟ݂ܐ ܕܐܦܠ."
     },
     "label-projects": { en: "Select Projects", syr: "ܥܒ݂̈ܕܝܬܐ" },
     "label-publications": { en: "Publications", syr: "ܦܘܪ̈ܣܐ" },
