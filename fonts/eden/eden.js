@@ -387,14 +387,42 @@
   // the Unicode charts).
   function markSvg(e) {
     var g = edenAt(edenGlyph(e.glyph));
-    var tx = 0, ty = 0;
-    if (g && g.b) {
-      tx = -(g.b[0] + g.b[2]) / 2;
-      ty = (g.b[1] + g.b[3]) / 2 > 150 ? 350 - g.b[1] : -60 - g.b[3];
-    }
+    // Each side of the mark on its own: Pthaha has a dot above and a dot
+    // below, which in text sit either side of the letter, not stacked.
+    var paths = (g ? sides(g.d) : []).map(function (s) {
+      var b = s.b;
+      var tx = -(b[0] + b[2]) / 2, ty = s.above ? 350 - b[1] : -60 - b[3];
+      return '<path transform="translate(' + tx + " " + (-ty) + ') scale(1 -1)" d="' + s.d + '"/>';
+    });
     return '<svg class="ed-cm-svg" viewBox="-350 -620 700 960" aria-hidden="true">' +
       '<circle cx="0" cy="-150" r="140" fill="none" stroke="currentColor" stroke-width="16" stroke-dasharray="32 24" opacity="0.6"/>' +
-      (g ? '<path transform="translate(' + tx + " " + (-ty) + ') scale(1 -1)" d="' + g.d + '"/>' : "") + "</svg>";
+      paths.join("") + "</svg>";
+  }
+
+  // A path's contours grouped by side, the ink above the Shleṭa (over the
+  // dotted circle) and below it: [{above, d, b: [x0, y0, x1, y1]}].
+  function sides(d) {
+    var groups = {};
+    d.split(/(?=M)/).forEach(function (sub) {
+      var b = pathBox(sub);
+      if (!b) return;
+      var above = (b[1] + b[3]) / 2 > 150, g = groups[above] || (groups[above] = { above: above, d: "", b: b.slice() });
+      g.d += sub;
+      g.b = [Math.min(g.b[0], b[0]), Math.min(g.b[1], b[1]), Math.max(g.b[2], b[2]), Math.max(g.b[3], b[3])];
+    });
+    return Object.keys(groups).map(function (k) { return groups[k]; });
+  }
+
+  // The box of a path's points (control points too: near enough for placing it).
+  function pathBox(d) {
+    var xs = [], ys = [], x = 0, y = 0;
+    (d.match(/[MLHVQCZ][^MLHVQCZ]*/g) || []).forEach(function (c) {
+      var n = (c.slice(1).match(NUM) || []).map(Number);
+      if (c[0] === "H") n.forEach(function (v) { xs.push(x = v); ys.push(y); });
+      else if (c[0] === "V") n.forEach(function (v) { ys.push(y = v); xs.push(x); });
+      else for (var i = 0; i + 1 < n.length; i += 2) { xs.push(x = n[i]); ys.push(y = n[i + 1]); }
+    });
+    return xs.length ? [Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs), Math.max.apply(null, ys)] : null;
   }
 
   function cmCell(text, codes, entry, cls) {
