@@ -15,6 +15,24 @@
     { key: "eden", label: "Eden", note: "This font" },
     { key: "noto", label: "Noto", note: "Geometric" }
   ];
+  // The pages the manuscript zoom shows. Each source's letters/ folder
+  // has one example of each letter it has (named by the log's letter name,
+  // lowercased), cut from the same pages; the letter log shows them.
+  // Bump when the letter crops are re-cut, so browsers fetch the new ones.
+  var LETTERS_V = 5;
+  var MANUSCRIPTS = [
+    { label: "Pirdesa d'Eden", note: "Mar Odisho d'Suwa, 1577",
+      dir: "images/pirdesa_deden_mar_odisho_dSuwa_1577/",
+      letters: "alap bet gamal dalat he waw zain khet tet yud kap lamad mim nun semkat eh pe sade qop rish shin taw" },
+    { label: "Khoudra", note: "Akhasim, 1676", dir: "images/khoudra_akhasim_1676/",
+      letters: "alap bet gamal dalat he waw zain khet tet yud kap lamad mim nun semkat eh pe sade qop rish shin taw" },
+    { label: "Simta d'Lishana Suryaya", note: "Mar Toma Audo, Mosul, 1897",
+      dir: "images/mar-toma-audo_simta_dLishana-suryaya/",
+      letters: "alap bet gamal dalat he waw zain khet tet yud kap lamad mim nun semkat eh pe sade qop rish shin taw" },
+    { label: "Sita Sapreta", note: "Tehran, 1971",
+      dir: "images/sita%20sapreta%20d%27alaymeh%20atorayeh%20b%27tehran/",
+      letters: "alap bet gamal dalat he waw zain khet tet yud kap lamad mim nun semkat eh pe sade qop rish shin taw" }
+  ];
 
   var state = { metrics: true, letter: null, wght: 400 };
 
@@ -215,6 +233,85 @@
     }).join("");
   }
 
+  /* ---- Manuscript zoom ---------------------------------------------------- */
+  // While .ed-ms scrolls past, its stage holds still and each page zooms in on
+  // its first Bet: a beat on the whole pages, the zoom, then a
+  // beat on the letters before the spectrum comes up. Each figure gives its
+  // scan's size (data-scan "w h") and Bet's box in it (data-bet "x y w h").
+  // The frames are all 2:3; each page is scaled to cover its frame.
+  var BET_FILL = 0.45;   // Bet's larger side as a share of the frame's, zoomed in
+  var CROP = 600;        // the full-resolution crop around Bet (*_bet_zoom.webp), square
+
+  function initManuscript() {
+    var host = $("[data-ms]");
+    if (!host) return;
+    var stage = $(".ed-ms-stage", host), caption = $("[data-ms-caption]", host), queued = false;
+    var pages = $$("[data-ms-page]", host).map(function (fig) {
+      var scan = fig.getAttribute("data-scan").split(" ").map(Number);
+      var bet = fig.getAttribute("data-bet").split(" ").map(Number);
+      var b = { x: bet[0], y: bet[1], w: bet[2], h: bet[3], W: scan[0], H: scan[1] };
+      var cx = b.x + b.w / 2, cy = b.y + b.h / 2;
+      function place(el, x, y, w, h) {
+        el.style.left = x / b.W * 100 + "%"; el.style.top = y / b.H * 100 + "%";
+        el.style.width = w / b.W * 100 + "%"; el.style.height = h / b.H * 100 + "%";
+      }
+      var zoom = $(".ed-ms-zoom", fig);
+      place(zoom, cx - CROP / 2, cy - CROP / 2, CROP, CROP);
+      return { bet: b, frame: $(".ed-ms-frame", fig), layer: $(".ed-ms-layer", fig), zoom: zoom,
+               max: BET_FILL / Math.max(b.w / b.W, b.h / b.H) };
+    });
+    // The frames share one shape; scale each page to cover its frame, centred.
+    function cover() {
+      pages.forEach(function (pg) {
+        var b = pg.bet, FW = pg.frame.clientWidth, FH = pg.frame.clientHeight;
+        var k = Math.max(FW / b.W, FH / b.H), st = pg.layer.style;
+        st.width = b.W * k + "px"; st.height = b.H * k + "px";
+        st.left = (FW - b.W * k) / 2 + "px"; st.top = (FH - b.H * k) / 2 + "px";
+        st.right = st.bottom = "auto";
+      });
+    }
+    cover();
+    window.addEventListener("resize", cover);
+    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    function clamp(v) { return Math.max(0, Math.min(1, v)); }
+    function ease(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
+    // The host is the stage plus the zoom's scroll. The stage (everything from
+    // the hero to the pages) pins with its bottom at the window's bottom, or at
+    // the top if it fits, so the page holds still while the pages zoom.
+    var ZOOM_SCROLL = 1.2;   // window heights of scrolling for the zoom
+    function layout() {
+      var sh = stage.offsetHeight, ih = window.innerHeight;
+      stage.style.top = Math.min(0, ih - sh) + "px";
+      host.style.height = sh + ZOOM_SCROLL * ih + "px";
+    }
+
+    function update() {
+      queued = false;
+      var sh = stage.offsetHeight, top = parseFloat(stage.style.top) || 0;
+      var r = host.getBoundingClientRect();
+      var p = clamp((top - r.top) / Math.max(1, r.height - sh));
+      var t = ease(clamp((p - 0.15) / 0.65));
+      pages.forEach(function (pg) {
+        var b = pg.bet, fw = pg.layer.clientWidth, fh = pg.layer.clientHeight;
+        var bx = (b.x + b.w / 2) / b.W * fw, by = (b.y + b.h / 2) / b.H * fh;
+        // Scale geometrically so the zoom feels even; Bet moves to the centre
+        // of the layer, which is the centre of the frame.
+        var s = Math.pow(pg.max, t);
+        var tx = (fw / 2 - bx) * t, ty = (fh / 2 - by) * t;
+        pg.layer.style.transform = "translate(" + (tx + bx * (1 - s)) + "px," + (ty + by * (1 - s)) + "px) scale(" + s + ")";
+        pg.zoom.style.opacity = clamp((s - 3) / 3);
+      });
+      caption.classList.toggle("is-on", t > 0.95);
+    }
+    function queue() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", function () { layout(); queue(); });
+    layout();
+    update();
+  }
+
   /* ---- Grid diagram -------------------------------------------------------- */
   // The alphabet in its traditional groups (abgad, hawaz, ḥaṭi, kalman,
   // saʿpas, qarshat), each set in Eden itself so every form and join is
@@ -279,6 +376,7 @@
             'option in InDesign, Word and other apps). The rest of this page sets text with it off.</p>' : "") +
         "</div>" +
       "</header>";
+    html += renderPreDigital(entry);
     html += rows.map(function (x, r) {
       var suffix = x.baseOnly ? "" : suffixOf(entry, x.name);
       return '<div class="ed-form-row">' +
@@ -296,6 +394,24 @@
         }).join("") + "</div></div>";
     }).join("");
     return html;
+  }
+
+  // The letter in the four pages from the manuscript zoom, where it turns
+  // up there: two manuscripts, then two printed books.
+  function renderPreDigital(entry) {
+    var key = entry.name.toLowerCase();
+    var found = MANUSCRIPTS.filter(function (m) { return m.letters.split(" ").indexOf(key) >= 0; });
+    if (entry.kind || !found.length) return "";
+    return '<div class="ed-form-row">' +
+      '<div class="ed-form-row-head"><b>Pre-Digital</b><span>By hand and on the printing press</span></div>' +
+      '<div class="ed-compare">' + MANUSCRIPTS.map(function (m) {
+        var has = found.indexOf(m) >= 0;
+        return '<figure class="ed-cell ed-pre">' +
+          (has ? '<div class="ed-spec-photo"><img src="' + m.dir + "letters/" + key + ".webp?v=" + LETTERS_V + '" alt="' +
+                   esc(entry.name + " in " + m.label + ", " + m.note) + '" loading="lazy"></div>'
+               : '<div class="ed-spec-photo ed-pre-none"><span>Not on this page</span></div>') +
+          "<figcaption><b>" + esc(m.label) + "</b><span>" + esc(m.note) + "</span></figcaption></figure>";
+      }).join("") + "</div></div>";
   }
 
   // Mirrors count as the part they mirror. Shleṭa units and lengths,
@@ -609,6 +725,7 @@
     initHero();
     initText();
     renderSpectrum();
+    initManuscript();
     renderGrid();
     renderParts();
     renderIndex();

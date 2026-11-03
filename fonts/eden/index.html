@@ -56,27 +56,62 @@
     .ed-sample-text { font-family: "Eden", serif; text-align: right; overflow-wrap: anywhere; }
     @media (max-width: 640px) { .ed-sample { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
 
-    /* Spectrum */
-    .ed-spectrum { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1.5px solid var(--text); margin-top: 16px; }
-    .ed-spec-cell { margin: 0; padding: 10px 10px 0; display: flex; flex-direction: column; }
-    .ed-spec-cell + .ed-spec-cell { border-left: 1.5px solid var(--text); }
+    /* Manuscript zoom: the stage stays put for the height of .ed-ms while each
+       page zooms in on its first Bet. The stage holds the hero, The problem and the pages;
+       eden.js sets .ed-ms's height (the stage plus the zoom's scroll), pins the
+       stage with its bottom at the window's bottom (at the top if it fits), places the crop
+       from the figure's data-scan and data-bet, and sets the layer's transform. */
+    .ed-ms { margin-bottom: 24px; }
+    .ed-ms-stage { position: sticky; top: 0; overflow: hidden; }
+    .ed-ms-pre { display: flex; flex-direction: column; gap: 12px; }
+    /* Four 2:3 frames side by side, as wide as fits while staying under 60vh tall.
+       Each page covers its frame; eden.js sizes the layer to do that. */
+    .ed-ms-pages { display: flex; align-items: flex-start; gap: 16px; padding: 0 16px; margin: 0 auto; width: 100%; max-width: min(1180px, calc(60vh * 2.67 + 80px)); }
+    .ed-ms-page-fig { margin: 0; min-width: 0; flex: 1; }
+    .ed-ms-frame {
+      position: relative; overflow: hidden; border: 1.5px solid var(--text); background: #d8cfbf;
+      width: 100%; aspect-ratio: 2 / 3;
+    }
+    .ed-ms-layer { position: absolute; inset: 0; transform-origin: 0 0; }
+    .ed-ms-page { display: block; width: 100%; height: 100%; }
+    .ed-ms-zoom { position: absolute; opacity: 0; }
+    .ed-ms-page-fig figcaption { font-size: 13px; line-height: 1.35; margin-top: 8px; max-width: 30ch; }
+    @media (max-width: 640px) {
+      .ed-ms-pages { gap: 8px; }
+      .ed-ms-page-fig figcaption { font-size: 11px; }
+    }
+    .ed-ms-page-fig figcaption span { color: var(--text-muted); }
+    .ed-ms-caption { font-size: 15px; text-align: center; opacity: 0; transition: opacity .3s; }
+    .ed-ms-caption.is-on { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .ed-ms { height: auto; }
+      .ed-ms-stage { position: static; height: auto; padding: 8px 0; }
+      .ed-ms-caption { opacity: 1; }
+    }
+
+    /* Spectrum: the four fonts, ink on paper to flat geometry. The grid's gap
+       shows its background as the rules between cells. */
+    .ed-spectrum {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5px;
+      border: 1.5px solid var(--text); background: var(--text); margin-top: 16px;
+    }
+    .ed-spec-cell { margin: 0; padding: 10px 10px 0; display: flex; flex-direction: column; background: var(--bg); }
     .ed-spec-cell .ed-svg { flex: 1; }
     .ed-spec-cell figcaption span { color: var(--text-muted); }
+    .ed-spec-photo { position: relative; aspect-ratio: 1; }
+    .ed-spec-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .ed-scale {
-      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      display: flex; justify-content: space-between;
       font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted);
       margin-top: 8px;
     }
-    .ed-scale span:last-child { text-align: right; }
     @media (max-width: 640px) {
       .ed-spectrum { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .ed-spec-cell:nth-child(3) { border-left: 0; }
-      .ed-spec-cell:nth-child(n + 3) { border-top: 1.5px solid var(--text); }
       .ed-scale { display: none; }
     }
     .ed-spec-cell figcaption,
     .ed-cell figcaption {
-      display: flex; justify-content: space-between; gap: 8px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 8px;
       padding: 8px 4px 10px;
       font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
     }
@@ -119,6 +154,7 @@
     /* Prose */
     .ed-prose p { max-width: 68ch; }
     .ed-prose p + p { margin-top: 14px; }
+    .ed-pre-prose { margin-bottom: 40px; }
     .ed-two {
       display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
       border: 1.5px solid var(--text); margin-top: 20px;
@@ -134,8 +170,8 @@
     }
 
     /* Principles */
-    .ed-principles { counter-reset: p; list-style: none; padding: 0; margin: 20px 0 0; border-top: 1.5px solid var(--text); }
-    .ed-principles li { counter-increment: p; padding: 16px 0 18px; border-bottom: 1.5px solid var(--text); }
+    .ed-principles { counter-reset: p; list-style: none; padding: 0; margin: 20px 0 0; }
+    .ed-principles li { counter-increment: p; padding: 16px 0 18px; }
     .ed-principles li::before { content: counter(p, decimal-leading-zero); font: 500 12px/1 var(--font-mono); color: var(--text-muted); }
     .ed-principles h3 { font-size: 18px; font-weight: 800; line-height: 1.25; margin-top: 8px; }
     .ed-principles p { font-size: 15px; margin-top: 6px; color: var(--text-muted); max-width: 68ch; }
@@ -170,6 +206,10 @@
     .ed-compare .ed-cell + .ed-cell { border-left: 1.5px solid var(--text); }
     .ed-forms .ed-cell:first-child { grid-column: 3; }
     .ed-cell figcaption { padding: 6px 2px 8px; }
+    .ed-pre .ed-spec-photo { border: 1px solid var(--border); }
+    .ed-pre-none { display: flex; align-items: center; justify-content: center; }
+    .ed-pre-none span { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+    .ed-pre figcaption span { color: var(--text-muted); font-weight: 500; letter-spacing: 0; text-transform: none; }
     @media (max-width: 560px) {
       .ed-compare { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .ed-compare .ed-cell:nth-child(3) { border-left: 0; }
@@ -227,7 +267,9 @@
     .ed-form-chip.is-drawn { border: 1.5px solid var(--text); background: var(--text); color: var(--bg); }
     .ed-form-chip.is-filled { border: 1.5px solid #1f5fd6; background: #1f5fd6; color: #fff; }
 
-    .ed-foot-note { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+    /* The footer's notes stack as full-width rows instead of the site's side-by-side row. */
+    footer.site-footer .wrap { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .ed-foot-note { font-size: 13px; color: var(--text-muted); max-width: 110ch; }
   </style>
 </head>
 <body>
@@ -238,51 +280,111 @@
 
   <main class="dz">
 
-    <!-- Hero -->
-    <section class="wrap dz-hero">
-      <div class="eyebrow">Typeface · Pre-Release</div>
-      <h1 class="ed-hero-title" aria-label="Eden" data-hero-title><span class="ed-hero-word" aria-hidden="true">Eden</span><span class="ed-caret" aria-hidden="true"></span></h1>
-      <p class="ed-hero-tag">A recognizable, modern Syriac script.</p>
-      <p class="ed-wip"><b>Work in progress.</b> Eden is pre-release: letters, weights and spacing are still changing, and it isn't available to download yet.</p>
-      <p class="lede dz-hero-lede">
-        Eden is an Eastern Syriac (<span class="dz-inline-syr" lang="syr" dir="rtl">ܡܕܢܚܝܐ</span>) typeface
-        made primarily for digital text. It keeps the structure, contrast and silhouettes that make written
-        Assyrian recognizable, and redraws them as type instead of imitating ink on paper.
-      </p>
-    </section>
+    <!-- Everything from the top through the Pre-Digital pages, held still
+         together while the reader scrolls, as each page zooms in on its
+         first Bet; the page reads as if scrolling paused for the zoom. -->
+    <div class="ed-ms" data-ms>
+      <div class="ed-ms-stage">
+        <!-- Hero -->
+        <section class="wrap dz-hero">
+          <div class="eyebrow">Typeface · Pre-Release</div>
+          <h1 class="ed-hero-title" aria-label="Eden" data-hero-title><span class="ed-hero-word" aria-hidden="true">Eden</span><span class="ed-caret" aria-hidden="true"></span></h1>
+          <p class="ed-hero-tag">A recognizable, modern Syriac script.</p>
+          <p class="ed-wip"><b>Work in progress.</b> Eden is pre-release: letters, weights and spacing are still changing, and it isn't available to download yet.</p>
+          <p class="lede dz-hero-lede">
+            Eden is an Eastern Syriac (<span class="dz-inline-syr" lang="syr" dir="rtl">ܡܕܢܚܝܐ</span>) typeface
+            made primarily for digital text. It keeps the structure, contrast and silhouettes that make written
+            Assyrian recognizable, and redraws them as type instead of imitating ink on paper.
+          </p>
+        </section>
 
-    <!-- The problem -->
-    <section class="block" id="problem">
-      <div class="wrap ed-prose">
-        <div class="eyebrow">The problem</div>
-        <p>Digital Eastern Syriac fonts mostly go one of two ways: they copy ink on a manuscript, or they forget it altogether.</p>
-        <div class="ed-two">
-          <div>
-            <h3>Skeuomorphic</h3>
-            <p>
-              These keep everything a broad nib cut at 5–20° leaves behind: chisel-cut tips, wedge entries,
-              hairline flicks, strokes that swell where the ink pooled. On a screen there's no tool, and the
-              hairlines drop out and the tips alias at text sizes.
-            </p>
+        <!-- The problem -->
+        <section class="block" id="problem">
+          <div class="wrap ed-prose">
+            <div class="eyebrow">The problem</div>
+            <p>Digital Eastern Syriac fonts mostly go one of two ways: they copy ink on a manuscript, or they forget it altogether.</p>
+            <div class="ed-two">
+              <div>
+                <h3>Skeuomorphic</h3>
+                <p>
+                  These keep everything a broad nib cut at 5–20° leaves behind: chisel-cut tips, wedge entries,
+                  hairline flicks, strokes that swell where the ink pooled. On a screen there's no tool, and the
+                  hairlines drop out and the tips alias at text sizes.
+                </p>
+              </div>
+              <div>
+                <h3>Flattened</h3>
+                <p>
+                  These fonts fix rendering issues by removing contrast: one weight, straight diagonals, the same
+                  ending everywhere. It's clean, but letters lose the features that tell them apart and make the
+                  text look Assyrian. It's a Latin sans applied to a script that doesn't work that way.
+                </p>
+              </div>
+            </div>
+            <p style="margin-top: 20px;">Eden sits between them. For each stroke, end and swell in the traditional letters, it asks whether the letter needs it or only the pen made it. What tells letters apart stays, what the script needs but the pen shaped is redrawn, and what only the pen made goes.</p>
           </div>
-          <div>
-            <h3>Flattened</h3>
-            <p>
-              These fonts fix rendering issues by removing contrast: one weight, straight diagonals, the same
-              ending everywhere. It's clean, but letters lose the features that tell them apart and make the
-              text look Assyrian. It's a Latin sans applied to a script that doesn't work that way.
-            </p>
+        </section>
+
+        <!-- Two manuscript pages and two printed ones -->
+        <section class="block ed-ms-pre" id="pre-digital">
+          <div class="wrap">
+            <div class="eyebrow">Pre-Digital</div>
           </div>
-        </div>
-        <p style="margin-top: 20px;">Eden sits between them. For each stroke, end and swell in the traditional letters, it asks whether the letter needs it or only the pen made it. What tells letters apart stays, what the script needs but the pen shaped is redrawn, and what only the pen made goes.</p>
+          <div class="ed-ms-pages">
+            <figure class="ed-ms-page-fig" data-ms-page data-scan="2873 3831" data-bet="2413 275 78 92">
+              <div class="ed-ms-frame">
+                <div class="ed-ms-layer">
+                  <img class="ed-ms-page" src="images/pirdesa_deden_mar_odisho_dSuwa_1577/pirdesa_deden_1.webp?v=2" alt="A page of Pirdesa d'Eden by Mar Odisho d'Suwa, copied in 1577, in Eastern Syriac script.">
+                  <img class="ed-ms-zoom" src="images/pirdesa_deden_mar_odisho_dSuwa_1577/pirdesa_deden_1_bet_zoom.webp?v=2" alt="" aria-hidden="true">
+                </div>
+              </div>
+              <figcaption><b>Pirdesa d'Eden</b><span> by Mar Odisho d'Suwa, copied by hand in 1577</span></figcaption>
+            </figure>
+            <figure class="ed-ms-page-fig" data-ms-page data-scan="2623 3561" data-bet="1524 484 58 44">
+              <div class="ed-ms-frame">
+                <div class="ed-ms-layer">
+                  <img class="ed-ms-page" src="images/khoudra_akhasim_1676/khoudra_1.webp?v=2" alt="A page of Khoudra, written in 1676 in the village of Akhasim, in eastern Anatolia, in Eastern Syriac script.">
+                  <img class="ed-ms-zoom" src="images/khoudra_akhasim_1676/khoudra_1_bet_zoom.webp?v=2" alt="" aria-hidden="true">
+                </div>
+              </div>
+              <figcaption><b>Khoudra</b><span>, copied by hand in 1676 in the village of Akhasim, in eastern Anatolia</span></figcaption>
+            </figure>
+            <figure class="ed-ms-page-fig" data-ms-page data-scan="1088 1781" data-bet="434 185 20 22">
+              <div class="ed-ms-frame">
+                <div class="ed-ms-layer">
+                  <img class="ed-ms-page" src="images/mar-toma-audo_simta_dLishana-suryaya/audo_1.webp" alt="A page of Simta d'Lishana Suryaya by Mar Toma Audo, printed in Mosul in 1897, in Eastern Syriac type.">
+                  <img class="ed-ms-zoom" src="images/mar-toma-audo_simta_dLishana-suryaya/audo_1_bet_zoom.webp" alt="" aria-hidden="true">
+                </div>
+              </div>
+              <figcaption><b>Simta d'Lishana Suryaya</b><span> by Mar Toma Audo, printed on a press in Mosul in 1897</span></figcaption>
+            </figure>
+            <figure class="ed-ms-page-fig" data-ms-page data-scan="3576 5499" data-bet="3034 598 56 48">
+              <div class="ed-ms-frame">
+                <div class="ed-ms-layer">
+                  <img class="ed-ms-page" src="images/sita%20sapreta%20d%27alaymeh%20atorayeh%20b%27tehran/sita_sapreta_1.webp" alt="A printed page of Sita Sapreta d'Alaymeh Atorayeh b'Tehran, 1971, in Eastern Syriac script.">
+                  <img class="ed-ms-zoom" src="images/sita%20sapreta%20d%27alaymeh%20atorayeh%20b%27tehran/sita_sapreta_1_bet_zoom.webp" alt="" aria-hidden="true">
+                </div>
+              </div>
+              <figcaption><b>Sita Sapreta d'Alaymeh Atorayeh b'Tehran</b><span>, printed in 1971 by the Assyrian Youth Cultural Society Press in Tehran, Iran</span></figcaption>
+            </figure>
+          </div>
+          <p class="wrap ed-ms-caption" data-ms-caption>Bet in late manuscripts and on the printing press.</p>
+        </section>
       </div>
-    </section>
+    </div>
 
     <!-- Spectrum -->
     <section class="block" id="spectrum">
+      <div class="wrap ed-prose ed-pre-prose">
+        <p>The first two pages are manuscripts and the last two are print. <i>Pirdesa d'Eden</i> and the <i>Khoudra</i> were copied out by hand by scribes; <i>Simta d'Lishana Suryaya</i> and <i>Sita Sapreta</i> came off printing presses in Mosul and Tehran respectively.</p>
+        <p>For most of its 2,000-year history the script was written by hand, with a reed pen, and every letter in the two manuscripts carries the angle of the nib and the pace of the hand that made it.</p>
+        <p>Printing changed what the letters had to do. When the script went into metal type in the 19th century, at the presses in Urmia and Mosul, each letter had to be cut as a punch, cast in lead and set beside every other letter in a line. A typecase only holds so many sorts, so the printers kept the joins and forms a reader needs and gave up the rest. Strokes got heavier and more even so they'd hold up under the press. <i>Simta d'Lishana Suryaya</i>, printed in Mosul in 1897, shows how much could be taken out while the page still remains recognizable in script, and <i>Sita Sapreta</i>, printed in Tehran in 1971, shows the same printed letter still in use most of a century later.</p>
+        <p>Computers could have carried that work forward, and mostly didn't. Most digital Eastern Syriac typefaces went back past the press to the manuscript, copying the pen, nib angle and all, onto a screen that has no pen.</p>
+        <p>Eden picks up where the printers left off. It keeps what a reader uses to tell one letter from another, and lets go of what only the tool needed. The tool is different now. The press wanted heavy, even strokes and a small set of sorts. The screen wants shapes that stay clear in pixels and at small sizes. What doesn't change is the test: if cutting something from the handwritten script makes a word harder to read, it stays.</p>
+      </div>
       <div class="wrap">
         <div class="eyebrow">Where Eden sits</div>
-        <div class="ed-scale" aria-hidden="true"><span>← Ink on paper</span><span></span><span></span><span>Flat geometry →</span></div>
+        <div class="ed-scale" aria-hidden="true"><span>← Ink on paper</span><span>Flat geometry →</span></div>
         <div class="ed-spectrum" data-spectrum></div>
       </div>
     </section>
@@ -369,6 +471,8 @@
     <div class="wrap">
       <span>Eden © 2026 Sargis Yonan</span>
       <p class="ed-foot-note">Reference outlines: SyrCOM Ctesiphon © 2002 Beth Mardutho: The Syriac Institute (Meltho license); Ramsina © SIL International (SIL OFL); Noto Sans Syriac Eastern © Google (SIL OFL).</p>
+      <p class="ed-foot-note">The manuscript pages, Pirdesa d'Eden and Khoudra, were photographed at the Ashurbanipal Library of the Assyrian Cultural Foundation in Lincolnwood, Illinois.</p>
+      <p class="ed-foot-note">The printed pages: Simta d'Lishana Suryaya by Mar Toma Audo was printed in Mossoul by the Imprimerie des Pères Dominicains in 1897, and scanned by the Robarts Library, University of Toronto. Sita Sapreta d'Alaymeh Atorayeh b'Tehran was printed in 1971 by the Assyrian Youth Cultural Society Press in Tehran, Iran.</p>
     </div>
   </footer>
 
